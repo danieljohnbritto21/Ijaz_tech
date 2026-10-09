@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Privacy Policy — Ijaz_Solutions{% endblock %}
+{% block meta_description %}Privacy Policy for Ijaz_Solutions. Learn how we collect, process, and protect your information.{% endblock %}
+
+{% block content %}
+<section class="section section--dark page-hero">
+    <div class="container container--narrow text-center">
+        <div class="badge badge--primary mb-4">Legal & Compliance</div>
+        <h1 class="page-hero__title">Privacy Policy</h1>
+        <p class="page-hero__subtitle">Last updated: October 2026</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container container--narrow">
+        <div class="card p-8 md:p-12 prose">
+            <h2>1. Introduction</h2>
+            <p>
+                At <strong>Ijaz_Solutions</strong> ("we," "our," or "us"), we respect your privacy and are committed to protecting the personal and proprietary information you share with us. This Privacy Policy outlines our principles regarding the collection, use, and disclosure of your information when you visit our website or submit an inquiry regarding our services.
+            </p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We only collect information that is voluntarily provided by you or automatically collected during standard web browsing:</p>
+            <ul>
+                <li><strong>Contact Information:</strong> Your name, business email address, company name, phone number, and any project requirements you provide when completing an inquiry form.</li>
+                <li><strong>Technical Logs:</strong> Standard web analytics information including browser type, referring pages, IP address, device type, and visit timestamps to maintain system health and prevent malicious traffic.</li>
+                <li><strong>Communications:</strong> Records of correspondence if you contact us via email, scheduling tools, or inquiry forms.</li>
+            </ul>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We process your data strictly for legitimate business purposes:</p>
+            <ul>
+                <li>To evaluate and respond to your project requests and service inquiries.</li>
+                <li>To formulate project proposals, scope estimates, and technical feasibility reports.</li>
+                <li>To provide contract administration, customer support, and system maintenance.</li>
+                <li>To safeguard our website and systems against unauthorized access, spam, and cyber threats.</li>
+            </ul>
+
+            <h2>4. Data Sharing and Third Parties</h2>
+            <p>
+                <strong>We never sell, rent, or trade your personal information.</strong> We do not share your confidential project requirements with third parties except under the following circumstances:
+            </p>
+            <ul>
+                <li><strong>Service Providers:</strong> Trusted infrastructure and cloud providers (such as hosting, email delivery, and transactional logging) who operate under strict non-disclosure and security obligations.</li>
+                <li><strong>Legal Compliance:</strong> When required by applicable law, regulation, legal process, or governmental request.</li>
+            </ul>
+
+            <h2>5. Confidentiality & Non-Disclosure (NDA)</h2>
+            <p>
+                We understand that discussing new software systems, business processes, or digital products requires sharing proprietary ideas. All project inquiries submitted through our website are treated under strict confidentiality. We are always willing to execute mutual Non-Disclosure Agreements (NDAs) prior to detailed discovery conversations.
+            </p>
+
+            <h2>6. Data Security</h2>
+            <p>
+                We employ industry-standard technical and operational safeguards—including TLS encryption for all data in transit, strict database access controls, and regular system patching—to protect your personal information against unauthorized alteration, disclosure, or destruction.
+            </p>
+
+            <h2>7. Your Rights</h2>
+            <p>Depending on your jurisdiction, you have the right to:</p>
+            <ul>
+                <li>Request access to the personal data we hold about you.</li>
+                <li>Request correction or deletion of your personal records.</li>
+                <li>Withdraw consent for marketing or follow-up communications at any time.</li>
+            </ul>
+
+            <h2>8. Contact Us Regarding Privacy</h2>
+            <p>
+                If you have any questions or concerns regarding this Privacy Policy or our data handling practices, please contact our team directly at <a href="{% url 'contact' %}" class="text-primary font-semibold">our contact page</a>.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Custom Software Development — Ijaz_Solutions{% endblock %}
+{% block meta_description %}Bespoke web applications, multi-tenant SaaS platforms, internal ERP portals, and high-performance APIs engineered for long-term maintainability.{% endblock %}
+
+{% block content %}
+<!-- Service Hero -->
+<section class="section section--dark page-hero">
+    <div class="container">
+        <div class="page-hero__content">
+            <div class="badge badge--primary mb-4">Engineering & Architecture</div>
+            <h1 class="page-hero__title">Custom Software Tailored to<br><span class="text-gradient">Your Exact Business Model.</span></h1>
+            <p class="page-hero__subtitle">
+                Off-the-shelf SaaS forces your company into rigid, generic workflows. We engineer tailor-made software systems that reflect your competitive advantage—scalable, secure, and completely owned by you.
+            </p>
+            <div class="btn-group mt-6">
+                <a href="{% url 'contact' %}?service=software-development" class="btn btn--primary btn--lg">Discuss Your Architecture</a>
+                <a href="{% url 'portfolio' %}?service=software-development" class="btn btn--outline-white btn--lg">View Software Projects</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Custom Software Wins -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid--2 gap-12 align-center">
+            <div>
+                <div class="section-label">Strategic Advantage</div>
+                <h2 class="section-title">Break Free From Seat-Based SaaS Traps and Rigid Systems</h2>
+                <p class="text-secondary mb-6 leading-relaxed">
+                    Commercial off-the-shelf tools charge ballooning per-user subscriptions while locking your vital business data into proprietary silos. When your workflows evolve, off-the-shelf software breaks down.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="text-primary font-bold text-xl">✓</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Zero Per-User Licensing Penalties</strong>
+                            <p class="text-sm text-secondary">Scale your team from 10 to 10,000 users without your software bills compounding exponentially.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-primary font-bold text-xl">✓</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Workflow Alignment</strong>
+                            <p class="text-sm text-secondary">The system conforms precisely to your operations, approvals, and compliance requirements—not the other way around.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-primary font-bold text-xl">✓</div>
+                        <div>
+                            <strong class="text-slate font-semibold">100% IP Asset Ownership</strong>
+                            <p class="text-sm text-secondary">Every piece of custom software becomes an equity asset on your company balance sheet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-8 bg-soft border-primary">
+                <div class="badge badge--cyan mb-4">Code Integrity Standards</div>
+                <h3 class="card__title text-2xl mb-4">How We Guarantee Longevity</h3>
+                <p class="text-secondary text-sm mb-6 leading-relaxed">
+                    We write software intended to be easily understood and extended for years. No convoluted abstractions or spaghetti code.
+                </p>
+                <ul class="checklist text-sm space-y-3">
+                    <li class="checklist-item"><span class="checklist-icon">✓</span> <strong>Clean Layered Architecture:</strong> Strict separation of presentation, domain logic, and data layers.</li>
+                    <li class="checklist-item"><span class="checklist-icon">✓</span> <strong>Automated Test Coverage:</strong> Unit, integration, and end-to-end test suites guarantee regression-free releases.</li>
+                    <li class="checklist-item"><span class="checklist-icon">✓</span> <strong>Database Performance:</strong> Optimized indexing, query analysis (zero N+1 queries), and read-replica strategies.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions We Build -->
+<section class="section section--muted">
+    <div class="container">
+        <div class="section-header text-center mb-16">
+            <div class="section-label">Solutions Portfolio</div>
+            <h2 class="section-title">What We Build</h2>
+            <p class="section-subtitle max-w-2xl mx-auto">
+                Full-lifecycle development across diverse domains and complex data models.
+            </p>
+        </div>
+
+        <div class="grid grid--3 gap-8">
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Multi-Tenant SaaS Products</h3>
+                <p class="card__text text-sm mb-4">
+                    Architected for high concurrency, isolated tenant data schemas, Stripe billing integration, and customizable permission tiers.
+                </p>
+                <div class="text-xs text-primary font-semibold">Subscription Billing • RBAC • Tenant Isolation</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--cyan mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Internal ERP & Operational Portals</h3>
+                <p class="card__text text-sm mb-4">
+                    Consolidate distributed inventories, field operations, employee scheduling, and customer data into a single responsive cockpit.
+                </p>
+                <div class="text-xs text-cyan font-semibold">Real-Time Dashboards • Role-Based Views • Audit Trails</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">High-Volume REST & GraphQL APIs</h3>
+                <p class="card__text text-sm mb-4">
+                    Robust API layers built to handle millions of requests with sub-50ms latency, comprehensive OpenAPI documentation, and token auth.
+                </p>
+                <div class="text-xs text-primary font-semibold">FastAPI • Django REST Framework • Redis Caching</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack Strip -->
+<section class="section">
+    <div class="container text-center">
+        <div class="section-label">Engineering Stack</div>
+        <h2 class="section-title mb-8">Proven Technologies We Rely On</h2>
+        <div class="tech-stack-grid flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+            <span class="badge badge--outline p-3 text-sm">Python (Django / FastAPI)</span>
+            <span class="badge badge--outline p-3 text-sm">PostgreSQL</span>
+            <span class="badge badge--outline p-3 text-sm">Redis</span>
+            <span class="badge badge--outline p-3 text-sm">Docker & Compose</span>
+            <span class="badge badge--outline p-3 text-sm">React & Next.js</span>
+            <span class="badge badge--outline p-3 text-sm">TypeScript</span>
+            <span class="badge badge--outline p-3 text-sm">AWS / DigitalOcean</span>
+            <span class="badge badge--outline p-3 text-sm">GitHub Actions CI/CD</span>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+{% include 'partials/cta.html' %}
+{% endblock %}

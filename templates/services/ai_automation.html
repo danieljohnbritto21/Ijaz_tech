@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}AI & Automation Solutions — Ijaz_Solutions{% endblock %}
+{% block meta_description %}Custom AI agents, intelligent workflow automation, document processing, and generative AI systems built for measurable enterprise efficiency.{% endblock %}
+
+{% block content %}
+<!-- Service Hero -->
+<section class="section section--dark page-hero">
+    <div class="container">
+        <div class="page-hero__content">
+            <div class="badge badge--primary mb-4">Enterprise AI & Automation</div>
+            <h1 class="page-hero__title">Replace Repetitive Overhead with<br><span class="text-gradient">Intelligent, Autonomous Systems.</span></h1>
+            <p class="page-hero__subtitle">
+                We engineer practical artificial intelligence and automated pipelines that integrate cleanly into your existing tech stack—eliminating hours of manual busywork while enhancing speed and decision accuracy.
+            </p>
+            <div class="btn-group mt-6">
+                <a href="{% url 'contact' %}?service=ai-automation" class="btn btn--primary btn--lg">Schedule an AI Discovery Session</a>
+                <a href="{% url 'portfolio' %}?service=ai-automation" class="btn btn--outline-white btn--lg">View AI Case Studies</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Challenge vs Our Solution -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid--2 gap-12 align-center">
+            <div>
+                <div class="section-label">The Operational Bottleneck</div>
+                <h2 class="section-title">Why Manual Operations Stifle Business Scale</h2>
+                <p class="text-secondary mb-6 leading-relaxed">
+                    Most companies waste hundreds of highly paid employee hours every month on copy-pasting data across systems, manually reading invoices and contracts, answering repetitive tier-1 customer inquiries, and generating reports.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="text-error font-bold text-xl">✕</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Human Error & Data Leakage</strong>
+                            <p class="text-sm text-secondary">Manual entry results in typos, misplaced invoices, and compliance vulnerabilities.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-error font-bold text-xl">✕</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Slow Turnaround Times</strong>
+                            <p class="text-sm text-secondary">Customers and vendors wait days for responses that an automated engine can resolve in 3 seconds.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-error font-bold text-xl">✕</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Linear Scaling Costs</strong>
+                            <p class="text-sm text-secondary">To grow 2x, you are forced to hire 2x back-office staff. Automation breaks this constraint.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-8 bg-soft border-primary">
+                <div class="badge badge--cyan mb-4">Our Engineering Solution</div>
+                <h3 class="card__title text-2xl mb-4">Autonomous, Guardrailed Systems</h3>
+                <p class="text-secondary text-sm mb-6 leading-relaxed">
+                    We don't build frivolous toys or unpredictable chat demos. We architect hardened pipelines with structured JSON validation, hallucination checks, fallback routing, and human-in-the-loop review mechanisms.
+                </p>
+                <ul class="checklist text-sm space-y-3">
+                    <li class="checklist-item"><span class="checklist-icon">✓</span> <strong>Deterministic Schemas:</strong> Enforce strict JSON output models with Pydantic and regex validation.</li>
+                    <li class="checklist-item"><span class="checklist-icon">✓</span> <strong>Data Sovereignty & Privacy:</strong> Zero training on your client data, on-premises or HIPAA/SOC2 compliant cloud execution.</li>
+                    <li class="checklist-item"><span class="checklist-icon">✓</span> <strong>Multi-Tool Orchestration:</strong> Agents that query databases, update CRMs, generate PDF documents, and trigger webhooks autonomously.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What We Build (Capabilities Grid) -->
+<section class="section section--muted">
+    <div class="container">
+        <div class="section-header text-center mb-16">
+            <div class="section-label">Core Capabilities</div>
+            <h2 class="section-title">What We Engineer for Your Team</h2>
+            <p class="section-subtitle max-w-2xl mx-auto">
+                Battle-tested architectures applied to your specific operational workflows.
+            </p>
+        </div>
+
+        <div class="grid grid--3 gap-8">
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Intelligent Document Processing (IDP)</h3>
+                <p class="card__text text-sm mb-4">
+                    Ingest unstructured PDFs, invoices, contracts, receipts, and medical files. Extract precise tabular data and populate ERP systems with 99%+ accuracy.
+                </p>
+                <div class="text-xs text-primary font-semibold">OCR • Table Parsing • Schema Validation</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--cyan mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Domain-Specific RAG Knowledge Bots</h3>
+                <p class="card__text text-sm mb-4">
+                    Equip your support and operations teams with internal knowledge assistants grounded strictly in your proprietary documentation, technical specs, and policies.
+                </p>
+                <div class="text-xs text-cyan font-semibold">Hybrid Search • Vector Embeddings • Rerankers</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Multi-App Business Workflow Automation</h3>
+                <p class="card__text text-sm mb-4">
+                    Seamlessly connect your CRM, billing gateway, database, email, and Slack/Teams using custom Python microservices and enterprise automation orchestrators.
+                </p>
+                <div class="text-xs text-primary font-semibold">Webhook Routing • Data Transformation • Celery Workers</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--cyan mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Conversational AI & Customer Support</h3>
+                <p class="card__text text-sm mb-4">
+                    Resolve 60%+ of tier-1 support inquiries instantly. Escalate complex edge cases to human agents with full context summaries and sentiment indicators.
+                </p>
+                <div class="text-xs text-cyan font-semibold">Zendesk / HubSpot / WhatsApp Integration</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Predictive Modeling & Anomaly Detection</h3>
+                <p class="card__text text-sm mb-4">
+                    Machine learning algorithms tailored to flag fraudulent transactions, predict equipment maintenance needs, or forecast customer churn before it occurs.
+                </p>
+                <div class="text-xs text-primary font-semibold">Scikit-learn • Time Series • Real-Time Alerts</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--cyan mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">AI Security, Audits & Guardrailing</h3>
+                <p class="card__text text-sm mb-4">
+                    Evaluate and protect your existing AI models against prompt injection, jailbreaks, data leakage, and unintended harmful model responses.
+                </p>
+                <div class="text-xs text-cyan font-semibold">NeMo Guardrails • Red Teaming • LLM Observability</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack Strip -->
+<section class="section">
+    <div class="container text-center">
+        <div class="section-label">Production Ecosystem</div>
+        <h2 class="section-title mb-8">Technologies We Rely On</h2>
+        <div class="tech-stack-grid flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+            <span class="badge badge--outline p-3 text-sm">Python</span>
+            <span class="badge badge--outline p-3 text-sm">OpenAI API</span>
+            <span class="badge badge--outline p-3 text-sm">Anthropic Claude</span>
+            <span class="badge badge--outline p-3 text-sm">LangChain & LangGraph</span>
+            <span class="badge badge--outline p-3 text-sm">LlamaIndex</span>
+            <span class="badge badge--outline p-3 text-sm">pgvector / PostgreSQL</span>
+            <span class="badge badge--outline p-3 text-sm">Qdrant & Pinecone</span>
+            <span class="badge badge--outline p-3 text-sm">Celery & Redis</span>
+            <span class="badge badge--outline p-3 text-sm">FastAPI</span>
+            <span class="badge badge--outline p-3 text-sm">Docker</span>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+{% include 'partials/cta.html' %}
+{% endblock %}

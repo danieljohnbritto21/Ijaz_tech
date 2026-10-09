@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Work & Case Studies — Ijaz_Solutions | Proven Engineering Impact{% endblock %}
+{% block meta_description %}Browse real-world engineering case studies from Ijaz_Solutions across AI automation, custom software, web apps, and cloud infrastructure.{% endblock %}
+
+{% block content %}
+<!-- Portfolio Hero -->
+<section class="section section--dark page-hero">
+    <div class="container">
+        <div class="page-hero__content">
+            <div class="badge badge--primary mb-4">Case Studies & Portfolio</div>
+            <h1 class="page-hero__title">Engineered for Impact.<br><span class="text-gradient">Validated by Results.</span></h1>
+            <p class="page-hero__subtitle">
+                Explore how we partner with ambitious companies to solve complex technical bottlenecks, automate operational friction, and launch production-grade software platforms.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Navigation & Projects Grid -->
+<section class="section">
+    <div class="container">
+        <!-- Filter Tabs -->
+        <div class="portfolio-filter-bar mb-12 flex justify-center flex-wrap gap-3">
+            <a href="{% url 'portfolio' %}" class="btn btn--sm {% if not current_filter %}btn--primary{% else %}btn--outline{% endif %}" data-filter="all">
+                All Projects
+            </a>
+            <a href="{% url 'portfolio' %}?service=ai-automation" class="btn btn--sm {% if current_filter == 'ai-automation' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="ai-automation">
+                AI & Automation
+            </a>
+            <a href="{% url 'portfolio' %}?service=software-development" class="btn btn--sm {% if current_filter == 'software-development' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="software-development">
+                Software Development
+            </a>
+            <a href="{% url 'portfolio' %}?service=web-mobile" class="btn btn--sm {% if current_filter == 'web-mobile' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="web-mobile">
+                Web & Mobile Apps
+            </a>
+            <a href="{% url 'portfolio' %}?service=it-consulting" class="btn btn--sm {% if current_filter == 'it-consulting' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="it-consulting">
+                IT Consulting
+            </a>
+        </div>
+
+        {% if projects %}
+        <div class="grid grid--3 gap-8">
+            {% for project in projects %}
+            <article class="card card--project flex flex-col h-full" data-category="{{ project.service_category }}">
+                {% if project.thumbnail %}
+                <div class="card__image-wrap">
+                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" loading="lazy" class="card__image">
+                </div>
+                {% else %}
+                <div class="card__image-placeholder">
+                    <span class="badge badge--primary">{{ project.get_service_category_display }}</span>
+                </div>
+                {% endif %}
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3 text-xs text-tertiary">
+                            <span class="badge badge--neutral">{{ project.industry }}</span>
+                            <span class="font-medium text-primary">{{ project.get_service_category_display }}</span>
+                        </div>
+                        <h2 class="card__title text-xl mb-3">
+                            <a href="{% url 'project-detail' project.slug %}" class="hover-underline">
+                                {{ project.title }}
+                            </a>
+                        </h2>
+                        <p class="card__text text-sm mb-6 text-secondary leading-relaxed">
+                            {{ project.short_description }}
+                        </p>
+                    </div>
+
+                    <div>
+                        {% if project.get_technologies_list %}
+                        <div class="tag-cloud mb-6">
+                            {% for tech in project.get_technologies_list|slice:":4" %}
+                            <span class="badge badge--outline text-xs">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <a href="{% url 'project-detail' project.slug %}" class="btn btn--outline btn--sm btn--block">
+                            View Case Study
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-16 card p-12">
+            <div class="icon-bubble icon-bubble--primary mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">No projects found in this category</h3>
+            <p class="text-secondary text-sm mb-6">We are currently preparing case studies for this discipline. Check out all our work or contact us to discuss your specific requirements.</p>
+            <a href="{% url 'portfolio' %}" class="btn btn--primary">View All Projects</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Call to Action -->
+{% include 'partials/cta.html' %}
+{% endblock %}

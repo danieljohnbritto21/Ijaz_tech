@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} — Case Study | Ijaz_Solutions{% endblock %}
+{% block meta_description %}{{ project.short_description }}{% endblock %}
+
+{% block content %}
+<!-- Project Hero -->
+<section class="section section--dark page-hero">
+    <div class="container">
+        <div class="page-hero__content">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+                <a href="{% url 'portfolio' %}" class="text-sm text-cyan hover-underline">← Back to All Case Studies</a>
+                <span class="text-tertiary">•</span>
+                <span class="badge badge--primary">{{ project.get_service_category_display }}</span>
+                <span class="badge badge--neutral">{{ project.industry }}</span>
+            </div>
+            <h1 class="page-hero__title">{{ project.title }}</h1>
+            <p class="page-hero__subtitle">{{ project.short_description }}</p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Case Study Content -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid--3 gap-12">
+            <!-- Left / Main Narrative Column (2/3 width) -->
+            <div class="col-span-2 space-y-12">
+                <!-- Challenge Section -->
+                <div>
+                    <div class="section-label">The Business Challenge</div>
+                    <h2 class="section-title text-2xl mb-4">Operational Friction & Bottlenecks</h2>
+                    <div class="prose leading-relaxed text-secondary">
+                        {{ project.challenge|linebreaks }}
+                    </div>
+                </div>
+
+                <!-- Objectives Section -->
+                {% if project.objectives %}
+                <div class="card p-8 bg-soft border-primary">
+                    <h3 class="card__title text-xl mb-3">Core Project Objectives</h3>
+                    <div class="prose text-secondary text-sm leading-relaxed">
+                        {{ project.objectives|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Solution Section -->
+                <div>
+                    <div class="section-label">The Engineering Approach</div>
+                    <h2 class="section-title text-2xl mb-4">Architectural Blueprint & Implementation</h2>
+                    <div class="prose leading-relaxed text-secondary">
+                        {{ project.solution|linebreaks }}
+                    </div>
+                    {% if project.implementation %}
+                    <div class="prose leading-relaxed text-secondary mt-4">
+                        {{ project.implementation|linebreaks }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Key Features List -->
+                {% if project.get_features_list %}
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Key Engineered Capabilities</h3>
+                    <div class="grid grid--2 gap-4">
+                        {% for feature in project.get_features_list %}
+                        <div class="card p-4 flex items-start gap-3">
+                            <span class="checklist-icon text-primary font-bold">✓</span>
+                            <span class="text-sm font-medium">{{ feature }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Measurable Outcomes & ROI -->
+                {% if project.outcomes %}
+                <div class="card card--featured p-8 border-cyan">
+                    <div class="section-label text-cyan">Verified Impact</div>
+                    <h3 class="card__title text-2xl mb-4">Measurable Business Outcomes</h3>
+                    <div class="prose leading-relaxed text-secondary">
+                        {{ project.outcomes|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Lessons & Architecture Insights -->
+                {% if project.lessons %}
+                <div>
+                    <h3 class="text-xl font-bold mb-3">Architectural Takeaways</h3>
+                    <div class="prose text-sm text-secondary leading-relaxed">
+                        {{ project.lessons|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Sidebar Column (1/3 width) -->
+            <div class="space-y-8">
+                <!-- Meta Info Card -->
+                <div class="card p-6">
+                    <h4 class="font-bold text-base mb-4 border-b pb-3">Project Metadata</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="text-tertiary block text-xs">Industry</span>
+                            <strong class="text-slate">{{ project.industry }}</strong>
+                        </div>
+                        <div>
+                            <span class="text-tertiary block text-xs">Service Category</span>
+                            <strong class="text-slate">{{ project.get_service_category_display }}</strong>
+                        </div>
+                        {% if project.get_technologies_list %}
+                        <div>
+                            <span class="text-tertiary block text-xs mb-2">Technologies Deployed</span>
+                            <div class="tag-cloud">
+                                {% for tech in project.get_technologies_list %}
+                                <span class="badge badge--outline text-xs">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Inquiry Box -->
+                <div class="card p-6 bg-midnight text-white text-center">
+                    <h4 class="text-lg font-bold mb-2 text-white">Have a Similar Challenge?</h4>
+                    <p class="text-xs text-on-dark mb-6">
+                        We can engineer a tailored solution that drives identical or greater business outcomes for your organization.
+                    </p>
+                    <a href="{% url 'contact' %}?service={{ project.service_category }}" class="btn btn--primary btn--block">
+                        Discuss Your Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Projects -->
+{% if related_projects %}
+<section class="section section--muted">
+    <div class="container">
+        <div class="section-header text-center mb-12">
+            <div class="section-label">More Work</div>
+            <h2 class="section-title">Related Case Studies</h2>
+        </div>
+
+        <div class="grid grid--2 gap-8">
+            {% for rel in related_projects %}
+            <article class="card card--hover p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3 text-xs text-tertiary">
+                        <span class="badge badge--neutral">{{ rel.industry }}</span>
+                        <span class="text-primary font-medium">{{ rel.get_service_category_display }}</span>
+                    </div>
+                    <h3 class="card__title text-xl mb-2">
+                        <a href="{% url 'project-detail' rel.slug %}" class="hover-underline">{{ rel.title }}</a>
+                    </h3>
+                    <p class="card__text text-sm mb-4 text-secondary">{{ rel.short_description }}</p>
+                </div>
+                <a href="{% url 'project-detail' rel.slug %}" class="btn btn--outline btn--sm">
+                    Read Case Study →
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Call to Action -->
+{% include 'partials/cta.html' %}
+{% endblock %}

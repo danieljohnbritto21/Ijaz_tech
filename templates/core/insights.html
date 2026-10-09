@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Insights & Articles — Ijaz_Solutions | Technology Architecture & Strategy{% endblock %}
+{% block meta_description %}In-depth articles, architectural breakdowns, and strategic perspectives on AI automation, web performance, and modern software engineering from Ijaz_Solutions.{% endblock %}
+
+{% block content %}
+<!-- Insights Hero -->
+<section class="section section--dark page-hero">
+    <div class="container">
+        <div class="page-hero__content">
+            <div class="badge badge--primary mb-4">Engineering Insights</div>
+            <h1 class="page-hero__title">Practical Perspectives on<br><span class="text-gradient">Modern Technology & AI.</span></h1>
+            <p class="page-hero__subtitle">
+                Actionable engineering insights, case reflections, and architectural playbooks written by senior practitioners who build real-world systems every day.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Article -->
+<section class="section">
+    <div class="container">
+        <div class="card card--featured p-8">
+            <div class="grid grid--2 gap-12 align-center">
+                <div>
+                    <div class="badge badge--primary mb-4">Featured Deep Dive • AI & Automation</div>
+                    <h2 class="card__title text-3xl mb-4">
+                        <a href="#article-1" class="hover-underline">Moving Past the Demo: How to Deploy Production-Grade LLM Workflows That Actually Save Money</a>
+                    </h2>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        Why 80% of corporate generative AI experiments fail in production, and how architectural grounding, deterministic validation gates, and cost-controlled routing turn raw models into reliable enterprise revenue engines.
+                    </p>
+                    <div class="flex items-center gap-6 text-sm text-tertiary">
+                        <span>By Lead Architect</span>
+                        <span>•</span>
+                        <span>8 min read</span>
+                        <span>•</span>
+                        <span>October 2026</span>
+                    </div>
+                </div>
+                <div class="bg-slate rounded-xl p-8 text-white">
+                    <h4 class="text-primary-light text-sm uppercase tracking-wider font-semibold mb-3">Key Takeaways in this Guide</h4>
+                    <ul class="checklist text-sm space-y-3">
+                        <li class="checklist-item">
+                            <span class="text-cyan">01</span>
+                            <span>Why retrieval augmented generation (RAG) fails without hybrid lexical reranking.</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="text-cyan">02</span>
+                            <span>How structured output schemas (JSON enforcement) prevent hallucination in database writes.</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="text-cyan">03</span>
+                            <span>Cutting token costs by 72% using tiered local-vs-cloud model cascading.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Article Grid -->
+<section class="section section--muted">
+    <div class="container">
+        <div class="section-header mb-12 flex justify-between items-end flex-wrap gap-4">
+            <div>
+                <div class="section-label">Latest Articles</div>
+                <h2 class="section-title">Field Notes & Architectural Analyses</h2>
+            </div>
+            <div class="tag-cloud">
+                <button class="btn btn--sm btn--primary">All Topics</button>
+                <button class="btn btn--sm btn--outline">AI & Automation</button>
+                <button class="btn btn--sm btn--outline">Software Design</button>
+                <button class="btn btn--sm btn--outline">Cloud & DevOps</button>
+            </div>
+        </div>
+
+        <div class="grid grid--3 gap-8">
+            <!-- Article 1 -->
+            <article class="card card--hover flex flex-col h-full">
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="badge badge--cyan mb-3">Architecture</div>
+                    <h3 class="card__title text-xl mb-3">
+                        Why Monolithic Django + Modern HTMX Outperforms Microservices for 95% of Startups
+                    </h3>
+                    <p class="card__text text-sm mb-6 flex-1">
+                        A rigorous cost-benefit breakdown of architectural simplicity over premature distributed complexity. How keeping your stack unified reduces deployment failure rates by 80%.
+                    </p>
+                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
+                        <span>6 min read</span>
+                        <span>Sep 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="card card--hover flex flex-col h-full">
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="badge badge--primary mb-3">AI & Automation</div>
+                    <h3 class="card__title text-xl mb-3">
+                        The Multi-Agent Playbook: Orchestrating Autonomous Back-Office Operations
+                    </h3>
+                    <p class="card__text text-sm mb-6 flex-1">
+                        How we designed an autonomous accounts-payable triage pipeline that processes 5,000+ monthly vendor invoices with 99.4% accuracy without human intervention.
+                    </p>
+                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
+                        <span>10 min read</span>
+                        <span>Aug 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="card card--hover flex flex-col h-full">
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="badge badge--neutral mb-3">Performance</div>
+                    <h3 class="card__title text-xl mb-3">
+                        Achieving a Perfect 100 Lighthouse Score in Production Web Apps
+                    </h3>
+                    <p class="card__text text-sm mb-6 flex-1">
+                        Critical rendering paths, modern image optimization, zero-bloat vanilla CSS strategies, and server-side rendering pipelines that keep Core Web Vitals in the green.
+                    </p>
+                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
+                        <span>5 min read</span>
+                        <span>Aug 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="card card--hover flex flex-col h-full">
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="badge badge--cyan mb-3">Security</div>
+                    <h3 class="card__title text-xl mb-3">
+                        The Zero-Trust API Checklist for High-Compliance B2B Applications
+                    </h3>
+                    <p class="card__text text-sm mb-6 flex-1">
+                        Token rotation, strict CORS, rate limiting with Redis token buckets, and cryptographic request signature verification for multi-tenant SaaS systems.
+                    </p>
+                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
+                        <span>7 min read</span>
+                        <span>Jul 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="card card--hover flex flex-col h-full">
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="badge badge--primary mb-3">Engineering Management</div>
+                    <h3 class="card__title text-xl mb-3">
+                        Fixed-Price vs. Time & Materials: How to Structure Contracts That Align Incentives
+                    </h3>
+                    <p class="card__text text-sm mb-6 flex-1">
+                        How milestone-based hybrid agreements eliminate the adversarial tension between client budget certainty and engineering agility.
+                    </p>
+                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
+                        <span>8 min read</span>
+                        <span>Jun 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="card card--hover flex flex-col h-full">
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="badge badge--neutral mb-3">DevOps</div>
+                    <h3 class="card__title text-xl mb-3">
+                        Database Migration Safety: Zero-Downtime Schema Evolutions at Scale
+                    </h3>
+                    <p class="card__text text-sm mb-6 flex-1">
+                        Techniques for adding non-nullable columns, renaming fields, and handling multi-gigabyte data migrations without locking tables or degrading response times.
+                    </p>
+                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
+                        <span>6 min read</span>
+                        <span>May 2026</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+{% include 'partials/cta.html' %}
+{% endblock %}

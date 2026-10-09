@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}IT Consulting & Support — Ijaz_Solutions{% endblock %}
+{% block meta_description %}Strategic technical advisory, cloud infrastructure optimization, cybersecurity hardening, and SLA-backed 24/7 operational maintenance.{% endblock %}
+
+{% block content %}
+<!-- Service Hero -->
+<section class="section section--dark page-hero">
+    <div class="container">
+        <div class="page-hero__content">
+            <div class="badge badge--primary mb-4">Strategic Advisory & Ops</div>
+            <h1 class="page-hero__title">Resilient Infrastructure.<br><span class="text-gradient">Zero Downtime Anxiety.</span></h1>
+            <p class="page-hero__subtitle">
+                Technology should propel your business forward, not create operational stress. We provide senior strategic guidance, streamline cloud expenses, harden cybersecurity, and ensure your critical systems run smoothly 24/7.
+            </p>
+            <div class="btn-group mt-6">
+                <a href="{% url 'contact' %}?service=it-consulting" class="btn btn--primary btn--lg">Request an Infrastructure Audit</a>
+                <a href="{% url 'portfolio' %}?service=it-consulting" class="btn btn--outline-white btn--lg">View Cloud Case Studies</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Challenge: Infrastructure Risk -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid--2 gap-12 align-center">
+            <div>
+                <div class="section-label">Infrastructure Vulnerabilities</div>
+                <h2 class="section-title">Is Your Cloud Stack Leaking Capital and Creating Risk?</h2>
+                <p class="text-secondary mb-6 leading-relaxed">
+                    As software teams scale quickly, infrastructure often grows chaotic: unmonitored cloud instances, sprawling AWS charges, neglected database backups, and unpatched security vulnerabilities waiting for an exploit.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="text-error font-bold text-xl">✕</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Runaway Cloud Billing</strong>
+                            <p class="text-sm text-secondary">Over-provisioned servers and forgotten development nodes quietly drain thousands of dollars every month.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-error font-bold text-xl">✕</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Fragile Deployments</strong>
+                            <p class="text-sm text-secondary">Manual release scripts that fail at 2 AM, requiring emergency rollbacks and lost customer trust.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-error font-bold text-xl">✕</div>
+                        <div>
+                            <strong class="text-slate font-semibold">Compliance Gaps</strong>
+                            <p class="text-sm text-secondary">Lacking audit trails, encrypted data volumes, and role-based policies required by modern enterprise buyers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-8 bg-soft border-primary">
+                <div class="badge badge--cyan mb-4">Our Operational Standard</div>
+                <h3 class="card__title text-2xl mb-4">The Resilient Cloud Blueprint</h3>
+                <ul class="checklist text-sm space-y-4">
+                    <li class="checklist-item">
+                        <span class="checklist-icon">✓</span>
+                        <div>
+                            <strong>Continuous Automated Backups:</strong> Point-in-time recovery with daily off-site encrypted snapshots.
+                        </div>
+                    </li>
+                    <li class="checklist-item">
+                        <span class="checklist-icon">✓</span>
+                        <div>
+                            <strong>Proactive Telemetry:</strong> Real-time APM monitoring alerting our team before your users experience lag.
+                        </div>
+                    </li>
+                    <li class="checklist-item">
+                        <span class="checklist-icon">✓</span>
+                        <div>
+                            <strong>Cost Right-Sizing:</strong> Average 30-45% reduction in monthly cloud invoices through resource pruning and caching layers.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Consulting Pillars -->
+<section class="section section--muted">
+    <div class="container">
+        <div class="section-header text-center mb-16">
+            <div class="section-label">Advisory & Support Services</div>
+            <h2 class="section-title">How We Protect & Accelerate Your Stack</h2>
+        </div>
+
+        <div class="grid grid--3 gap-8">
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Fractional CTO & Strategic Advisory</h3>
+                <p class="card__text text-sm mb-4">
+                    Senior technology guidance for leadership teams. We assist with vendor selection, team hiring, code audits, and technical investor diligence.
+                </p>
+                <div class="text-xs text-primary font-semibold">Technical Due Diligence • Vendor RFP Reviews • Hiring</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--cyan mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Cloud Migration & Cost Optimization</h3>
+                <p class="card__text text-sm mb-4">
+                    Modernize legacy servers to elastic containers. We audit usage metrics, implement auto-scaling, and slash monthly cloud spend.
+                </p>
+                <div class="text-xs text-cyan font-semibold">AWS • GCP • DigitalOcean • Terraform</div>
+            </div>
+
+            <div class="card card--hover p-8">
+                <div class="icon-bubble icon-bubble--primary mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="card__title text-xl mb-3">Security Audits & Pen-Testing</h3>
+                <p class="card__text text-sm mb-4">
+                    Identify vulnerabilities before attackers do. Comprehensive static analysis, dependency scanning, OWASP Top 10 checks, and remediation roadmaps.
+                </p>
+                <div class="text-xs text-primary font-semibold">OWASP Audits • SSL/TLS Configuration • Secrets Management</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+{% include 'partials/cta.html' %}
+{% endblock %}

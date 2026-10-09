@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="100%" height="100%" fill="none">
+    <defs>
+        <linearGradient id="logoCyanTop" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4BF0FF" />
+            <stop offset="100%" stop-color="#22D3EE" />
+        </linearGradient>
+        <linearGradient id="logoCyanMid" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00D2FF" />
+            <stop offset="100%" stop-color="#0080FF" />
+        </linearGradient>
+        <linearGradient id="logoBlueMid" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0084FF" />
+            <stop offset="100%" stop-color="#0055D4" />
+        </linearGradient>
+        <linearGradient id="logoBlueDark" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#004BB8" />
+            <stop offset="100%" stop-color="#002B7A" />
+        </linearGradient>
+        <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#35D9F5" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+
+    <!-- Isometric "IS" Icon -->
+    <g transform="translate(10, 10) scale(0.55)" filter="url(#logoGlow)">
+        <!-- "i" Dot -->
+        <polygon points="56,36 78,24 78,40 56,52" fill="url(#logoCyanTop)" />
+        
+        <!-- "i" Stem -->
+        <polygon points="56,58 78,46 78,114 56,126" fill="url(#logoCyanMid)" />
+        <polygon points="56,126 78,114 94,124 72,136" fill="url(#logoBlueMid)" />
+
+        <!-- "S" Upper Loop -->
+        <polygon points="86,48 116,30 146,48 116,66" fill="url(#logoCyanTop)" />
+        <polygon points="146,48 146,74 116,92 116,66" fill="url(#logoBlueMid)" />
+        <polygon points="116,66 116,92 86,74 86,48" fill="url(#logoBlueDark)" />
+
+        <!-- "S" Central Ribbon -->
+        <polygon points="86,74 116,92 116,118 86,100" fill="url(#logoCyanMid)" />
+        
+        <!-- "S" Lower Loop -->
+        <polygon points="116,92 146,110 146,136 116,118" fill="url(#logoCyanTop)" />
+        <polygon points="72,136 94,124 146,154 124,166" fill="url(#logoCyanMid)" />
+        <polygon points="116,118 146,136 146,154 116,136" fill="url(#logoBlueDark)" />
+    </g>
+
+    <!-- Wordmark "IJAZ_SOLUTIONS" -->
+    <g font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="800" font-size="28" letter-spacing="4">
+        <text x="120" y="68" fill="#F4F7FA">IJAZ<tspan fill="#35D9F5">_</tspan>SOLUTIONS</text>
+    </g>
+</svg>
