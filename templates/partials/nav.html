@@ -11,8 +11,8 @@
         <!-- Desktop Menu -->
         <div class="nav__menu" id="nav-menu">
             <a href="{% url 'home' %}" class="nav__link {% if request.resolver_match.url_name == 'home' %}nav__link--active{% endif %}">Home</a>
-            <a href="{% url 'services' %}" class="nav__link {% if 'services' in request.path %}nav__link--active{% endif %}">Services</a>
-            <a href="{% url 'portfolio' %}" class="nav__link {% if 'work' in request.path %}nav__link--active{% endif %}">Our Work</a>
+            <a href="{% url 'services' %}" class="nav__link {% if 'services' in request.path %}nav__link--active{% endif %}">Capabilities</a>
+            <a href="{% url 'portfolio' %}" class="nav__link {% if 'work' in request.path %}nav__link--active{% endif %}">Our Services</a>
             <a href="{% url 'about' %}" class="nav__link {% if request.resolver_match.url_name == 'about' %}nav__link--active{% endif %}">About Us</a>
             <a href="{% url 'process' %}" class="nav__link {% if request.resolver_match.url_name == 'process' %}nav__link--active{% endif %}">Our Process</a>
             <a href="{% url 'insights' %}" class="nav__link {% if request.resolver_match.url_name == 'insights' %}nav__link--active{% endif %}">Insights</a>
@@ -33,8 +33,8 @@
     <!-- Mobile Menu -->
     <div class="nav__mobile-menu" id="nav-mobile-menu" role="menu">
         <a href="{% url 'home' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'home' %}nav__mobile-link--active{% endif %}" role="menuitem">Home</a>
-        <a href="{% url 'services' %}" class="nav__mobile-link {% if 'services' in request.path %}nav__mobile-link--active{% endif %}" role="menuitem">Services</a>
-        <a href="{% url 'portfolio' %}" class="nav__mobile-link {% if 'work' in request.path %}nav__mobile-link--active{% endif %}" role="menuitem">Our Work</a>
+        <a href="{% url 'services' %}" class="nav__mobile-link {% if 'services' in request.path %}nav__mobile-link--active{% endif %}" role="menuitem">Capabilities</a>
+        <a href="{% url 'portfolio' %}" class="nav__mobile-link {% if 'work' in request.path %}nav__mobile-link--active{% endif %}" role="menuitem">Our Services</a>
         <a href="{% url 'about' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'about' %}nav__mobile-link--active{% endif %}" role="menuitem">About Us</a>
         <a href="{% url 'process' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'process' %}nav__mobile-link--active{% endif %}" role="menuitem">Our Process</a>
         <a href="{% url 'insights' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'insights' %}nav__mobile-link--active{% endif %}" role="menuitem">Insights</a>

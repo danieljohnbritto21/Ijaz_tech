@@ -1,103 +1,894 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Our Work & Case Studies — Ijaz_Solutions | Proven Engineering Impact{% endblock %}
-{% block meta_description %}Browse real-world engineering case studies from Ijaz_Solutions across AI automation, custom software, web apps, and cloud infrastructure.{% endblock %}
+{% block title %}Our Services — Ijaz_Solutions | Engineering & Digital Solutions{% endblock %}
+{% block meta_description %}Explore Ijaz_Solutions comprehensive engineering services: Web Development, ERP & CRM Web
+Solutions, AI Integration, DevOps & Cloud Services, WhatsApp Campaigns, and Custom Software Platforms.{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ============================================================
+   SERVICES PAGE — Scoped Component Styles
+   ============================================================ */
+
+    /* Hero adjustments */
+    .services-hero {
+        position: relative;
+        isolation: isolate;
+        padding-top: calc(var(--space-32) + var(--space-6));
+        padding-bottom: var(--space-12);
+        text-align: center;
+        background:
+            radial-gradient(ellipse at 80% 20%, rgba(91, 218, 245, 0.10) 0%, rgba(112, 204, 246, 0.05) 30%, transparent 60%),
+            radial-gradient(ellipse at 20% 80%, rgba(190, 235, 250, 0.06) 0%, transparent 45%),
+            linear-gradient(180deg, var(--color-surface-secondary) 0%, var(--color-bg) 100%);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .services-hero__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.9rem;
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semibold);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        background: var(--color-primary-subtle);
+        color: var(--color-primary);
+        border: 1px solid var(--color-cyan-border);
+        margin-bottom: var(--space-4);
+    }
+
+    .services-hero__badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--color-cyan);
+        box-shadow: 0 0 8px var(--color-cyan);
+    }
+
+    .services-hero__title {
+        font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+        font-weight: var(--weight-bold);
+        line-height: var(--leading-tight);
+        letter-spacing: var(--tracking-tight);
+        color: var(--color-text);
+        margin-bottom: var(--space-4);
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .services-hero__subtitle {
+        font-size: clamp(var(--text-base), 1.8vw, var(--text-md));
+        line-height: var(--leading-relaxed);
+        color: var(--color-text-secondary);
+        max-width: 660px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Services Grid Layout */
+    .services-section {
+        padding-top: var(--space-16);
+        padding-bottom: var(--space-20);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+        align-items: stretch;
+    }
+
+    /* Base Service Card */
+    .service-card {
+        position: relative;
+        background: var(--color-surface-elevated);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        transition: transform var(--duration-normal) var(--ease-out),
+            border-color var(--duration-normal) var(--ease-out),
+            box-shadow var(--duration-normal) var(--ease-out);
+    }
+
+    /* Restrained Pointer Spotlight on Cards */
+    .service-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(460px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                rgba(53, 217, 245, 0.08),
+                transparent 65%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--duration-normal) var(--ease-out);
+        z-index: 1;
+    }
+
+    .service-card:hover::before {
+        opacity: 1;
+    }
+
+    .service-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--color-cyan);
+        box-shadow: 0 12px 30px rgba(16, 35, 68, 0.08), 0 0 1px rgba(8, 191, 232, 0.4);
+    }
+
+    /* Card Header & Content */
+    .service-card__content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .service-card__icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: var(--radius-lg);
+        background: rgba(53, 217, 245, 0.07);
+        border: 1px solid rgba(53, 217, 245, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        margin-bottom: var(--space-5);
+        transition: transform var(--duration-normal) var(--ease-spring),
+            background-color var(--duration-normal) var(--ease-out),
+            border-color var(--duration-normal) var(--ease-out);
+    }
+
+    .service-card:hover .service-card__icon-wrap {
+        transform: scale(1.05);
+        background: rgba(53, 217, 245, 0.12);
+        border-color: rgba(53, 217, 245, 0.35);
+    }
+
+    .service-card__title {
+        font-size: var(--text-lg);
+        font-weight: var(--weight-semibold);
+        color: var(--color-text);
+        margin-bottom: var(--space-3);
+        line-height: var(--leading-snug);
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .service-card__desc {
+        font-size: var(--text-sm);
+        color: var(--color-text-secondary);
+        line-height: var(--leading-relaxed);
+        margin-bottom: var(--space-6);
+    }
+
+    /* Card Footer / Action */
+    .service-card__action {
+        position: relative;
+        z-index: 2;
+        padding-top: var(--space-4);
+        border-top: 1px solid var(--color-border-light);
+    }
+
+    .service-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semibold);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--color-primary);
+        transition: color var(--duration-fast) var(--ease-out),
+            gap var(--duration-fast) var(--ease-out);
+    }
+
+    .service-card__link svg {
+        transition: transform var(--duration-fast) var(--ease-out);
+    }
+
+    .service-card:hover .service-card__link svg {
+        transform: translateX(4px);
+    }
+
+    .service-card__link:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+        border-radius: var(--radius-sm);
+    }
+
+    /* ============================================================
+   FEATURED CARDS (Web Development & ERP/CRM Web Solutions)
+   ============================================================ */
+    .service-card--featured {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #FFFFFF 0%, #F6FAFD 100%);
+        border: 1px solid var(--color-cyan-border);
+        box-shadow: 0 8px 30px rgba(16, 35, 68, 0.08), 0 0 20px var(--color-cyan-subtle);
+        padding: var(--space-10) var(--space-10);
+    }
+
+    .service-card--featured::before {
+        background: radial-gradient(650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                rgba(8, 191, 232, 0.12),
+                transparent 65%);
+    }
+
+    .service-card--featured:hover {
+        transform: translateY(-4px);
+        border-color: var(--color-cyan);
+        box-shadow: 0 16px 40px rgba(16, 35, 68, 0.12), 0 0 30px var(--color-cyan-glow);
+    }
+
+    .featured-layout {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: var(--space-10);
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .featured-layout__main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .featured-badge-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+    }
+
+    .featured-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-bold);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        background: rgba(53, 217, 245, 0.12);
+        color: var(--color-primary);
+        border: 1px solid var(--color-cyan-border);
+    }
+
+    .featured-category-tag {
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        color: var(--color-text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wider);
+    }
+
+    .service-card--featured .service-card__icon-wrap {
+        width: 60px;
+        height: 60px;
+        background: rgba(53, 217, 245, 0.12);
+        border-color: var(--color-cyan-border);
+        margin-bottom: var(--space-4);
+    }
+
+    .service-card--featured .service-card__title {
+        font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+        margin-bottom: var(--space-3);
+    }
+
+    .service-card--featured .service-card__desc {
+        font-size: var(--text-base);
+        color: var(--color-text-secondary);
+        line-height: var(--leading-relaxed);
+        margin-bottom: var(--space-6);
+    }
+
+    /* Featured Capabilities List */
+    .featured-caps {
+        background: var(--color-surface-soft-blue);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .featured-caps__heading {
+        font-size: var(--text-xs);
+        font-weight: var(--weight-bold);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin-bottom: var(--space-2);
+    }
+
+    .featured-caps__item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: var(--text-sm);
+        color: var(--color-text);
+        line-height: var(--leading-normal);
+    }
+
+    .featured-caps__icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(53, 217, 245, 0.12);
+        color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+    }
+
+    .featured-layout__cta-wrap {
+        margin-top: var(--space-2);
+    }
+
+    /* ============================================================
+   RESPONSIVE QUERIES
+   ============================================================ */
+
+    /* Tablet (2 columns) */
+    @media (max-width: 1023px) and (min-width: 768px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-5);
+        }
+
+        .service-card--featured {
+            grid-column: 1 / -1;
+            padding: var(--space-8);
+        }
+
+        .featured-layout {
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+        }
+
+        /* Make the 10th standard card (API Integration) span 2 columns on tablet for a balanced grid */
+        .service-card--balanced-tablet {
+            grid-column: 1 / -1;
+        }
+    }
+
+    /* Mobile (Single column) */
+    @media (max-width: 767px) {
+        .services-hero {
+            padding-top: calc(var(--space-24) + var(--space-8));
+            padding-bottom: var(--space-8);
+        }
+
+        .services-section {
+            padding-top: var(--space-10);
+            padding-bottom: var(--space-12);
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-5);
+        }
+
+        .service-card {
+            padding: var(--space-6);
+        }
+
+        .service-card--featured {
+            padding: var(--space-6);
+        }
+
+        .featured-layout {
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+        }
+
+        .featured-caps {
+            padding: var(--space-4);
+        }
+    }
+
+    /* Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+
+        .service-card,
+        .service-card:hover,
+        .service-card__icon-wrap,
+        .service-card:hover .service-card__icon-wrap,
+        .service-card__link svg,
+        .service-card:hover .service-card__link svg {
+            transform: none !important;
+            transition: none !important;
+        }
+    }
+
+    /* Touch Devices (Hover Disabled) */
+    @media (hover: none) {
+
+        .service-card::before,
+        .service-card--featured::before {
+            display: none !important;
+        }
+
+        .service-card:hover,
+        .service-card--featured:hover {
+            transform: none !important;
+            box-shadow: var(--shadow-card) !important;
+        }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<!-- Portfolio Hero -->
-<section class="section section--dark page-hero">
+<!-- Page Hero -->
+<section class="services-hero" aria-labelledby="services-hero-title">
     <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Case Studies & Portfolio</div>
-            <h1 class="page-hero__title">Engineered for Impact.<br><span class="text-gradient">Validated by Results.</span></h1>
-            <p class="page-hero__subtitle">
-                Explore how we partner with ambitious companies to solve complex technical bottlenecks, automate operational friction, and launch production-grade software platforms.
+        <div class="services-hero__content">
+            <div class="services-hero__badge">
+                <span class="services-hero__badge-dot" aria-hidden="true"></span>
+                <span>Engineering & Technology Services</span>
+            </div>
+            <h1 class="services-hero__title" id="services-hero-title">
+                Technology Solutions Built Around <span class="text-gradient">Your Business</span>
+            </h1>
+            <p class="services-hero__subtitle">
+                From high-performance web applications and enterprise CRM systems to intelligent workflow automation, we
+                engineer scalable, production-grade solutions tailored to solve your operational bottlenecks.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Filter Navigation & Projects Grid -->
-<section class="section">
+<!-- Services Grid Section -->
+<section class="section services-section" aria-label="Services Catalog">
     <div class="container">
-        <!-- Filter Tabs -->
-        <div class="portfolio-filter-bar mb-12 flex justify-center flex-wrap gap-3">
-            <a href="{% url 'portfolio' %}" class="btn btn--sm {% if not current_filter %}btn--primary{% else %}btn--outline{% endif %}" data-filter="all">
-                All Projects
-            </a>
-            <a href="{% url 'portfolio' %}?service=ai-automation" class="btn btn--sm {% if current_filter == 'ai-automation' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="ai-automation">
-                AI & Automation
-            </a>
-            <a href="{% url 'portfolio' %}?service=software-development" class="btn btn--sm {% if current_filter == 'software-development' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="software-development">
-                Software Development
-            </a>
-            <a href="{% url 'portfolio' %}?service=web-mobile" class="btn btn--sm {% if current_filter == 'web-mobile' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="web-mobile">
-                Web & Mobile Apps
-            </a>
-            <a href="{% url 'portfolio' %}?service=it-consulting" class="btn btn--sm {% if current_filter == 'it-consulting' %}btn--primary{% else %}btn--outline{% endif %}" data-filter="it-consulting">
-                IT Consulting
-            </a>
-        </div>
+        <div class="services-grid">
 
-        {% if projects %}
-        <div class="grid grid--3 gap-8">
-            {% for project in projects %}
-            <article class="card card--project flex flex-col h-full" data-category="{{ project.service_category }}">
-                {% if project.thumbnail %}
-                <div class="card__image-wrap">
-                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" loading="lazy" class="card__image">
-                </div>
-                {% else %}
-                <div class="card__image-placeholder">
-                    <span class="badge badge--primary">{{ project.get_service_category_display }}</span>
-                </div>
-                {% endif %}
-
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-3 text-xs text-tertiary">
-                            <span class="badge badge--neutral">{{ project.industry }}</span>
-                            <span class="font-medium text-primary">{{ project.get_service_category_display }}</span>
+            <!-- 1. FEATURED SERVICE: Web Development -->
+            <article class="card service-card service-card--featured" id="service-web-development">
+                <div class="featured-layout">
+                    <div class="featured-layout__main">
+                        <div class="featured-badge-row">
+                            <span class="featured-badge">Featured Capability</span>
+                            <span class="featured-category-tag">Core Discipline</span>
                         </div>
-                        <h2 class="card__title text-xl mb-3">
-                            <a href="{% url 'project-detail' project.slug %}" class="hover-underline">
-                                {{ project.title }}
-                            </a>
-                        </h2>
-                        <p class="card__text text-sm mb-6 text-secondary leading-relaxed">
-                            {{ project.short_description }}
+                        <div class="service-card__icon-wrap" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m18 16 4-4-4-4" />
+                                <path d="m6 8-4 4 4 4" />
+                                <path d="m14.5 4-5 16" />
+                            </svg>
+                        </div>
+                        <h2 class="service-card__title">Web Development</h2>
+                        <p class="service-card__desc">
+                            Full-lifecycle engineering of performant web applications, custom platforms, and responsive
+                            interfaces. We construct resilient software architectures utilizing clean modular codebases,
+                            secure server-side logic, and modern frontend technologies engineered for longevity and
+                            scale.
                         </p>
+                        <div class="featured-layout__cta-wrap">
+                            <a href="{% url 'contact' %}" class="btn btn--primary btn--sm btn--magnetic">
+                                Discuss Web Development
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
 
-                    <div>
-                        {% if project.get_technologies_list %}
-                        <div class="tag-cloud mb-6">
-                            {% for tech in project.get_technologies_list|slice:":4" %}
-                            <span class="badge badge--outline text-xs">{{ tech }}</span>
-                            {% endfor %}
+                    <div class="featured-caps" aria-label="Key Web Development Highlights">
+                        <div class="featured-caps__heading">Architectural Highlights</div>
+                        <div class="featured-caps__item">
+                            <span class="featured-caps__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Modern responsive architectures built for speed, accessibility, and SEO</span>
                         </div>
-                        {% endif %}
-
-                        <a href="{% url 'project-detail' project.slug %}" class="btn btn--outline btn--sm btn--block">
-                            View Case Study
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
+                        <div class="featured-caps__item">
+                            <span class="featured-caps__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Secure server-side APIs, database modeling, and caching layers</span>
+                        </div>
+                        <div class="featured-caps__item">
+                            <span class="featured-caps__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Scalable cloud deployments with zero-downtime release pipelines</span>
+                        </div>
                     </div>
                 </div>
             </article>
-            {% endfor %}
+
+            <!-- 2. AI Integration -->
+            <article class="card service-card" id="service-ai-integration">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 2a8 8 0 0 0-8 8c0 3.31 2.01 6.16 4.9 7.37L9 22h6l.1-4.63A8.003 8.003 0 0 0 12 2z" />
+                            <path d="M9 10h.01" />
+                            <path d="M15 10h.01" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">AI Integration</h2>
+                    <p class="service-card__desc">
+                        Seamless integration of large language models, intelligent retrieval agents, and cognitive APIs
+                        directly into your software stack to streamline knowledge discovery and automate repetitive
+                        business workflows.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 3. AI Image Analysis -->
+            <article class="card service-card" id="service-ai-image-analysis">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12V7a2 2 0 0 1 2-2h5" />
+                            <path d="M15 5h5a2 2 0 0 1 2 2v5" />
+                            <path d="M22 17v2a2 2 0 0 1-2 2h-5" />
+                            <path d="M9 21H4a2 2 0 0 1-2-2v-2" />
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="m14.5 9.5 2-2" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">AI Image Analysis</h2>
+                    <p class="service-card__desc">
+                        Computer vision models for visual inspection, automated document text extraction (OCR), object
+                        identification, and pattern recognition to accelerate high-volume visual verification tasks.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 4. DevOps & Cloud Services -->
+            <article class="card service-card" id="service-devops-cloud">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                            <polyline points="12 13 14 15 17 12" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">DevOps & Cloud Services</h2>
+                    <p class="service-card__desc">
+                        Reliable containerization, infrastructure-as-code, and automated CI/CD deployment pipelines on
+                        AWS, GCP, and DigitalOcean designed to maximize uptime, security posture, and cost efficiency.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 5. WhatsApp Marketing & Interactive Messaging Campaigns -->
+            <article class="card service-card" id="service-whatsapp-messaging">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                            <path d="M8 12h.01" />
+                            <path d="M12 12h.01" />
+                            <path d="M16 12h.01" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">WhatsApp Marketing & Interactive Messaging Campaigns</h2>
+                    <p class="service-card__desc">
+                        Official WhatsApp Business API implementations featuring structured customer communication
+                        journeys, transactional notifications, interactive query menus, and policy-compliant campaign
+                        automation.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 6. UI Design -->
+            <article class="card service-card" id="service-ui-design">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m12 19 7-7 3 3-7 7-3-3z" />
+                            <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                            <path d="m2 2 7.586 7.586" />
+                            <circle cx="11" cy="11" r="2" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title"> UI and UX design </h2>
+                    <p class="service-card__desc">
+                        User interface design systems, intuitive wireframes, and interactive product prototypes crafted
+                        with strict visual hierarchy, accessibility standards, and production-ready component token
+                        systems.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 7. AI & Machine Learning -->
+            <article class="card service-card" id="service-machine-learning">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="6" cy="6" r="3" />
+                            <circle cx="18" cy="6" r="3" />
+                            <circle cx="6" cy="18" r="3" />
+                            <circle cx="18" cy="18" r="3" />
+                            <line x1="8.5" x2="15.5" y1="7.5" y2="16.5" />
+                            <line x1="8.5" x2="15.5" y1="16.5" y2="7.5" />
+                            <line x1="6" x2="6" y1="9" y2="15" />
+                            <line x1="18" x2="18" y1="9" y2="15" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">AI & Machine Learning</h2>
+                    <p class="service-card__desc">
+                        Supervised and unsupervised machine learning algorithms tailored to proprietary datasets. We
+                        build predictive modeling engines, anomaly detectors, and decision-support algorithms for
+                        tangible operational gains.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 8. Mobile App Development -->
+            <article class="card service-card" id="service-mobile-app">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                            <path d="M12 18h.01" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">Mobile App Development</h2>
+                    <p class="service-card__desc">
+                        Cross-platform mobile applications for iOS and Android engineered for high-frequency
+                        performance, offline-first data caching, native hardware integrations, and frictionless store
+                        deployments.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 9. E-commerce Solutions -->
+            <article class="card service-card" id="service-ecommerce">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                            <path d="M3 6h18" />
+                            <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">E-commerce Solutions</h2>
+                    <p class="service-card__desc">
+                        Custom digital commerce architectures featuring optimized checkout funnels, secure payment
+                        provider integrations, automated inventory synchronization, and comprehensive administrative
+                        backends.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 10. API Integration (Balanced tablet span) -->
+            <article class="card service-card service-card--balanced-tablet" id="service-api-integration">
+                <div class="service-card__content">
+                    <div class="service-card__icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                    </div>
+                    <h2 class="service-card__title">API Integration</h2>
+                    <p class="service-card__desc">
+                        Resilient connectivity between internal databases, third-party payment gateways, CRM engines,
+                        and partner microservices using robust RESTful, GraphQL, and webhook communication protocols.
+                    </p>
+                </div>
+                <div class="service-card__action">
+                    <a href="{% url 'contact' %}" class="service-card__link">
+                        Discuss Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 11. FEATURED SERVICE: ERP & CRM Web Solutions -->
+            <article class="card service-card service-card--featured" id="service-erp-crm">
+                <div class="featured-layout">
+                    <div class="featured-layout__main">
+                        <div class="featured-badge-row">
+                            <span class="featured-badge">Enterprise Specialization</span>
+                            <span class="featured-category-tag">Operations & Systems</span>
+                        </div>
+                        <div class="service-card__icon-wrap" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="7" height="9" x="3" y="3" rx="1" />
+                                <rect width="7" height="5" x="14" y="3" rx="1" />
+                                <rect width="7" height="9" x="14" y="12" rx="1" />
+                                <rect width="7" height="5" x="3" y="16" rx="1" />
+                                <path d="M10 7.5h4" />
+                                <path d="M6.5 12v4" />
+                                <path d="M17.5 8v4" />
+                                <path d="M10 18.5h4" />
+                            </svg>
+                        </div>
+                        <h2 class="service-card__title">ERP & CRM Web Solutions</h2>
+                        <p class="service-card__desc">
+                            Bespoke enterprise resource planning and customer relationship platforms engineered around
+                            your company's proprietary operational rules. Centralize inventory, sales pipelines, client
+                            communications, and real-time operational reporting within an intuitive web platform.
+                        </p>
+                        <div class="featured-layout__cta-wrap">
+                            <a href="{% url 'contact' %}" class="btn btn--primary btn--sm btn--magnetic">
+                                Discuss Enterprise Solutions
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="featured-caps" aria-label="Key Enterprise Solution Highlights">
+                        <div class="featured-caps__heading">Enterprise Capabilities</div>
+                        <div class="featured-caps__item">
+                            <span class="featured-caps__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Unified operational dashboards and automated pipeline routing</span>
+                        </div>
+                        <div class="featured-caps__item">
+                            <span class="featured-caps__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Granular role-based access control (RBAC) and immutable audit logging</span>
+                        </div>
+                        <div class="featured-caps__item">
+                            <span class="featured-caps__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Secure legacy database migrations and enterprise system synchronizations</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
         </div>
-        {% else %}
-        <div class="text-center py-16 card p-12">
-            <div class="icon-bubble icon-bubble--primary mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-            <h3 class="text-xl font-bold mb-2">No projects found in this category</h3>
-            <p class="text-secondary text-sm mb-6">We are currently preparing case studies for this discipline. Check out all our work or contact us to discuss your specific requirements.</p>
-            <a href="{% url 'portfolio' %}" class="btn btn--primary">View All Projects</a>
-        </div>
-        {% endif %}
     </div>
 </section>
 

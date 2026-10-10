@@ -1,188 +1,1152 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Insights & Articles — Ijaz_Solutions | Technology Architecture & Strategy{% endblock %}
-{% block meta_description %}In-depth articles, architectural breakdowns, and strategic perspectives on AI automation, web performance, and modern software engineering from Ijaz_Solutions.{% endblock %}
+{% block title %}Insights & Articles — Ijaz_Solutions | Ideas, Engineering & Practical Technology Insights{% endblock %}
+{% block meta_description %}Actionable engineering playbooks, architectural decisions, and practical technology insights across Web Development, AI, Cloud, ERP/CRM, and modern software systems from Ijaz_Solutions.{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ============================================================
+   INSIGHTS PAGE — Scoped Component Styles
+   ============================================================ */
+
+/* Hero adjustments */
+.insights-hero {
+    position: relative;
+    isolation: isolate;
+    padding-top: calc(var(--space-32) + var(--space-6));
+    padding-bottom: var(--space-12);
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 80% 20%, rgba(91, 218, 245, 0.10) 0%, rgba(112, 204, 246, 0.05) 30%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(190, 235, 250, 0.06) 0%, transparent 45%),
+        linear-gradient(180deg, var(--color-surface-secondary) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.insights-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    background: var(--color-primary-subtle);
+    color: var(--color-primary);
+    border: 1px solid var(--color-cyan-border);
+    margin-bottom: var(--space-4);
+}
+
+.insights-hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-cyan);
+    box-shadow: 0 0 8px var(--color-cyan);
+}
+
+.insights-hero__title {
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.insights-hero__subtitle {
+    font-size: clamp(var(--text-base), 1.8vw, var(--text-md));
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Featured Deep Dive Article */
+.featured-article-card {
+    position: relative;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F6FAFD 100%);
+    border: 1px solid var(--color-cyan-border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 8px 30px rgba(16, 35, 68, 0.08), 0 0 20px var(--color-cyan-subtle);
+    padding: var(--space-10);
+    overflow: hidden;
+    transition: transform var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.featured-article-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(53, 217, 245, 0.12),
+        transparent 65%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    z-index: 1;
+}
+
+.featured-article-card:hover::before {
+    opacity: 1;
+}
+
+.featured-article-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-cyan);
+    box-shadow: 0 16px 40px rgba(16, 35, 68, 0.12), 0 0 30px var(--color-cyan-glow);
+}
+
+.featured-article-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-10);
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.featured-badge-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    background: rgba(53, 217, 245, 0.12);
+    color: var(--color-primary);
+    border: 1px solid var(--color-cyan-border);
+}
+
+.featured-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+}
+
+.featured-article__title {
+    font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+    font-weight: var(--weight-bold);
+    color: var(--color-text);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-4);
+}
+
+.featured-article__summary {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+}
+
+.featured-article__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+/* Featured Takeaways Panel */
+.featured-takeaways {
+    background: var(--color-surface-soft-blue);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.featured-takeaways__heading {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.featured-takeaways__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: var(--leading-normal);
+}
+
+.featured-takeaways__num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
+    background: rgba(53, 217, 245, 0.1);
+    border: 1px solid rgba(53, 217, 245, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 2px 6px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Category Filter Bar */
+.filter-bar-wrap {
+    margin-bottom: var(--space-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.filter-bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.filter-bar-header__title {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-text);
+}
+
+.filter-bar-header__count {
+    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+}
+
+.filter-chips {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-secondary);
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border);
+    transition: all var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.filter-chip:hover {
+    color: var(--color-text);
+    border-color: rgba(53, 217, 245, 0.35);
+    background: var(--color-surface-hover);
+}
+
+.filter-chip--active,
+.filter-chip[aria-selected="true"] {
+    background: var(--color-primary-subtle);
+    color: var(--color-primary);
+    border-color: var(--color-cyan-border);
+    font-weight: var(--weight-semibold);
+    box-shadow: 0 0 12px rgba(53, 217, 245, 0.15);
+}
+
+/* Article Cards Grid */
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    align-items: stretch;
+}
+
+.insight-card {
+    position: relative;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: transform var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out),
+                opacity var(--duration-fast) var(--ease-out);
+}
+
+.insight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        460px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(53, 217, 245, 0.08),
+        transparent 65%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    z-index: 1;
+}
+
+.insight-card:hover::before {
+    opacity: 1;
+}
+
+.insight-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-cyan);
+    box-shadow: 0 14px 34px rgba(16, 35, 68, 0.08), 0 0 1px rgba(8, 191, 232, 0.4);
+}
+
+.insight-card__top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-5);
+}
+
+.insight-card__category {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.insight-card__read-time {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+}
+
+.insight-card__icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(53, 217, 245, 0.07);
+    border: 1px solid rgba(53, 217, 245, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin-bottom: var(--space-5);
+    transition: transform var(--duration-normal) var(--ease-spring),
+                background-color var(--duration-normal) var(--ease-out);
+}
+
+.insight-card:hover .insight-card__icon-wrap {
+    transform: scale(1.05);
+    background: rgba(53, 217, 245, 0.12);
+}
+
+.insight-card__body {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.insight-card__title {
+    font-size: var(--text-md);
+    font-weight: var(--weight-bold);
+    color: var(--color-text);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-3);
+    min-height: 2.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.insight-card__title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.insight-card__title a:hover {
+    color: var(--color-primary);
+}
+
+.insight-card__summary {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 4.2rem;
+}
+
+/* Insight Card Footer & Navigation */
+.insight-card__footer {
+    position: relative;
+    z-index: 2;
+    padding-top: var(--space-5);
+    margin-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.insight-card__service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    background: rgba(53, 217, 245, 0.06);
+    border: 1px solid rgba(53, 217, 245, 0.16);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.insight-card__service-link:hover {
+    color: #ffffff;
+    background: rgba(53, 217, 245, 0.18);
+    border-color: rgba(53, 217, 245, 0.4);
+}
+
+.insight-card__service-link svg {
+    transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.insight-card__service-link:hover svg {
+    transform: translateX(2px);
+}
+
+.btn-read-briefing {
+    padding: 0.32rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: var(--weight-medium);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.btn-read-briefing:hover {
+    background: rgba(53, 217, 245, 0.1);
+    color: var(--color-primary);
+    border-color: var(--color-cyan-border);
+}
+
+/* No Results Notice */
+.insights-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-16);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+}
+
+/* ============================================================
+   ARTICLE DETAIL MODAL (In-page Executive Briefing)
+   ============================================================ */
+.article-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 13, 16, 0.85);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--duration-normal) var(--ease-out),
+                visibility var(--duration-normal) var(--ease-out);
+}
+
+.article-modal-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.article-modal {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-cyan-border);
+    border-radius: var(--radius-2xl);
+    max-width: 780px;
+    width: 100%;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 60px rgba(16, 35, 68, 0.15), 0 0 1px var(--color-cyan-border);
+    overflow: hidden;
+    transform: translateY(20px) scale(0.98);
+    transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.article-modal-backdrop.is-open .article-modal {
+    transform: translateY(0) scale(1);
+}
+
+.article-modal__header {
+    padding: var(--space-6) var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    background: var(--color-surface-secondary);
+}
+
+.article-modal__close {
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.article-modal__close:hover {
+    background: rgba(248, 113, 113, 0.15);
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.article-modal__body {
+    padding: var(--space-8);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.modal-section-title {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+}
+
+.modal-takeaway-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.modal-takeaway-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: var(--leading-normal);
+}
+
+.modal-tradeoff-box {
+    background: var(--color-surface-soft-blue);
+    border-left: 3px solid var(--color-cyan);
+    padding: var(--space-4) var(--space-5);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+.article-modal__footer {
+    padding: var(--space-6) var(--space-8);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    background: var(--color-surface-secondary);
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   RESPONSIVE QUERIES
+   ============================================================ */
+
+/* Tablet (2 columns) */
+@media (max-width: 1023px) and (min-width: 640px) {
+    .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+    }
+    
+    .featured-article-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
+
+/* Mobile (Single column) */
+@media (max-width: 639px) {
+    .insights-hero {
+        padding-top: calc(var(--space-24) + var(--space-8));
+        padding-bottom: var(--space-8);
+    }
+    
+    .featured-article-card {
+        padding: var(--space-6);
+    }
+    
+    .featured-article-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+    
+    .insights-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+    
+    .insight-card {
+        padding: var(--space-6);
+    }
+    
+    .article-modal {
+        max-height: 94vh;
+    }
+    
+    .article-modal__body {
+        padding: var(--space-6);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .insight-card,
+    .featured-article-card,
+    .article-modal {
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) {
+    .insight-card::before,
+    .featured-article-card::before {
+        display: none !important;
+    }
+    
+    .insight-card:hover,
+    .featured-article-card:hover {
+        transform: none !important;
+        box-shadow: var(--shadow-card) !important;
+    }
+}
+</style>
+{% endblock %}
 
 {% block content %}
-<!-- Insights Hero -->
-<section class="section section--dark page-hero">
+<!-- Page Hero -->
+<section class="insights-hero" aria-labelledby="insights-hero-title">
     <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Engineering Insights</div>
-            <h1 class="page-hero__title">Practical Perspectives on<br><span class="text-gradient">Modern Technology & AI.</span></h1>
-            <p class="page-hero__subtitle">
-                Actionable engineering insights, case reflections, and architectural playbooks written by senior practitioners who build real-world systems every day.
+        <div class="insights-hero__content">
+            <div class="insights-hero__badge">
+                <span class="insights-hero__badge-dot" aria-hidden="true"></span>
+                <span>INSIGHTS & ARTICLES</span>
+            </div>
+            <h1 class="insights-hero__title" id="insights-hero-title">
+                Ideas, Engineering, and <span class="text-gradient">Practical Technology Insights</span>
+            </h1>
+            <p class="insights-hero__subtitle">
+                Field notes, architectural decisions, and implementation strategies for building scalable digital systems, automating operational bottlenecks, and deploying production-grade AI.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Featured Article -->
-<section class="section">
+<!-- Featured Deep Dive Article Section -->
+{% if featured_article %}
+<section class="section" style="padding-top: var(--space-12); padding-bottom: var(--space-8);" aria-label="Featured Article">
     <div class="container">
-        <div class="card card--featured p-8">
-            <div class="grid grid--2 gap-12 align-center">
+        <article class="featured-article-card card" id="featured-briefing">
+            <div class="featured-article-grid">
                 <div>
-                    <div class="badge badge--primary mb-4">Featured Deep Dive • AI & Automation</div>
-                    <h2 class="card__title text-3xl mb-4">
-                        <a href="#article-1" class="hover-underline">Moving Past the Demo: How to Deploy Production-Grade LLM Workflows That Actually Save Money</a>
+                    <div class="featured-badge-row">
+                        <span class="featured-badge">Featured Deep Dive</span>
+                        <div class="featured-meta">
+                            <span>{{ featured_article.category_name }}</span>
+                            <span>•</span>
+                            <span>{{ featured_article.read_time }}</span>
+                            <span>•</span>
+                            <span>{{ featured_article.date }}</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="featured-article__title">
+                        {{ featured_article.title }}
                     </h2>
-                    <p class="text-secondary mb-6 leading-relaxed">
-                        Why 80% of corporate generative AI experiments fail in production, and how architectural grounding, deterministic validation gates, and cost-controlled routing turn raw models into reliable enterprise revenue engines.
+                    
+                    <p class="featured-article__summary">
+                        {{ featured_article.summary }}
                     </p>
-                    <div class="flex items-center gap-6 text-sm text-tertiary">
-                        <span>By Lead Architect</span>
-                        <span>•</span>
-                        <span>8 min read</span>
-                        <span>•</span>
-                        <span>October 2026</span>
+                    
+                    <div class="featured-article__actions">
+                        <button type="button" class="btn btn--primary btn--sm btn--magnetic open-article-modal" data-article-slug="{{ featured_article.slug }}">
+                            Read Full Briefing
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </button>
+                        
+                        <a href="{% url 'portfolio' %}{{ featured_article.service_anchor|cut:'/work/' }}" class="btn btn--outline btn--sm">
+                            Explore {{ featured_article.service_name }} Service
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                <div class="bg-slate rounded-xl p-8 text-white">
-                    <h4 class="text-primary-light text-sm uppercase tracking-wider font-semibold mb-3">Key Takeaways in this Guide</h4>
-                    <ul class="checklist text-sm space-y-3">
-                        <li class="checklist-item">
-                            <span class="text-cyan">01</span>
-                            <span>Why retrieval augmented generation (RAG) fails without hybrid lexical reranking.</span>
-                        </li>
-                        <li class="checklist-item">
-                            <span class="text-cyan">02</span>
-                            <span>How structured output schemas (JSON enforcement) prevent hallucination in database writes.</span>
-                        </li>
-                        <li class="checklist-item">
-                            <span class="text-cyan">03</span>
-                            <span>Cutting token costs by 72% using tiered local-vs-cloud model cascading.</span>
-                        </li>
-                    </ul>
+
+                <div class="featured-takeaways">
+                    <div class="featured-takeaways__heading">
+                        <span>Key Architectural Principles</span>
+                        <span class="badge badge--cyan" style="font-size: 0.65rem;">Practice Guide</span>
+                    </div>
+                    
+                    {% for takeaway in featured_article.key_takeaways %}
+                    <div class="featured-takeaways__item">
+                        <span class="featured-takeaways__num">0{{ forloop.counter }}</span>
+                        <span>{{ takeaway }}</span>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
+        </article>
     </div>
 </section>
+{% endif %}
 
-<!-- Article Grid -->
-<section class="section section--muted">
+<!-- Main Articles Grid Section with Interactive Filtering -->
+<section class="section" style="padding-top: var(--space-8); padding-bottom: var(--space-20);" aria-label="Articles by Category">
     <div class="container">
-        <div class="section-header mb-12 flex justify-between items-end flex-wrap gap-4">
-            <div>
-                <div class="section-label">Latest Articles</div>
-                <h2 class="section-title">Field Notes & Architectural Analyses</h2>
+        
+        <!-- Category Filter Row -->
+        <div class="filter-bar-wrap">
+            <div class="filter-bar-header">
+                <div>
+                    <div class="section-label" style="margin-bottom: 4px;">Service Topics</div>
+                    <h2 class="filter-bar-header__title">Articles by Engineering Discipline</h2>
+                </div>
+                <div class="filter-bar-header__count" id="article-count-label">
+                    Showing {{ all_articles|length }} of {{ all_articles|length }} Publications
+                </div>
             </div>
-            <div class="tag-cloud">
-                <button class="btn btn--sm btn--primary">All Topics</button>
-                <button class="btn btn--sm btn--outline">AI & Automation</button>
-                <button class="btn btn--sm btn--outline">Software Design</button>
-                <button class="btn btn--sm btn--outline">Cloud & DevOps</button>
+
+            <!-- Filter Controls -->
+            <div class="filter-chips" role="tablist" aria-label="Article Category Filters">
+                {% for cat in categories %}
+                <a href="?category={{ cat.slug }}" 
+                   class="filter-chip {% if current_category == cat.slug or not current_category and cat.slug == 'all' %}filter-chip--active{% endif %}"
+                   data-filter="{{ cat.slug }}"
+                   role="tab"
+                   aria-selected="{% if current_category == cat.slug or not current_category and cat.slug == 'all' %}true{% else %}false{% endif %}">
+                    {{ cat.name }}
+                </a>
+                {% endfor %}
             </div>
         </div>
 
-        <div class="grid grid--3 gap-8">
-            <!-- Article 1 -->
-            <article class="card card--hover flex flex-col h-full">
-                <div class="p-6 flex-1 flex flex-col">
-                    <div class="badge badge--cyan mb-3">Architecture</div>
-                    <h3 class="card__title text-xl mb-3">
-                        Why Monolithic Django + Modern HTMX Outperforms Microservices for 95% of Startups
-                    </h3>
-                    <p class="card__text text-sm mb-6 flex-1">
-                        A rigorous cost-benefit breakdown of architectural simplicity over premature distributed complexity. How keeping your stack unified reduces deployment failure rates by 80%.
-                    </p>
-                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
-                        <span>6 min read</span>
-                        <span>Sep 2026</span>
+        <!-- 3-Column Articles Grid -->
+        <div class="insights-grid" id="insights-grid">
+            {% for article in all_articles %}
+            <article class="card insight-card" 
+                     id="article-{{ article.slug }}"
+                     data-category="{{ article.category_slug }}">
+                
+                <div>
+                    <div class="insight-card__top">
+                        <span class="insight-card__category">{{ article.category_name }}</span>
+                        <span class="insight-card__read-time">{{ article.read_time }}</span>
                     </div>
-                </div>
-            </article>
 
-            <!-- Article 2 -->
-            <article class="card card--hover flex flex-col h-full">
-                <div class="p-6 flex-1 flex flex-col">
-                    <div class="badge badge--primary mb-3">AI & Automation</div>
-                    <h3 class="card__title text-xl mb-3">
-                        The Multi-Agent Playbook: Orchestrating Autonomous Back-Office Operations
-                    </h3>
-                    <p class="card__text text-sm mb-6 flex-1">
-                        How we designed an autonomous accounts-payable triage pipeline that processes 5,000+ monthly vendor invoices with 99.4% accuracy without human intervention.
-                    </p>
-                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
-                        <span>10 min read</span>
-                        <span>Aug 2026</span>
+                    <div class="insight-card__icon-wrap" aria-hidden="true">
+                        {% if article.icon_type == 'web' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                        {% elif article.icon_type == 'ai' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 3.31 2.01 6.16 4.9 7.37L9 22h6l.1-4.63A8.003 8.003 0 0 0 12 2z"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg>
+                        {% elif article.icon_type == 'vision' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12V7a2 2 0 0 1 2-2h5"/><path d="M15 5h5a2 2 0 0 1 2 2v5"/><path d="M22 17v2a2 2 0 0 1-2 2h-5"/><path d="M9 21H4a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m14.5 9.5 2-2"/></svg>
+                        {% elif article.icon_type == 'cloud' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/><polyline points="12 13 14 15 17 12"/></svg>
+                        {% elif article.icon_type == 'erp' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/><path d="M10 7.5h4"/><path d="M6.5 12v4"/><path d="M17.5 8v4"/><path d="M10 18.5h4"/></svg>
+                        {% elif article.icon_type == 'whatsapp' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+                        {% elif article.icon_type == 'ui' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                        {% elif article.icon_type == 'ml' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><line x1="8.5" x2="15.5" y1="7.5" y2="16.5"/><line x1="8.5" x2="15.5" y1="16.5" y2="7.5"/><line x1="6" x2="6" y1="9" y2="15"/><line x1="18" x2="18" y1="9" y2="15"/></svg>
+                        {% elif article.icon_type == 'mobile' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                        {% elif article.icon_type == 'ecommerce' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        {% endif %}
                     </div>
-                </div>
-            </article>
 
-            <!-- Article 3 -->
-            <article class="card card--hover flex flex-col h-full">
-                <div class="p-6 flex-1 flex flex-col">
-                    <div class="badge badge--neutral mb-3">Performance</div>
-                    <h3 class="card__title text-xl mb-3">
-                        Achieving a Perfect 100 Lighthouse Score in Production Web Apps
-                    </h3>
-                    <p class="card__text text-sm mb-6 flex-1">
-                        Critical rendering paths, modern image optimization, zero-bloat vanilla CSS strategies, and server-side rendering pipelines that keep Core Web Vitals in the green.
-                    </p>
-                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
-                        <span>5 min read</span>
-                        <span>Aug 2026</span>
+                    <div class="insight-card__body">
+                        <h3 class="insight-card__title">
+                            <a href="javascript:void(0)" class="open-article-modal" data-article-slug="{{ article.slug }}">
+                                {{ article.title }}
+                            </a>
+                        </h3>
+                        <p class="insight-card__summary">
+                            {{ article.summary }}
+                        </p>
                     </div>
                 </div>
-            </article>
 
-            <!-- Article 4 -->
-            <article class="card card--hover flex flex-col h-full">
-                <div class="p-6 flex-1 flex flex-col">
-                    <div class="badge badge--cyan mb-3">Security</div>
-                    <h3 class="card__title text-xl mb-3">
-                        The Zero-Trust API Checklist for High-Compliance B2B Applications
-                    </h3>
-                    <p class="card__text text-sm mb-6 flex-1">
-                        Token rotation, strict CORS, rate limiting with Redis token buckets, and cryptographic request signature verification for multi-tenant SaaS systems.
-                    </p>
-                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
-                        <span>7 min read</span>
-                        <span>Jul 2026</span>
-                    </div>
+                <div class="insight-card__footer">
+                    <button type="button" class="btn-read-briefing open-article-modal" data-article-slug="{{ article.slug }}">
+                        View Briefing
+                    </button>
+                    
+                    <a href="{% url 'portfolio' %}{{ article.service_anchor|cut:'/work/' }}" 
+                       class="insight-card__service-link"
+                       title="Explore {{ article.service_name }} capability">
+                        <span>{{ article.service_name }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </article>
-
-            <!-- Article 5 -->
-            <article class="card card--hover flex flex-col h-full">
-                <div class="p-6 flex-1 flex flex-col">
-                    <div class="badge badge--primary mb-3">Engineering Management</div>
-                    <h3 class="card__title text-xl mb-3">
-                        Fixed-Price vs. Time & Materials: How to Structure Contracts That Align Incentives
-                    </h3>
-                    <p class="card__text text-sm mb-6 flex-1">
-                        How milestone-based hybrid agreements eliminate the adversarial tension between client budget certainty and engineering agility.
-                    </p>
-                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
-                        <span>8 min read</span>
-                        <span>Jun 2026</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Article 6 -->
-            <article class="card card--hover flex flex-col h-full">
-                <div class="p-6 flex-1 flex flex-col">
-                    <div class="badge badge--neutral mb-3">DevOps</div>
-                    <h3 class="card__title text-xl mb-3">
-                        Database Migration Safety: Zero-Downtime Schema Evolutions at Scale
-                    </h3>
-                    <p class="card__text text-sm mb-6 flex-1">
-                        Techniques for adding non-nullable columns, renaming fields, and handling multi-gigabyte data migrations without locking tables or degrading response times.
-                    </p>
-                    <div class="pt-4 border-t flex justify-between items-center text-xs text-tertiary">
-                        <span>6 min read</span>
-                        <span>May 2026</span>
-                    </div>
-                </div>
-            </article>
+            {% endfor %}
+            
+            <!-- Dynamic Empty State -->
+            <div class="insights-empty" id="no-articles-found" style="display: none;">
+                <div class="badge badge--primary mb-3">No Publications Found</div>
+                <h3 class="text-xl font-bold mb-2">No articles match this category filter</h3>
+                <p class="text-secondary text-sm mb-6">Select another category or view all engineering publications.</p>
+                <button type="button" class="btn btn--primary btn--sm reset-filter-btn">View All Insights</button>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Call to Action -->
+<!-- Executive Briefing Modal -->
+<div class="article-modal-backdrop" id="article-modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="article-modal" id="article-modal" tabindex="-1">
+        <div class="article-modal__header">
+            <div>
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="badge badge--primary" id="modal-category-badge">Category</span>
+                    <span class="text-xs text-tertiary font-mono" id="modal-read-time">5 min read</span>
+                    <span class="text-xs text-tertiary font-mono" id="modal-date">Date</span>
+                </div>
+                <h2 class="text-xl font-bold text-white leading-snug" id="modal-title">Article Title</h2>
+            </div>
+            <button type="button" class="article-modal__close" id="modal-close-btn" aria-label="Close article briefing">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        
+        <div class="article-modal__body">
+            <!-- Problem Definition -->
+            <div>
+                <div class="modal-section-title">The Operational Problem</div>
+                <p class="text-secondary text-sm leading-relaxed" id="modal-problem">
+                    Problem statement goes here...
+                </p>
+            </div>
+
+            <!-- Key Architectural Takeaways -->
+            <div>
+                <div class="modal-section-title">Core Implementation Guidance</div>
+                <div class="modal-takeaway-list" id="modal-takeaways-container">
+                    <!-- Dynamic Takeaways -->
+                </div>
+            </div>
+
+            <!-- Trade-offs & Limitations -->
+            <div>
+                <div class="modal-section-title">Technical Trade-offs & Operational Realities</div>
+                <div class="modal-tradeoff-box" id="modal-tradeoffs">
+                    Trade-offs description goes here...
+                </div>
+            </div>
+
+            <!-- Engineering Consultation -->
+            <div>
+                <div class="modal-section-title">Professional Implementation</div>
+                <p class="text-secondary text-sm leading-relaxed" id="modal-implementation">
+                    Implementation advice goes here...
+                </p>
+            </div>
+        </div>
+
+        <div class="article-modal__footer">
+            <a href="{% url 'portfolio' %}" class="btn btn--outline btn--sm" id="modal-service-link">
+                View Related Service
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            
+            <a href="{% url 'contact' %}" class="btn btn--primary btn--sm btn--magnetic">
+                Discuss Your Requirements
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Structured Data Dictionary for Client-Side Modal & Fast Filter -->
+{{ all_articles|json_script:"articles-data-json" }}
+
+<!-- CTA Section -->
 {% include 'partials/cta.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Load Article JSON Data
+    const articlesDataElement = document.getElementById('articles-data-json');
+    let articles = [];
+    if (articlesDataElement) {
+        try {
+            articles = JSON.parse(articlesDataElement.textContent);
+        } catch (e) {
+            console.error('Failed to parse articles JSON:', e);
+        }
+    }
+
+    // 2. Client-side Category Filter
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const articleCards = document.querySelectorAll('.insight-card');
+    const emptyNotice = document.getElementById('no-articles-found');
+    const countLabel = document.getElementById('article-count-label');
+    const resetFilterBtn = document.querySelector('.reset-filter-btn');
+
+    function applyCategoryFilter(categorySlug, updateUrl = true) {
+        let visibleCount = 0;
+
+        // Update Chip UI
+        filterChips.forEach(chip => {
+            const chipFilter = chip.getAttribute('data-filter');
+            const isActive = chipFilter === categorySlug;
+            chip.classList.toggle('filter-chip--active', isActive);
+            chip.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        // Filter Grid Cards
+        articleCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (categorySlug === 'all' || cardCategory === categorySlug) {
+                card.style.display = '';
+                visibleCount++;
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                }, 10);
+            } else {
+                card.style.opacity = '0';
+                card.style.display = 'none';
+            }
+        });
+
+        // Empty state
+        if (emptyNotice) {
+            emptyNotice.style.display = visibleCount === 0 ? '' : 'none';
+        }
+
+        // Counter label
+        if (countLabel) {
+            countLabel.textContent = `Showing ${visibleCount} of ${articleCards.length} Publications`;
+        }
+
+        // Update URL query string without reloading
+        if (updateUrl && window.history && window.history.replaceState) {
+            const newUrl = categorySlug === 'all' 
+                ? window.location.pathname 
+                : `${window.location.pathname}?category=${encodeURIComponent(categorySlug)}`;
+            window.history.replaceState({ category: categorySlug }, '', newUrl);
+        }
+    }
+
+    // Attach click listeners to filter chips
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+            e.preventDefault();
+            const filter = chip.getAttribute('data-filter');
+            applyCategoryFilter(filter);
+        });
+    });
+
+    if (resetFilterBtn) {
+        resetFilterBtn.addEventListener('click', () => {
+            applyCategoryFilter('all');
+        });
+    }
+
+    // Check initial query parameter on load
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory && initialCategory !== 'all') {
+        applyCategoryFilter(initialCategory, false);
+    }
+
+    // 3. Modal Executive Briefing Viewer
+    const modalBackdrop = document.getElementById('article-modal-backdrop');
+    const modal = document.getElementById('article-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    const modalCategoryBadge = document.getElementById('modal-category-badge');
+    const modalReadTime = document.getElementById('modal-read-time');
+    const modalDate = document.getElementById('modal-date');
+    const modalTitle = document.getElementById('modal-title');
+    const modalProblem = document.getElementById('modal-problem');
+    const modalTakeawaysContainer = document.getElementById('modal-takeaways-container');
+    const modalTradeoffs = document.getElementById('modal-tradeoffs');
+    const modalImplementation = document.getElementById('modal-implementation');
+    const modalServiceLink = document.getElementById('modal-service-link');
+
+    let previousActiveElement = null;
+
+    function openArticleModal(slug) {
+        const article = articles.find(a => a.slug === slug);
+        if (!article) return;
+
+        previousActiveElement = document.activeElement;
+
+        // Populate Modal Fields
+        modalCategoryBadge.textContent = article.category_name;
+        modalReadTime.textContent = article.read_time;
+        modalDate.textContent = article.date;
+        modalTitle.textContent = article.title;
+        modalProblem.textContent = article.problem_statement;
+        modalTradeoffs.textContent = article.trade_offs;
+        modalImplementation.textContent = article.implementation_guidance;
+
+        // Populate Takeaways
+        modalTakeawaysContainer.innerHTML = '';
+        if (article.key_takeaways && article.key_takeaways.length) {
+            article.key_takeaways.forEach((item, idx) => {
+                const el = document.createElement('div');
+                el.className = 'modal-takeaway-item';
+                el.innerHTML = `
+                    <span class="featured-takeaways__num">0${idx + 1}</span>
+                    <span>${item}</span>
+                `;
+                modalTakeawaysContainer.appendChild(el);
+            });
+        }
+
+        // Set Service Link
+        if (modalServiceLink) {
+            modalServiceLink.href = `/work/${article.service_anchor.replace('/work/', '')}`;
+            modalServiceLink.innerHTML = `
+                Explore ${article.service_name} Capability
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            `;
+        }
+
+        // Show Modal
+        modalBackdrop.classList.add('is-open');
+        modalBackdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        modal.focus();
+    }
+
+    function closeArticleModal() {
+        modalBackdrop.classList.remove('is-open');
+        modalBackdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (previousActiveElement) {
+            previousActiveElement.focus();
+        }
+    }
+
+    // Attach listeners for modal triggers
+    document.querySelectorAll('.open-article-modal').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const slug = trigger.getAttribute('data-article-slug');
+            if (slug) openArticleModal(slug);
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeArticleModal);
+    }
+
+    modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) {
+            closeArticleModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalBackdrop.classList.contains('is-open')) {
+            closeArticleModal();
+        }
+    });
+});
+</script>
 {% endblock %}

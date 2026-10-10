@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from portfolio.models import Project
+from .insights_data import CATEGORIES, ARTICLES, get_articles, get_featured_article
 
 
 def home(request):
@@ -21,8 +22,17 @@ def process(request):
 
 
 def insights(request):
-    """Insights/Blog page."""
-    return render(request, 'core/insights.html')
+    """Insights & Articles page with service-aligned publications."""
+    category = request.GET.get('category', 'all')
+    filtered_articles = get_articles(category)
+    featured = get_featured_article()
+    return render(request, 'core/insights.html', {
+        'categories': CATEGORIES,
+        'current_category': category,
+        'articles': filtered_articles,
+        'all_articles': ARTICLES,
+        'featured_article': featured,
+    })
 
 
 def privacy(request):

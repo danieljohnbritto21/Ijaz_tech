@@ -2,254 +2,713 @@
 {% load static %}
 
 {% block title %}Our Process — Ijaz_Solutions | Predictable, Transparent Delivery{% endblock %}
-{% block meta_description %}Discover our structured 6-phase engineering and delivery methodology that ensures reliable, on-time project execution with zero surprises.{% endblock %}
+{% block meta_description %}Discover our structured 6-phase engineering and delivery lifecycle tailored to Web Development, ERP/CRM Systems, AI Integration, DevOps, and WhatsApp Automation.{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ============================================================
+   OUR PROCESS PAGE — Scoped Component Styles & Proper Alignment
+   ============================================================ */
+
+/* Process Hero */
+.process-hero {
+    position: relative;
+    isolation: isolate;
+    padding-top: calc(var(--space-32) + var(--space-4));
+    padding-bottom: var(--space-16);
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 80% 20%, rgba(91, 218, 245, 0.10) 0%, rgba(112, 204, 246, 0.05) 30%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(190, 235, 250, 0.06) 0%, transparent 45%),
+        linear-gradient(180deg, var(--color-surface-secondary) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.process-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    background: var(--color-primary-subtle);
+    color: var(--color-primary);
+    border: 1px solid var(--color-cyan-border);
+    margin-bottom: var(--space-4);
+}
+
+.process-hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-cyan);
+    box-shadow: 0 0 8px var(--color-cyan);
+}
+
+.process-hero__title {
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.process-hero__subtitle {
+    font-size: clamp(var(--text-base), 1.8vw, var(--text-md));
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Timeline Layout */
+.process-timeline-wrap {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.process-stage-card {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: var(--space-8);
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.process-stage-card:hover {
+    border-color: var(--color-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(16, 35, 68, 0.08), 0 0 1px rgba(8, 191, 232, 0.4);
+}
+
+/* Number Column */
+.stage-number-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.stage-number-badge {
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radius-lg);
+    background: rgba(53, 217, 245, 0.08);
+    border: 1px solid rgba(53, 217, 245, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-extrabold);
+    color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(53, 217, 245, 0.1);
+}
+
+.stage-timeline-tag {
+    font-size: 0.68rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    text-align: center;
+}
+
+/* Stage Details Content */
+.stage-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.stage-header-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.stage-title {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-text);
+    margin: 0;
+    line-height: var(--leading-snug);
+}
+
+.stage-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+}
+
+/* Service Alignment Badges Row */
+.stage-services-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface-soft-blue);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.stage-services-label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-right: var(--space-1);
+}
+
+.stage-service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    font-weight: var(--weight-medium);
+    color: var(--color-primary);
+    background: rgba(53, 217, 245, 0.08);
+    border: 1px solid rgba(53, 217, 245, 0.2);
+    text-decoration: none;
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.stage-service-link:hover {
+    background: rgba(53, 217, 245, 0.2);
+    border-color: rgba(53, 217, 245, 0.4);
+    color: #ffffff;
+}
+
+/* Deliverables Section */
+.stage-deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.stage-deliverables-title {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+}
+
+.deliverables-cloud {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.deliverable-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    color: var(--color-text-secondary);
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border);
+}
+
+/* Standards Grid */
+.standards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    align-items: stretch;
+}
+
+.standard-card {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.standard-card:hover {
+    border-color: var(--color-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(16, 35, 68, 0.08);
+}
+
+.standard-card__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(53, 217, 245, 0.08);
+    border: 1px solid rgba(53, 217, 245, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin-bottom: var(--space-5);
+}
+
+.standard-card__title {
+    font-size: var(--text-md);
+    font-weight: var(--weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+}
+
+.standard-card__desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+}
+
+/* FAQs */
+.faq-wrap {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.faq-card {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color var(--duration-fast);
+}
+
+.faq-card:hover {
+    border-color: rgba(53, 217, 245, 0.3);
+}
+
+.faq-card__btn {
+    width: 100%;
+    padding: var(--space-5) var(--space-6);
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    cursor: pointer;
+}
+
+.faq-card__body {
+    padding: 0 var(--space-6) var(--space-5);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+    .process-stage-card {
+        grid-template-columns: 72px 1fr;
+        gap: var(--space-6);
+        padding: var(--space-6);
+    }
+    
+    .standards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+    }
+}
+
+@media (max-width: 639px) {
+    .process-hero {
+        padding-top: calc(var(--space-24) + var(--space-8));
+        padding-bottom: var(--space-10);
+    }
+    
+    .process-stage-card {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        padding: var(--space-5);
+    }
+    
+    .stage-number-box {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-3);
+    }
+    
+    .stage-number-badge {
+        width: 44px;
+        height: 44px;
+        font-size: var(--text-lg);
+    }
+    
+    .standards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+}
+</style>
+{% endblock %}
 
 {% block content %}
 <!-- Process Hero -->
-<section class="section section--dark page-hero">
+<section class="process-hero" aria-labelledby="process-hero-title">
     <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Our Methodology</div>
-            <h1 class="page-hero__title">A Predictable Delivery Engine.<br><span class="text-gradient">Zero Surprises.</span></h1>
-            <p class="page-hero__subtitle">
-                Software projects fail from ambiguity and poor communication, not technical inability. Our structured 6-phase methodology ensures your project arrives on schedule, within budget, and built to the highest architectural standards.
-            </p>
+        <div class="process-hero__badge">
+            <span class="process-hero__badge-dot" aria-hidden="true"></span>
+            <span>Delivery Methodology</span>
         </div>
+        <h1 class="process-hero__title" id="process-hero-title">
+            A Predictable Delivery Engine.<br><span class="text-gradient">Zero Surprises.</span>
+        </h1>
+        <p class="process-hero__subtitle">
+            Our structured 6-phase engineering lifecycle ensures every Web Application, ERP/CRM System, AI Workflow, and Cloud Deployment arrives on schedule, strictly verified, and built to the highest architectural standards.
+        </p>
     </div>
 </section>
 
-<!-- 6-Stage Process Walkthrough -->
-<section class="section">
+<!-- 6-Stage Process Walkthrough Aligned with Core Services -->
+<section class="section" style="padding-top: var(--space-16); padding-bottom: var(--space-20);" aria-label="Engineering Lifecycle">
     <div class="container">
-        <div class="section-header text-center mb-16">
-            <div class="section-label">End-to-End Workflow</div>
+        <div class="section-header text-center" style="margin-bottom: var(--space-12);">
+            <div class="section-label">End-to-End Delivery</div>
             <h2 class="section-title">From Concept to Production in 6 Iterative Stages</h2>
             <p class="section-subtitle max-w-2xl mx-auto">
-                Every project follows our battle-tested lifecycle, tailored to your team's specific pace and organizational constraints.
+                Every project follows our battle-tested lifecycle, linking our technical services directly to your operational requirements.
             </p>
         </div>
 
-        <div class="process-timeline">
-            <!-- Phase 1 -->
-            <div class="process-step">
-                <div class="process-step__number">01</div>
-                <div class="process-step__content">
-                    <div class="badge badge--neutral mb-3">Stage 1 — Week 1</div>
-                    <h3 class="process-step__title">Discovery & Strategic Scoping</h3>
-                    <p class="process-step__desc">
-                        We begin by investigating your business model, existing workflows, user bottlenecks, and definition of success. Rather than jumping straight into code, we clarify the commercial problem to prevent wasted engineering effort.
-                    </p>
-                    <div class="process-step__deliverables">
-                        <span class="deliverables-label">Key Deliverables:</span>
-                        <div class="tag-cloud">
-                            <span class="badge badge--outline">Project Scope Statement</span>
-                            <span class="badge badge--outline">User Personas & Journeys</span>
-                            <span class="badge badge--outline">Technical Feasibility Matrix</span>
-                            <span class="badge badge--outline">Milestone Timeline</span>
-                        </div>
-                    </div>
+        <div class="process-timeline-wrap">
+            <!-- Stage 01 -->
+            <article class="process-stage-card">
+                <div class="stage-number-box">
+                    <div class="stage-number-badge">01</div>
+                    <span class="stage-timeline-tag">Phase 1</span>
                 </div>
-            </div>
+                <div class="stage-content">
+                    <div class="stage-header-meta">
+                        <span class="badge badge--cyan" style="font-size: 0.7rem;">Discovery & Scoping</span>
+                    </div>
+                    <h3 class="stage-title">Operational Discovery & Technical Scoping</h3>
+                    <p class="stage-desc">
+                        We begin by thoroughly analyzing your business operations, existing workflows, user bottlenecks, and commercial goals. Rather than writing unverified code, we clarify data structures, user roles, API endpoints, and success metrics to avoid wasted development cycles.
+                    </p>
 
-            <!-- Phase 2 -->
-            <div class="process-step">
-                <div class="process-step__number">02</div>
-                <div class="process-step__content">
-                    <div class="badge badge--neutral mb-3">Stage 2 — Week 2</div>
-                    <h3 class="process-step__title">Architecture & System Blueprint</h3>
-                    <p class="process-step__desc">
-                        Our architects craft the foundational data models, API schemas, security policies, and third-party integration pipelines. We choose the optimal stack to guarantee performance, maintainability, and cost efficiency.
-                    </p>
-                    <div class="process-step__deliverables">
-                        <span class="deliverables-label">Key Deliverables:</span>
-                        <div class="tag-cloud">
-                            <span class="badge badge--outline">Database Entity Diagrams</span>
-                            <span class="badge badge--outline">API Architecture Specification</span>
-                            <span class="badge badge--outline">Cloud Infrastructure Diagram</span>
-                            <span class="badge badge--outline">Interactive UI Wireframes</span>
-                        </div>
+                    <!-- Service Alignment Row -->
+                    <div class="stage-services-row">
+                        <span class="stage-services-label">Applied Services:</span>
+                        <a href="{% url 'portfolio' %}#service-web-development" class="stage-service-link">Web Development</a>
+                        <a href="{% url 'portfolio' %}#service-erp-crm" class="stage-service-link">ERP & CRM</a>
+                        <a href="{% url 'portfolio' %}#service-ai-integration" class="stage-service-link">AI Integration</a>
                     </div>
-                </div>
-            </div>
 
-            <!-- Phase 3 -->
-            <div class="process-step">
-                <div class="process-step__number">03</div>
-                <div class="process-step__content">
-                    <div class="badge badge--neutral mb-3">Stage 3 — Weeks 3-8</div>
-                    <h3 class="process-step__title">Agile Sprints & Continuous Integration</h3>
-                    <p class="process-step__desc">
-                        Engineering proceeds in two-week focused sprints. You receive private access to a living staging environment where you test and review working features after every iteration. Automated CI/CD runs on every push.
-                    </p>
-                    <div class="process-step__deliverables">
-                        <span class="deliverables-label">Key Deliverables:</span>
-                        <div class="tag-cloud">
-                            <span class="badge badge--outline">Live Staging URL Access</span>
-                            <span class="badge badge--outline">Weekly Loom Walkthroughs</span>
-                            <span class="badge badge--outline">Clean, Documented Code</span>
-                            <span class="badge badge--outline">Sprint Burn-Down Updates</span>
+                    <div class="stage-deliverables">
+                        <span class="stage-deliverables-title">Key Phase Deliverables:</span>
+                        <div class="deliverables-cloud">
+                            <span class="deliverable-chip">Scope Specification Document</span>
+                            <span class="deliverable-chip">System Architecture Feasibility</span>
+                            <span class="deliverable-chip">User Flow Diagrams</span>
+                            <span class="deliverable-chip">Sprint Milestone Timeline</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- Phase 4 -->
-            <div class="process-step">
-                <div class="process-step__number">04</div>
-                <div class="process-step__content">
-                    <div class="badge badge--neutral mb-3">Stage 4 — Sprint End</div>
-                    <h3 class="process-step__title">Rigorous QA, Security & Performance Hardening</h3>
-                    <p class="process-step__desc">
-                        We subject the system to rigorous functional testing, cross-device responsiveness checks, automated regression suites, load testing, and OWASP security vulnerability audits before anyone touches production.
-                    </p>
-                    <div class="process-step__deliverables">
-                        <span class="deliverables-label">Key Deliverables:</span>
-                        <div class="tag-cloud">
-                            <span class="badge badge--outline">Lighthouse Performance Audit (95+)</span>
-                            <span class="badge badge--outline">Security Audit Report</span>
-                            <span class="badge badge--outline">Cross-Browser Verification Matrix</span>
-                            <span class="badge badge--outline">User Acceptance Sign-off</span>
-                        </div>
-                    </div>
+            <!-- Stage 02 -->
+            <article class="process-stage-card">
+                <div class="stage-number-box">
+                    <div class="stage-number-badge">02</div>
+                    <span class="stage-timeline-tag">Phase 2</span>
                 </div>
-            </div>
+                <div class="stage-content">
+                    <div class="stage-header-meta">
+                        <span class="badge badge--cyan" style="font-size: 0.7rem;">Architecture & Design</span>
+                    </div>
+                    <h3 class="stage-title">System Architecture, Schemas & UI Wireframing</h3>
+                    <p class="stage-desc">
+                        Our architects craft the foundational relational database models, API schemas, RBAC security rules, and user interface wireframes. We evaluate model latency for AI services, map CRM entity relationships, and establish the cloud topology before production engineering begins.
+                    </p>
 
-            <!-- Phase 5 -->
-            <div class="process-step">
-                <div class="process-step__number">05</div>
-                <div class="process-step__content">
-                    <div class="badge badge--neutral mb-3">Stage 5 — Launch</div>
-                    <h3 class="process-step__title">Seamless Zero-Downtime Deployment</h3>
-                    <p class="process-step__desc">
-                        We orchestrate production cutover, DNS routing, database seeding, SSL certificates, automated backup policies, and monitoring alerts. We provide hands-on onboarding sessions for your operational stakeholders.
-                    </p>
-                    <div class="process-step__deliverables">
-                        <span class="deliverables-label">Key Deliverables:</span>
-                        <div class="tag-cloud">
-                            <span class="badge badge--outline">Production Deployment</span>
-                            <span class="badge badge--outline">Administrator Training Session</span>
-                            <span class="badge badge--outline">Architecture & Ops Runbook</span>
-                            <span class="badge badge--outline">Full Repository Transfer</span>
-                        </div>
+                    <div class="stage-services-row">
+                        <span class="stage-services-label">Applied Services:</span>
+                        <a href="{% url 'portfolio' %}#service-ui-design" class="stage-service-link">UI Design</a>
+                        <a href="{% url 'portfolio' %}#service-api-integration" class="stage-service-link">API Integration</a>
+                        <a href="{% url 'portfolio' %}#service-erp-crm" class="stage-service-link">ERP & CRM</a>
                     </div>
-                </div>
-            </div>
 
-            <!-- Phase 6 -->
-            <div class="process-step">
-                <div class="process-step__number">06</div>
-                <div class="process-step__content">
-                    <div class="badge badge--neutral mb-3">Stage 6 — Ongoing</div>
-                    <h3 class="process-step__title">Warranty, Telemetry & Continuous Evolution</h3>
-                    <p class="process-step__desc">
-                        Every project includes a 30-day comprehensive post-launch warranty for bug fixes and stability monitoring. We review performance telemetry and offer structured maintenance retainers for ongoing feature expansion.
-                    </p>
-                    <div class="process-step__deliverables">
-                        <span class="deliverables-label">Key Deliverables:</span>
-                        <div class="tag-cloud">
-                            <span class="badge badge--outline">30-Day Guaranteed Warranty</span>
-                            <span class="badge badge--outline">24/7 Error Logging & Telemetry</span>
-                            <span class="badge badge--outline">Monthly Health Checkups</span>
-                            <span class="badge badge--outline">Feature Backlog Advisory</span>
+                    <div class="stage-deliverables">
+                        <span class="stage-deliverables-title">Key Phase Deliverables:</span>
+                        <div class="deliverables-cloud">
+                            <span class="deliverable-chip">Relational Database Schemas</span>
+                            <span class="deliverable-chip">Interactive UI Prototypes</span>
+                            <span class="deliverable-chip">REST/GraphQL API Contracts</span>
+                            <span class="deliverable-chip">Cloud Infrastructure Blueprint</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
+
+            <!-- Stage 03 -->
+            <article class="process-stage-card">
+                <div class="stage-number-box">
+                    <div class="stage-number-badge">03</div>
+                    <span class="stage-timeline-tag">Phase 3</span>
+                </div>
+                <div class="stage-content">
+                    <div class="stage-header-meta">
+                        <span class="badge badge--cyan" style="font-size: 0.7rem;">Core Sprints</span>
+                    </div>
+                    <h3 class="stage-title">Iterative Implementation & Continuous Integration</h3>
+                    <p class="stage-desc">
+                        Engineering progresses in structured bi-weekly sprints. We build responsive frontends, server-side APIs, AI evaluation pipelines, CRM operational modules, and WhatsApp webhook handlers. You receive private access to a living staging environment with automated CI/CD deployments.
+                    </p>
+
+                    <div class="stage-services-row">
+                        <span class="stage-services-label">Applied Services:</span>
+                        <a href="{% url 'portfolio' %}#service-web-development" class="stage-service-link">Web Development</a>
+                        <a href="{% url 'portfolio' %}#service-ai-integration" class="stage-service-link">AI Workflows</a>
+                        <a href="{% url 'portfolio' %}#service-whatsapp-messaging" class="stage-service-link">WhatsApp Campaigns</a>
+                        <a href="{% url 'portfolio' %}#service-devops-cloud" class="stage-service-link">DevOps CI/CD</a>
+                    </div>
+
+                    <div class="stage-deliverables">
+                        <span class="stage-deliverables-title">Key Phase Deliverables:</span>
+                        <div class="deliverables-cloud">
+                            <span class="deliverable-chip">Working Private Staging URL</span>
+                            <span class="deliverable-chip">Bi-Weekly Feature Walkthroughs</span>
+                            <span class="deliverable-chip">Documented Codebase</span>
+                            <span class="deliverable-chip">Automated Test Suites</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Stage 04 -->
+            <article class="process-stage-card">
+                <div class="stage-number-box">
+                    <div class="stage-number-badge">04</div>
+                    <span class="stage-timeline-tag">Phase 4</span>
+                </div>
+                <div class="stage-content">
+                    <div class="stage-header-meta">
+                        <span class="badge badge--cyan" style="font-size: 0.7rem;">Quality & Security</span>
+                    </div>
+                    <h3 class="stage-title">Rigorous QA, Security & Performance Hardening</h3>
+                    <p class="stage-desc">
+                        Every module undergoes comprehensive testing before reaching production. We run automated regression suites, cross-device responsiveness audits, Lighthouse performance optimization (95+ scores), token expenditure limits for AI, and OWASP security vulnerability checks.
+                    </p>
+
+                    <div class="stage-services-row">
+                        <span class="stage-services-label">Applied Services:</span>
+                        <a href="{% url 'portfolio' %}#service-web-development" class="stage-service-link">Lighthouse Performance</a>
+                        <a href="{% url 'portfolio' %}#service-ai-image-analysis" class="stage-service-link">Computer Vision Accuracy</a>
+                        <a href="{% url 'portfolio' %}#service-mobile-app" class="stage-service-link">Cross-Device Verification</a>
+                    </div>
+
+                    <div class="stage-deliverables">
+                        <span class="stage-deliverables-title">Key Phase Deliverables:</span>
+                        <div class="deliverables-cloud">
+                            <span class="deliverable-chip">Lighthouse Performance Report</span>
+                            <span class="deliverable-chip">Security & Vulnerability Audit</span>
+                            <span class="deliverable-chip">Cross-Device Testing Matrix</span>
+                            <span class="deliverable-chip">User Acceptance Sign-Off</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Stage 05 -->
+            <article class="process-stage-card">
+                <div class="stage-number-box">
+                    <div class="stage-number-badge">05</div>
+                    <span class="stage-timeline-tag">Phase 5</span>
+                </div>
+                <div class="stage-content">
+                    <div class="stage-header-meta">
+                        <span class="badge badge--cyan" style="font-size: 0.7rem;">Production Launch</span>
+                    </div>
+                    <h3 class="stage-title">Zero-Downtime Deployment & Repository Handoff</h3>
+                    <p class="stage-desc">
+                        We orchestrate containerized production deployment, DNS cutovers, SSL certificate installation, and automated encrypted backup routines. We conduct hands-on training sessions with your operations team and hand over 100% of repository access and infrastructure credentials.
+                    </p>
+
+                    <div class="stage-services-row">
+                        <span class="stage-services-label">Applied Services:</span>
+                        <a href="{% url 'portfolio' %}#service-devops-cloud" class="stage-service-link">Cloud Deployment</a>
+                        <a href="{% url 'portfolio' %}#service-api-integration" class="stage-service-link">Production Webhooks</a>
+                    </div>
+
+                    <div class="stage-deliverables">
+                        <span class="stage-deliverables-title">Key Phase Deliverables:</span>
+                        <div class="deliverables-cloud">
+                            <span class="deliverable-chip">Production Cloud Deployment</span>
+                            <span class="deliverable-chip">Administrator Onboarding Session</span>
+                            <span class="deliverable-chip">Operational Runbook & Architecture Docs</span>
+                            <span class="deliverable-chip">Complete Repository Ownership Transfer</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Stage 06 -->
+            <article class="process-stage-card">
+                <div class="stage-number-box">
+                    <div class="stage-number-badge">06</div>
+                    <span class="stage-timeline-tag">Phase 6</span>
+                </div>
+                <div class="stage-content">
+                    <div class="stage-header-meta">
+                        <span class="badge badge--cyan" style="font-size: 0.7rem;">Warranty & Scaling</span>
+                    </div>
+                    <h3 class="stage-title">30-Day Warranty, Telemetry & Continuous Evolution</h3>
+                    <p class="stage-desc">
+                        Launch day is the start of real user value. Every engagement includes a 30-day comprehensive bug-fix warranty. We monitor real-time error logs, system telemetry, and latency metrics, offering structured continuous development retainers as your operational demands expand.
+                    </p>
+
+                    <div class="stage-services-row">
+                        <span class="stage-services-label">Applied Services:</span>
+                        <a href="{% url 'portfolio' %}#service-devops-cloud" class="stage-service-link">Infrastructure Telemetry</a>
+                        <a href="{% url 'portfolio' %}#service-erp-crm" class="stage-service-link">Feature Backlog Advisory</a>
+                    </div>
+
+                    <div class="stage-deliverables">
+                        <span class="stage-deliverables-title">Key Phase Deliverables:</span>
+                        <div class="deliverables-cloud">
+                            <span class="deliverable-chip">30-Day Guaranteed Warranty</span>
+                            <span class="deliverable-chip">Automated Error & Uptime Alerts</span>
+                            <span class="deliverable-chip">Performance Review Audits</span>
+                            <span class="deliverable-chip">Modular Scaling Roadmap</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- Collaboration Pillars Section -->
-<section class="section section--muted">
+<!-- Collaboration Pillars Section with Aligned Heights -->
+<section class="section section--muted" style="padding-top: var(--space-16); padding-bottom: var(--space-20);">
     <div class="container">
-        <div class="section-header text-center mb-16">
+        <div class="section-header text-center" style="margin-bottom: var(--space-12);">
             <div class="section-label">Collaboration Standards</div>
             <h2 class="section-title">How We Communicate & Work Together</h2>
             <p class="section-subtitle max-w-2xl mx-auto">
-                No ghosting, no weeks in silence. You are always in control and informed.
+                No ghosting, no weeks of silence. You are always in control, informed, and directly connected.
             </p>
         </div>
 
-        <div class="grid grid--3 gap-8">
-            <div class="card p-8">
-                <div class="icon-bubble icon-bubble--primary mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div class="standards-grid">
+            <div class="standard-card">
+                <div class="standard-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </div>
-                <h3 class="card__title">Direct Dedicated Channel</h3>
-                <p class="card__text">
-                    A shared Slack or Teams channel directly with your lead engineer. Quick questions are answered in hours, not buried in email ticket queues.
+                <h3 class="standard-card__title">Direct Dedicated Channel</h3>
+                <p class="standard-card__desc">
+                    A dedicated Slack or Teams channel directly with your lead engineer. Technical questions are answered in hours, never buried in ticketing queues.
                 </p>
             </div>
 
-            <div class="card p-8">
-                <div class="icon-bubble icon-bubble--cyan mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+            <div class="standard-card">
+                <div class="standard-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="1" y="5" rx="2" ry="2"/></svg>
                 </div>
-                <h3 class="card__title">Weekly Video Demos</h3>
-                <p class="card__text">
-                    At the conclusion of every sprint, we record an asynchronous video demonstrating newly completed features on your live staging environment.
+                <h3 class="standard-card__title">Weekly Live Demonstrations</h3>
+                <p class="standard-card__desc">
+                    At the conclusion of every sprint, we demonstrate newly completed features on your live staging environment so you inspect working software continually.
                 </p>
             </div>
 
-            <div class="card p-8">
-                <div class="icon-bubble icon-bubble--primary mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <div class="standard-card">
+                <div class="standard-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 </div>
-                <h3 class="card__title">Milestone-Linked Invoicing</h3>
-                <p class="card__text">
-                    Payments are tied strictly to verified milestones. You approve completed, tested deliverables before the next phase payment is due.
+                <h3 class="standard-card__title">Milestone-Linked Invoicing</h3>
+                <p class="standard-card__desc">
+                    Payments are tied strictly to verified milestones. You review tested deliverables and approve milestone completion before subsequent stage payments are released.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Process FAQs -->
-<section class="section">
-    <div class="container container--narrow">
-        <div class="section-header text-center mb-12">
+<!-- Frequently Asked Questions -->
+<section class="section" style="padding-top: var(--space-16); padding-bottom: var(--space-20);">
+    <div class="container">
+        <div class="section-header text-center" style="margin-bottom: var(--space-12);">
             <div class="section-label">Questions About Working With Us</div>
             <h2 class="section-title">Process Frequently Asked Questions</h2>
         </div>
 
-        <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
+        <div class="faq-wrap">
+            <div class="faq-card">
+                <button class="faq-card__btn" type="button" aria-expanded="false">
                     <span>How long does a typical project take from start to finish?</span>
-                    <span class="faq-icon">+</span>
+                    <span style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold;">+</span>
                 </button>
-                <div class="faq-answer">
-                    <p>Timeline depends on project scope. A focused automation workflow or MVP web app typically takes 2 to 4 weeks. Full custom software platforms or enterprise systems typically range from 6 to 12 weeks. We provide clear milestone timelines during our initial discovery call.</p>
+                <div class="faq-card__body">
+                    <p style="margin: 0;">Timeline depends on the technical scope. A focused automation workflow or MVP web application typically takes 2 to 4 weeks. Full custom software platforms, bespoke ERP/CRM systems, or enterprise AI pipelines typically range from 6 to 12 weeks with clear milestone timelines agreed before kickoff.</p>
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
+            <div class="faq-card">
+                <button class="faq-card__btn" type="button" aria-expanded="false">
                     <span>What happens if scope changes during development?</span>
-                    <span class="faq-icon">+</span>
+                    <span style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold;">+</span>
                 </button>
-                <div class="faq-answer">
-                    <p>We embrace agile adaptability. When new ideas or scope adjustments emerge, we evaluate their impact on timeline and budget, present clear trade-offs, and let you decide whether to swap features in the current sprint or queue them for phase two.</p>
+                <div class="faq-card__body">
+                    <p style="margin: 0;">We embrace agile adaptability. When new feature requirements arise, we evaluate their impact on timeline and architecture, present clear trade-offs, and let you decide whether to swap features in the current sprint or queue them for the next iteration.</p>
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
+            <div class="faq-card">
+                <button class="faq-card__btn" type="button" aria-expanded="false">
                     <span>Who owns the code and intellectual property?</span>
-                    <span class="faq-icon">+</span>
+                    <span style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold;">+</span>
                 </button>
-                <div class="faq-answer">
-                    <p>You do. 100%. Upon completion of milestones, all source code, design assets, database structures, and configuration files belong entirely to you with zero proprietary restrictions or hidden licensing fees.</p>
+                <div class="faq-card__body">
+                    <p style="margin: 0;">You do—100%. Upon completion of milestones, all source code, design assets, database structures, and configuration files belong entirely to you with zero proprietary restrictions or hidden licensing fees.</p>
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false">
+            <div class="faq-card">
+                <button class="faq-card__btn" type="button" aria-expanded="false">
                     <span>Do you provide maintenance and hosting support after launch?</span>
-                    <span class="faq-icon">+</span>
+                    <span style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold;">+</span>
                 </button>
-                <div class="faq-answer">
-                    <p>Yes. Beyond our standard 30-day post-launch warranty, we offer tiered support retainers that cover security patching, cloud optimization, performance monitoring, and continuous feature enhancements.</p>
+                <div class="faq-card__body">
+                    <p style="margin: 0;">Yes. Beyond our standard 30-day post-launch warranty, we offer tiered support retainers that cover security patching, cloud optimization, performance monitoring, and continuous feature enhancements.</p>
                 </div>
             </div>
         </div>

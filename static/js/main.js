@@ -44,12 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
 function initHero3DPerspective() {
     const hero = document.getElementById('hero');
     const rig = document.getElementById('hero-3d-rig');
+    const dimensionalObj = hero ? hero.querySelector('.dimensional-object') : null;
     if (!hero || !rig) return;
 
     let targetRotX = 0;
     let targetRotY = 0;
     let currentRotX = 0;
     let currentRotY = 0;
+
+    let targetObjX = 0;
+    let targetObjY = 0;
+    let currentObjX = 0;
+    let currentObjY = 0;
+
     let isHovering = false;
     let isVisible = true;
     let animFrameId = null;
@@ -81,15 +88,30 @@ function initHero3DPerspective() {
         currentRotX += (targetRotX - currentRotX) * 0.08;
         currentRotY += (targetRotY - currentRotY) * 0.08;
 
+        currentObjX += (targetObjX - currentObjX) * 0.08;
+        currentObjY += (targetObjY - currentObjY) * 0.08;
+
+        // Controlled rotation strictly capped to ~3 degrees on each axis
         rig.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
 
+        // Independent slight parallax translation for floating geometric object
+        if (dimensionalObj) {
+            dimensionalObj.style.transform = `translate3d(${currentObjX.toFixed(1)}px, ${currentObjY.toFixed(1)}px, 0)`;
+        }
+
         // Continue loop if active or until settled back to 0
-        const isSettled = Math.abs(targetRotX - currentRotX) < 0.02 && Math.abs(targetRotY - currentRotY) < 0.02;
+        const isSettled = Math.abs(targetRotX - currentRotX) < 0.02 && 
+                          Math.abs(targetRotY - currentRotY) < 0.02 &&
+                          Math.abs(targetObjX - currentObjX) < 0.04 &&
+                          Math.abs(targetObjY - currentObjY) < 0.04;
 
         if (!isSettled || isHovering) {
             animFrameId = requestAnimationFrame(updateLoop);
         } else {
             rig.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+            if (dimensionalObj) {
+                dimensionalObj.style.transform = 'translate3d(0, 0, 0)';
+            }
             animFrameId = null;
         }
     };
@@ -107,9 +129,18 @@ function initHero3DPerspective() {
         const normX = ((e.clientX - rect.left) / rect.width) - 0.5; // -0.5 to 0.5
         const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
 
-        // Controlled rotation angles (max +/- 8deg)
-        targetRotY = normX * 14;
-        targetRotX = -normY * 10;
+        // Controlled rotation angles strictly limited to ~3 degrees max
+        targetRotY = normX * 6;  // max +/- 3deg
+        targetRotX = -normY * 6; // max +/- 3deg
+
+        // Subtle independent parallax on floating geometric object
+        targetObjX = normX * 12; // max +/- 6px
+        targetObjY = normY * 10; // max +/- 5px
+
+        // Ambient spotlight coordinates
+        hero.style.setProperty('--spotlight-x', `${(e.clientX - rect.left).toFixed(0)}px`);
+        hero.style.setProperty('--spotlight-y', `${(e.clientY - rect.top).toFixed(0)}px`);
+        hero.style.setProperty('--spotlight-opacity', '1');
 
         startLoop();
     }, { passive: true });
@@ -118,6 +149,9 @@ function initHero3DPerspective() {
         isHovering = false;
         targetRotX = 0;
         targetRotY = 0;
+        targetObjX = 0;
+        targetObjY = 0;
+        hero.style.setProperty('--spotlight-opacity', '0');
         startLoop();
     });
 }
@@ -265,6 +299,10 @@ function initNavigation() {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') toggleMenu(false);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
     });
 }
 
