@@ -40,7 +40,7 @@
 
     /* -- Typography Colors -- */
     --color-text:               #102344;
-    --color-text-secondary:     #60748F;
+    --color-text-secondary:     #627792;
     --color-text-tertiary:      #7E90A6;
     --color-text-inverse:       #FFFFFF;
     --color-text-on-dark:       #F6FAFD;
@@ -53,14 +53,14 @@
     --color-primary-ghost:      rgba(8, 191, 229, 0.04);
     
     --color-cyan:               #08BFE5;
-    --color-accent-blue:        #168DE2;
+    --color-accent-blue:        #168BEA;
     --color-cyan-glow:          rgba(8, 191, 229, 0.18);
     --color-cyan-subtle:        rgba(8, 191, 229, 0.08);
     --color-cyan-muted:         rgba(8, 191, 229, 0.14);
     --color-cyan-border:        rgba(8, 191, 229, 0.35);
     
     /* -- Borders -- */
-    --color-border:             #DCE8F3;
+    --color-border:             #DCEAF5;
     --color-border-light:       #EBF3FA;
     --color-border-dark:        #CADCEB;
     --color-border-hover:       #08BFE5;
@@ -146,8 +146,8 @@
     --shadow-card-hover: 0 14px 32px rgba(16, 35, 68, 0.09), 0 0 1px rgba(8, 191, 232, 0.4);
     
     /* Layered diffuse blue ambient shadows for hero & floating cards */
-    --shadow-dashboard:       0 22px 48px -12px rgba(16, 35, 68, 0.09), 0 10px 24px -6px rgba(16, 35, 68, 0.05), 0 0 45px 0 rgba(8, 191, 229, 0.13), 0 0 75px 0 rgba(22, 141, 226, 0.07), 0 1px 3px rgba(16, 35, 68, 0.03);
-    --shadow-dashboard-hover: 0 30px 60px -12px rgba(16, 35, 68, 0.12), 0 14px 28px -6px rgba(16, 35, 68, 0.06), 0 0 55px 0 rgba(8, 191, 229, 0.18), 0 0 90px 0 rgba(22, 141, 226, 0.10);
+    --shadow-dashboard:       0 24px 54px -12px rgba(16, 35, 68, 0.10), 0 12px 28px -6px rgba(16, 35, 68, 0.05), 0 0 45px 0 rgba(8, 191, 229, 0.13), 0 0 75px 0 rgba(22, 139, 234, 0.08), 0 1px 3px rgba(16, 35, 68, 0.03);
+    --shadow-dashboard-hover: 0 32px 64px -12px rgba(16, 35, 68, 0.13), 0 16px 32px -6px rgba(16, 35, 68, 0.07), 0 0 55px 0 rgba(8, 191, 229, 0.18), 0 0 90px 0 rgba(22, 139, 234, 0.11);
     
     /* -- Transitions & Motion -- */
     --ease-out:          cubic-bezier(0.16, 1, 0.3, 1);
@@ -417,19 +417,19 @@ p {
 }
 
 .btn--primary {
-    background-color: var(--color-cyan);
-    color: #102344;
+    background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-accent-blue) 100%);
+    color: #FFFFFF;
     font-weight: var(--weight-bold);
     box-shadow: 0 4px 14px rgba(8, 191, 229, 0.28);
-    border: 1px solid var(--color-cyan);
+    border: 1px solid rgba(8, 191, 229, 0.35);
 }
 
 .btn--primary:hover {
-    background-color: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
-    box-shadow: 0 6px 20px rgba(0, 169, 213, 0.35);
+    background: linear-gradient(135deg, #07b0d4 0%, #137ecf 100%);
+    border-color: rgba(8, 191, 229, 0.55);
+    box-shadow: 0 6px 20px rgba(8, 191, 229, 0.35), 0 2px 6px rgba(22, 139, 234, 0.15);
     transform: translateY(-2px);
-    color: #102344;
+    color: #FFFFFF;
 }
 
 .btn--secondary, .btn--outline {
@@ -631,13 +631,13 @@ p {
 
 .nav__cta {
     margin-left: var(--space-4);
-    background: linear-gradient(135deg, var(--color-cyan) 0%, #10a8d6 100%);
-    color: #102344;
+    background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-accent-blue) 100%);
+    color: #FFFFFF;
     font-weight: var(--weight-bold);
     padding: 0.55rem 1.25rem;
     font-size: var(--text-xs);
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-cyan);
+    border: 1px solid rgba(8, 191, 229, 0.4);
     box-shadow: 0 2px 10px rgba(8, 191, 229, 0.25);
     transition: transform 200ms var(--ease-out),
                 box-shadow 200ms var(--ease-out),
@@ -645,10 +645,10 @@ p {
 }
 
 .nav__cta:hover {
-    background: linear-gradient(135deg, #00A9D5 0%, #0d8cc0 100%);
+    background: linear-gradient(135deg, #07b0d4 0%, #137ecf 100%);
     box-shadow: 0 4px 16px rgba(8, 191, 229, 0.35);
     transform: translateY(-1px);
-    color: #102344;
+    color: #FFFFFF;
 }
 
 /* Mobile Toggle */
@@ -746,25 +746,29 @@ p {
     display: flex;
     align-items: center;
     background:
+        /* Layer 1: Strongest ambient glow focused on right and lower sides of the dashboard */
         radial-gradient(
-            ellipse 65% 55% at 85% 38%,
-            rgba(8, 191, 229, 0.18) 0%,
-            rgba(22, 141, 226, 0.10) 30%,
-            rgba(234, 248, 255, 0.05) 55%,
-            transparent 72%
+            ellipse 58% 54% at 84% 68%,
+            rgba(8, 191, 229, 0.17) 0%,
+            rgba(22, 139, 234, 0.09) 35%,
+            rgba(220, 234, 245, 0.05) 58%,
+            transparent 74%
         ),
+        /* Layer 2: Subtle secondary depth on upper right */
         radial-gradient(
-            ellipse 50% 45% at 75% 74%,
-            rgba(22, 141, 226, 0.08) 0%,
-            transparent 50%
+            ellipse 48% 42% at 88% 28%,
+            rgba(8, 191, 229, 0.10) 0%,
+            rgba(22, 139, 234, 0.05) 34%,
+            transparent 62%
         ),
+        /* Layer 3: Ultra-soft ice-blue boundary wash */
         radial-gradient(
-            ellipse 40% 35% at 95% 8%,
-            rgba(8, 191, 229, 0.12) 0%,
-            rgba(234, 248, 255, 0.04) 40%,
-            transparent 60%
+            ellipse 38% 44% at 96% 52%,
+            rgba(220, 234, 245, 0.35) 0%,
+            transparent 65%
         ),
-        #ffffff;
+        #FFFFFF;
+    overflow: hidden;
 }
 
 /* Subtle mouse-responsive ambient spotlight */
@@ -775,7 +779,7 @@ p {
     background: radial-gradient(
         540px circle at var(--spotlight-x, 80%) var(--spotlight-y, 40%),
         rgba(8, 191, 229, 0.07) 0%,
-        rgba(22, 141, 226, 0.03) 40%,
+        rgba(22, 139, 234, 0.03) 40%,
         transparent 70%
     );
     opacity: var(--spotlight-opacity, 0);
@@ -784,42 +788,43 @@ p {
     z-index: 0;
 }
 
-/* Primary ambient glow — large, soft cyan-blue light centered behind the dashboard */
+/* Primary ambient glow — large, soft cyan-blue light behind and around dashboard, weighted lower-right */
 .hero__bg-glow {
     position: absolute;
-    width: 680px;
-    height: 680px;
+    width: 720px;
+    height: 720px;
     background: radial-gradient(
-        circle at 50% 50%,
-        rgba(8, 191, 229, 0.22) 0%,
-        rgba(22, 141, 226, 0.12) 34%,
-        rgba(234, 248, 255, 0.05) 56%,
-        transparent 72%
+        circle at 55% 60%,
+        rgba(8, 191, 229, 0.20) 0%,
+        rgba(22, 139, 234, 0.11) 36%,
+        rgba(220, 234, 245, 0.06) 58%,
+        transparent 75%
     );
-    top: 50%;
-    right: 4%;
+    top: 54%;
+    right: 2%;
     transform: translateY(-50%);
-    filter: blur(52px);
+    filter: blur(56px);
     pointer-events: none;
     z-index: 0;
     opacity: 0.95;
 }
 
-/* Secondary ambient glow — offset slightly toward upper-right for realistic depth */
+/* Secondary ambient glow — soft subtle depth behind and under dashboard */
 .hero__bg-glow-secondary {
     position: absolute;
-    width: 520px;
-    height: 520px;
+    width: 580px;
+    height: 580px;
     background: radial-gradient(
         circle at 50% 50%,
-        rgba(22, 141, 226, 0.14) 0%,
-        rgba(8, 191, 229, 0.07) 38%,
-        transparent 68%
+        rgba(22, 139, 234, 0.13) 0%,
+        rgba(8, 191, 229, 0.06) 40%,
+        rgba(220, 234, 245, 0.04) 60%,
+        transparent 72%
     );
-    top: 36%;
-    right: 1%;
+    top: 66%;
+    right: -1%;
     transform: translateY(-50%);
-    filter: blur(60px);
+    filter: blur(64px);
     pointer-events: none;
     z-index: 0;
     opacity: 0.85;
