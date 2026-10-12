@@ -1,17 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Project
 
 
 def portfolio_list(request):
-    """Our Work page - all projects."""
-    projects = Project.objects.all()
-    service_filter = request.GET.get('service', '')
-    if service_filter:
-        projects = projects.filter(service_category=service_filter)
-    return render(request, 'portfolio/list.html', {
-        'projects': projects,
-        'current_filter': service_filter,
-    })
+    """Redirect Our Work page to Services."""
+    return redirect('services')
 
 
 def project_detail(request, slug):

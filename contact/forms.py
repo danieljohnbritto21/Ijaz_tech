@@ -55,7 +55,7 @@ class InquiryForm(forms.ModelForm):
             'company': 'Company Name',
             'service': 'Service of Interest',
             'requirements': 'Project Requirements',
-            'budget': 'Estimated Budget',
+            'budget': 'Estimated Budget (₹ INR)',
             'timeline': 'Desired Timeline',
             'contact_method': 'Preferred Contact Method',
             'privacy_consent': 'I agree to the privacy policy and consent to Ijaz_Solutions processing my information to respond to this inquiry.',

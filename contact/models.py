@@ -15,10 +15,11 @@ class Inquiry(models.Model):
     
     BUDGET_CHOICES = [
         ('', 'Select budget range (optional)'),
-        ('under-5k', 'Under $5,000'),
-        ('5k-15k', '$5,000 – $15,000'),
-        ('15k-50k', '$15,000 – $50,000'),
-        ('50k-plus', '$50,000+'),
+        ('under-50k', 'Under ₹50,000'),
+        ('50k-2-lakh', '₹50,000 – ₹2,00,000'),
+        ('2-5-lakh', '₹2,00,000 – ₹5,00,000'),
+        ('5-10-lakh', '₹5,00,000 – ₹10,00,000'),
+        ('10-lakh-plus', '₹10,00,000+ (₹10 Lakh+)'),
         ('discuss', 'Prefer to discuss'),
     ]
     
