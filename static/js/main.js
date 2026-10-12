@@ -263,11 +263,19 @@ function initScrollReveals(prefersReducedMotion) {
             }
         });
     }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.02,
+        rootMargin: '120px 0px 40px 0px'
     });
 
-    targets.forEach(el => observer.observe(el));
+    targets.forEach(el => {
+        // If element is already in or near viewport on initial page load, reveal immediately
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 150) {
+            el.classList.add('is-revealed');
+        } else {
+            observer.observe(el);
+        }
+    });
 }
 
 /**

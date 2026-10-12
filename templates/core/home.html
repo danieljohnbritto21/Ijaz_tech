@@ -8,18 +8,50 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="hero">
-    <div class="hero__bg-glow" aria-hidden="true"></div>
-    <div class="hero__bg-glow-secondary" aria-hidden="true"></div>
+    <!-- Atmospheric Layered Background Canvas -->
+    <div class="hero__bg-canvas" aria-hidden="true">
+        <div class="hero__bg-grid"></div>
+        <div class="hero__bg-glow hero__bg-glow--primary"></div>
+        <div class="hero__bg-glow hero__bg-glow--secondary"></div>
+        <div class="hero__bg-glow hero__bg-glow--accent"></div>
+        <!-- Subtle Technology Network Constellation (concentrated on right side) -->
+        <svg class="hero__bg-network" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#08BDE5" stop-opacity="0.38" />
+                    <stop offset="60%" stop-color="#168BEA" stop-opacity="0.22" />
+                    <stop offset="100%" stop-color="#08BDE5" stop-opacity="0.08" />
+                </linearGradient>
+            </defs>
+            <path d="M 460 70 L 590 130 L 730 80 M 590 130 L 540 260 L 690 220 L 770 320 M 540 260 L 630 380 L 760 430 M 630 380 L 550 490 L 700 520" stroke="url(#netGrad)" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <path d="M 690 220 L 630 380 M 590 130 L 690 220" stroke="url(#netGrad)" stroke-width="1"/>
+            <circle cx="460" cy="70" r="3" fill="#08BDE5" opacity="0.5"/>
+            <circle cx="590" cy="130" r="4.5" fill="#08BDE5" opacity="0.6"/>
+            <circle cx="730" cy="80" r="3" fill="#168BEA" opacity="0.4"/>
+            <circle cx="540" cy="260" r="4" fill="#08BDE5" opacity="0.6"/>
+            <circle cx="690" cy="220" r="5" fill="#08BDE5" opacity="0.7"/>
+            <circle cx="770" cy="320" r="3.5" fill="#168BEA" opacity="0.4"/>
+            <circle cx="630" cy="380" r="4.5" fill="#08BDE5" opacity="0.6"/>
+            <circle cx="760" cy="430" r="3" fill="#168BEA" opacity="0.4"/>
+            <circle cx="550" cy="490" r="4" fill="#08BDE5" opacity="0.5"/>
+            <circle cx="700" cy="520" r="3" fill="#168BEA" opacity="0.4"/>
+            <circle cx="690" cy="220" r="10" stroke="#08BDE5" stroke-width="1" opacity="0.25"/>
+            <circle cx="590" cy="130" r="8" stroke="#08BDE5" stroke-width="1" opacity="0.2"/>
+        </svg>
+    </div>
+    
     <div class="container">
         <div class="hero__inner">
-            <!-- Content -->
+            <!-- Left Column: Content -->
             <div class="hero__content">
                 <div class="hero__eyebrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     Your Technology Partner for What's Next
                 </div>
                 <h1 class="hero__title">
-                    Smart Technology. <span>Practical Solutions.</span> Real Business Impact.
+                    Smart Technology.<br>
+                    <span class="hero__title-highlight">Practical Solutions.</span><br>
+                    Real Business Impact.
                 </h1>
                 <p class="hero__description">
                     We help businesses and individuals turn challenges into opportunities through AI automation, custom software development, web and mobile applications, and IT consulting. From simplifying everyday operations to building digital products, we focus on practical solutions designed around your needs.
@@ -27,20 +59,22 @@
                 <div class="btn-group">
                     <a href="{% url 'contact' %}" class="btn btn--primary btn--lg btn--magnetic">
                         Start a Project
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                     <a href="{% url 'portfolio' %}" class="btn btn--secondary btn--lg btn--magnetic">Explore Our Work</a>
                 </div>
                 <div class="hero__trust">
-                    <svg class="hero__trust-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    <div class="hero__trust-badge">
+                        <svg class="hero__trust-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
                     <span class="hero__trust-text">Tailored solutions. Clear communication. Technology built around your goals.</span>
                 </div>
             </div>
             
-            <!-- Visual: Dimensional 3D & Dashboard Composition -->
+            <!-- Right Column: Visual 3D & Product Dashboard Composition -->
             <div class="hero__visual" id="hero-visual-area">
                 <div class="hero-3d-scene" id="hero-3d-rig">
-                    <!-- Dimensional Geometric Metallic-Glass Object -->
+                    <!-- Dimensional Floating Glass Prism (Positioned safely in upper-right orbit) -->
                     <div class="dimensional-object" aria-hidden="true">
                         <div class="poly-prism">
                             <div class="poly-facet poly-facet--front"></div>
@@ -52,63 +86,94 @@
                         </div>
                     </div>
 
+                    <!-- Main Dashboard Frame -->
                     <div class="hero__visual-container">
-                    <div class="hero-dashboard">
-                        <div class="hero-dashboard__topbar">
-                            <span class="hero-dashboard__dot hero-dashboard__dot--red"></span>
-                            <span class="hero-dashboard__dot hero-dashboard__dot--yellow"></span>
-                            <span class="hero-dashboard__dot hero-dashboard__dot--green"></span>
-                            <span class="hero-dashboard__url">app.ijaz-solutions.com/dashboard</span>
-                        </div>
-                        <div class="hero-dashboard__body">
-                            <div class="hero-dashboard__sidebar">
-                                <div class="hero-dashboard__sidebar-item hero-dashboard__sidebar-item--active">
-                                    <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-                                    Dashboard
+                        <div class="hero-dashboard">
+                            <!-- Window Chrome Topbar -->
+                            <div class="hero-dashboard__topbar">
+                                <div class="hero-dashboard__window-controls">
+                                    <span class="hero-dashboard__dot hero-dashboard__dot--red" title="Close"></span>
+                                    <span class="hero-dashboard__dot hero-dashboard__dot--yellow" title="Minimize"></span>
+                                    <span class="hero-dashboard__dot hero-dashboard__dot--green" title="Expand"></span>
                                 </div>
-                                <div class="hero-dashboard__sidebar-item">
-                                    <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                    Projects
+                                <div class="hero-dashboard__url-badge">
+                                    <svg class="hero-dashboard__lock-icon" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                    <span class="hero-dashboard__url">app.ijaz-solutions.com/dashboard</span>
                                 </div>
-                                <div class="hero-dashboard__sidebar-item">
-                                    <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                    Automation
-                                </div>
-                                <div class="hero-dashboard__sidebar-item">
-                                    <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-                                    Analytics
-                                </div>
-                                <div class="hero-dashboard__sidebar-item">
-                                    <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                                    Settings
+                                <div class="hero-dashboard__status-pill">
+                                    <span class="hero-dashboard__status-dot"></span>
+                                    <span>Live Sync</span>
                                 </div>
                             </div>
-                            <div class="hero-dashboard__main">
-                                <div class="hero-dashboard__stats">
-                                    <div class="hero-dashboard__stat">
-                                        <div class="hero-dashboard__stat-label">Active Tasks</div>
-                                        <div class="hero-dashboard__stat-value">24</div>
+                            
+                            <!-- Dashboard Interior -->
+                            <div class="hero-dashboard__body">
+                                <!-- Navigation Sidebar -->
+                                <div class="hero-dashboard__sidebar">
+                                    <div class="hero-dashboard__sidebar-item hero-dashboard__sidebar-item--active">
+                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                                        Dashboard
                                     </div>
-                                    <div class="hero-dashboard__stat">
-                                        <div class="hero-dashboard__stat-label">Automated</div>
-                                        <div class="hero-dashboard__stat-value hero-dashboard__stat-value--cyan">89%</div>
+                                    <div class="hero-dashboard__sidebar-item">
+                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                        Projects
                                     </div>
-                                    <div class="hero-dashboard__stat">
-                                        <div class="hero-dashboard__stat-label">Uptime</div>
-                                        <div class="hero-dashboard__stat-value hero-dashboard__stat-value--green">99.9%</div>
+                                    <div class="hero-dashboard__sidebar-item">
+                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                        Automation
+                                    </div>
+                                    <div class="hero-dashboard__sidebar-item">
+                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                        Analytics
+                                    </div>
+                                    <div class="hero-dashboard__sidebar-item">
+                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                                        Settings
                                     </div>
                                 </div>
-                                <div class="hero-dashboard__chart">
-                                    <div class="hero-dashboard__chart-title">Performance Overview</div>
-                                    <div class="hero-dashboard__chart-bars">
-                                        <div class="hero-dashboard__chart-bar" style="height: 35%; background: rgba(8, 191, 232, 0.25);"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 55%; background: rgba(8, 191, 232, 0.35);"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 42%; background: rgba(8, 191, 232, 0.30);"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 68%; background: rgba(8, 191, 232, 0.45);"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 80%; background: rgba(8, 191, 232, 0.60);"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 62%; background: rgba(8, 191, 232, 0.40);"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 90%; background: linear-gradient(to top, rgba(8, 191, 232, 0.6), rgba(0, 169, 213, 0.95));"></div>
-                                        <div class="hero-dashboard__chart-bar" style="height: 75%; background: rgba(8, 191, 232, 0.50);"></div>
+                                
+                                <!-- Main Dashboard Content -->
+                                <div class="hero-dashboard__main">
+                                    <!-- Key Metrics Row -->
+                                    <div class="hero-dashboard__stats">
+                                        <div class="hero-dashboard__stat">
+                                            <div class="hero-dashboard__stat-label">Active Tasks</div>
+                                            <div class="hero-dashboard__stat-value">24</div>
+                                            <div class="hero-dashboard__stat-sub"><span class="hero-dashboard__stat-pill hero-dashboard__stat-pill--neutral">+12%</span> active</div>
+                                        </div>
+                                        <div class="hero-dashboard__stat">
+                                            <div class="hero-dashboard__stat-label">Automated</div>
+                                            <div class="hero-dashboard__stat-value hero-dashboard__stat-value--cyan">89%</div>
+                                            <div class="hero-dashboard__stat-sub"><span class="hero-dashboard__stat-pill hero-dashboard__stat-pill--cyan">AI Flow</span> 11k/mo</div>
+                                        </div>
+                                        <div class="hero-dashboard__stat">
+                                            <div class="hero-dashboard__stat-label">Uptime</div>
+                                            <div class="hero-dashboard__stat-value hero-dashboard__stat-value--green">99.9%</div>
+                                            <div class="hero-dashboard__stat-sub"><span class="hero-dashboard__stat-pill hero-dashboard__stat-pill--green">Stable</span> 24/7</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Interactive Performance Chart -->
+                                    <div class="hero-dashboard__chart">
+                                        <div class="hero-dashboard__chart-header">
+                                            <div class="hero-dashboard__chart-title">Performance Overview</div>
+                                            <span class="hero-dashboard__chart-period">Last 30 Days</span>
+                                        </div>
+                                        <div class="hero-dashboard__chart-body">
+                                            <div class="hero-dashboard__chart-gridlines" aria-hidden="true">
+                                                <span></span><span></span><span></span>
+                                            </div>
+                                            <div class="hero-dashboard__chart-bars">
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 38%;"><span class="chart-tooltip">38%</span></div><span class="hero-dashboard__chart-day">Mon</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 56%;"><span class="chart-tooltip">56%</span></div><span class="hero-dashboard__chart-day">Tue</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 44%;"><span class="chart-tooltip">44%</span></div><span class="hero-dashboard__chart-day">Wed</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 70%;"><span class="chart-tooltip">70%</span></div><span class="hero-dashboard__chart-day">Thu</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 82%;"><span class="chart-tooltip">82%</span></div><span class="hero-dashboard__chart-day">Fri</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 64%;"><span class="chart-tooltip">64%</span></div><span class="hero-dashboard__chart-day">Sat</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar hero-dashboard__chart-bar--peak" style="height: 94%;"><span class="chart-tooltip">94%</span></div><span class="hero-dashboard__chart-day">Sun</span></div>
+                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 78%;"><span class="chart-tooltip">78%</span></div><span class="hero-dashboard__chart-day">Today</span></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +182,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -512,7 +576,7 @@
 
 
 <!-- ===================== PROCESS ===================== -->
-<section class="section section--soft" id="process">
+<section class="section" id="process">
     <div class="container">
         <div class="section__header section__header--center">
             <div class="section__eyebrow">How We Work</div>
@@ -562,83 +626,6 @@
                 Start With a Project Discussion
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-        </div>
-    </div>
-</section>
-
-
-<!-- ===================== TECHNOLOGY CAPABILITIES ===================== -->
-<section class="section" id="technologies">
-    <div class="container">
-        <div class="section__header section__header--center">
-            <div class="section__eyebrow">Technology Stack</div>
-            <h2 class="section__title">The Right Tools for the Right Problem.</h2>
-        </div>
-        
-        <div class="tech-grid">
-            <div class="tech-category">
-                <h3 class="tech-category__title">Frontend Development</h3>
-                <div class="tech-category__list">
-                    <span class="tech-category__item">HTML5</span>
-                    <span class="tech-category__item">CSS3</span>
-                    <span class="tech-category__item">JavaScript</span>
-                    <span class="tech-category__item">React</span>
-                    <span class="tech-category__item">Next.js</span>
-                    <span class="tech-category__item">TypeScript</span>
-                </div>
-            </div>
-            <div class="tech-category">
-                <h3 class="tech-category__title">Backend Development</h3>
-                <div class="tech-category__list">
-                    <span class="tech-category__item">Python</span>
-                    <span class="tech-category__item">Django</span>
-                    <span class="tech-category__item">FastAPI</span>
-                    <span class="tech-category__item">Node.js</span>
-                    <span class="tech-category__item">REST APIs</span>
-                    <span class="tech-category__item">GraphQL</span>
-                </div>
-            </div>
-            <div class="tech-category">
-                <h3 class="tech-category__title">Databases</h3>
-                <div class="tech-category__list">
-                    <span class="tech-category__item">PostgreSQL</span>
-                    <span class="tech-category__item">MySQL</span>
-                    <span class="tech-category__item">MongoDB</span>
-                    <span class="tech-category__item">Redis</span>
-                    <span class="tech-category__item">SQLite</span>
-                </div>
-            </div>
-            <div class="tech-category">
-                <h3 class="tech-category__title">AI & Automation</h3>
-                <div class="tech-category__list">
-                    <span class="tech-category__item">OpenAI</span>
-                    <span class="tech-category__item">LangChain</span>
-                    <span class="tech-category__item">Hugging Face</span>
-                    <span class="tech-category__item">n8n</span>
-                    <span class="tech-category__item">Zapier</span>
-                </div>
-            </div>
-            <div class="tech-category">
-                <h3 class="tech-category__title">Cloud & Deployment</h3>
-                <div class="tech-category__list">
-                    <span class="tech-category__item">AWS</span>
-                    <span class="tech-category__item">Docker</span>
-                    <span class="tech-category__item">Vercel</span>
-                    <span class="tech-category__item">Nginx</span>
-                    <span class="tech-category__item">CI/CD</span>
-                    <span class="tech-category__item">Linux</span>
-                </div>
-            </div>
-            <div class="tech-category">
-                <h3 class="tech-category__title">Testing & QA</h3>
-                <div class="tech-category__list">
-                    <span class="tech-category__item">Pytest</span>
-                    <span class="tech-category__item">Selenium</span>
-                    <span class="tech-category__item">Jest</span>
-                    <span class="tech-category__item">Cypress</span>
-                    <span class="tech-category__item">Postman</span>
-                </div>
-            </div>
         </div>
     </div>
 </section>
