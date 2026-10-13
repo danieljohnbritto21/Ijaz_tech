@@ -58,7 +58,7 @@ class InquiryForm(forms.ModelForm):
             'budget': 'Estimated Budget (₹ INR)',
             'timeline': 'Desired Timeline',
             'contact_method': 'Preferred Contact Method',
-            'privacy_consent': 'I agree to the privacy policy and consent to Ijaz_Solutions processing my information to respond to this inquiry.',
+            'privacy_consent': 'I agree to the privacy policy and consent to High Deckz processing my information to respond to this inquiry.',
         }
     
     def clean_privacy_consent(self):

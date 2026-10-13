@@ -14,13 +14,23 @@ class Inquiry(models.Model):
     ]
     
     BUDGET_CHOICES = [
-        ('', 'Select budget range (optional)'),
-        ('under-50k', 'Under ₹50,000'),
-        ('50k-2-lakh', '₹50,000 – ₹2,00,000'),
-        ('2-5-lakh', '₹2,00,000 – ₹5,00,000'),
-        ('5-10-lakh', '₹5,00,000 – ₹10,00,000'),
-        ('10-lakh-plus', '₹10,00,000+ (₹10 Lakh+)'),
-        ('discuss', 'Prefer to discuss'),
+        ('', 'Select budget'),
+        ('offer-399', 'First-time offer ₹399'),
+        ('under-10k', 'Under ₹10,000'),
+        ('10k-25k', '₹10,000 – ₹25,000'),
+        ('25k-50k', '₹25,000 – ₹50,000'),
+        ('50k-1-lakh', '₹50,000 – ₹1,00,000'),
+        ('not-sure', 'Not sure yet'),
+        # Backward compatibility for legacy database records in Django Admin
+        ('under-50k', 'Under ₹50,000 (legacy)'),
+        ('50k-2-lakh', '₹50,000 – ₹2,00,000 (legacy)'),
+        ('2-5-lakh', '₹2,00,000 – ₹5,00,000 (legacy)'),
+        ('5-10-lakh', '₹5,00,000 – ₹10,00,000 (legacy)'),
+        ('10-lakh-plus', '₹10,00,000+ (legacy)'),
+        ('discuss', 'Prefer to discuss (legacy)'),
+        ('<25k', 'Under ₹25,000 (legacy)'),
+        ('1l-2.5l', '₹1,00,000 - ₹2,50,000 (legacy)'),
+        ('2.5l+', '₹2,50,000+ (legacy)'),
     ]
     
     TIMELINE_CHOICES = [

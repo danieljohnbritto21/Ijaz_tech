@@ -1,198 +1,424 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Our Services — Ijaz_Solutions | End-to-End Technology Capabilities{% endblock %}
-{% block meta_description %}Explore Ijaz_Solutions core service offerings: AI & Automation, Custom Software Development, Web & Mobile Applications, and IT Consulting & Support.{% endblock %}
+{% block title %}Our Services — High Deckz | End-to-End Technology Capabilities{% endblock %}
+{% block meta_description %}Explore High Deckz core service offerings: AI & Automation, Custom Software Development, Web & Mobile Applications, and IT Consulting & Support.{% endblock %}
 
 {% block content %}
-<!-- Services Hero -->
-<section class="section section--dark page-hero">
-    <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Core Capabilities</div>
-            <h1 class="page-hero__title">Smart Technology.<br><span class="text-gradient">Measurable Business Impact.</span></h1>
-            <p class="page-hero__subtitle">
+<!-- ============================================================
+     1. SERVICES HERO
+     ============================================================ -->
+<section class="section section--services-hero">
+    <div class="container container--services">
+        <div class="services-hero__content">
+            <!-- Top Badges / Offers -->
+            <div class="services-hero__badge-row">
+                <span class="badge badge--primary">Core Capabilities</span>
+                <span class="badge badge--offer-pill">
+                    <span class="offer-pill-dot" aria-hidden="true"></span>
+                    Special Offer: Dynamic website from ₹399
+                </span>
+            </div>
+
+            <h1 class="services-hero__title">
+                Smart Technology.<br>
+                <span class="text-cyan">Measurable Business Impact.</span>
+            </h1>
+
+            <p class="services-hero__lead">
                 We engineer scalable digital solutions tailored to your operational realities. From autonomous AI pipelines to resilient cloud platforms, our services are designed to lower costs, eliminate manual overhead, and accelerate growth.
             </p>
+
+            <!-- Anchor Chips Row -->
+            <div class="services-hero__chips" aria-label="Quick jump to capabilities">
+                <span class="services-hero__chips-label">Jump to discipline:</span>
+                <div class="services-chip-group">
+                    <a href="#service-ai-automation" class="service-chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 3.31 2.01 6.16 4.9 7.37L9 22h6l.1-4.63A8.003 8.003 0 0 0 12 2z"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg>
+                        <span>AI &amp; Automation</span>
+                    </a>
+                    <a href="#service-software-development" class="service-chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <span>Custom Software</span>
+                    </a>
+                    <a href="#service-web-mobile" class="service-chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                        <span>Web &amp; Mobile</span>
+                    </a>
+                    <a href="#service-it-consulting" class="service-chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                        <span>IT Consulting</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="btn-group services-hero__actions">
+                <a href="{% url 'contact' %}?offer=399" class="btn btn--primary btn--lg">
+                    <span>Claim the ₹399 offer</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn--outline btn--lg">Schedule a technical consultation</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- 4 Pillars Section -->
-<section class="section">
-    <div class="container">
-        <div class="section-header text-center mb-16">
-            <div class="section-label">Capabilities Matrix</div>
-            <h2 class="section-title">Four Core Disciplines. Unlimited Potential.</h2>
-            <p class="section-subtitle max-w-2xl mx-auto">
+<!-- ============================================================
+     2. FOUR CORE DISCIPLINES (CAPABILITIES MATRIX)
+     ============================================================ -->
+<section class="section section--services-matrix" id="disciplines">
+    <div class="container container--services">
+        <!-- Section Header Left-Aligned with shared left edge -->
+        <div class="services-section-head">
+            <span class="services-eyebrow">Capabilities Matrix</span>
+            <h2 class="services-section-title">Four Core Disciplines. Unlimited Potential.</h2>
+            <p class="services-section-intro">
                 Each service is delivered by senior specialists with deep production expertise in enterprise architectures, modern frameworks, and artificial intelligence.
             </p>
         </div>
 
-        <div class="grid grid--2 gap-8">
+        <!-- 2x2 Services Grid on Desktop, 1 Column on Mobile -->
+        <div class="services-grid-2x2">
             <!-- Pillar 1: AI & Automation -->
-            <div class="card card--service p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="icon-bubble icon-bubble--primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 3.31 2.01 6.16 4.9 7.37L9 22h6l.1-4.63A8.003 8.003 0 0 0 12 2z"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg>
-                        </div>
-                        <span class="text-xs font-mono font-bold tracking-wider text-primary uppercase">Service 01</span>
+            <article class="service-card-item" id="service-ai-automation">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--indigo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 3.31 2.01 6.16 4.9 7.37L9 22h6l.1-4.63A8.003 8.003 0 0 0 12 2z"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg>
                     </div>
-                    <h3 class="card__title text-2xl mb-3">AI & Automation Solutions</h3>
-                    <p class="card__text mb-6">
-                        Transform labor-intensive manual workflows into self-orchestrating, intelligent processes. We build custom LLM agents, intelligent document extraction pipelines, predictive models, and system integrations that operate 24/7.
-                    </p>
-                    <ul class="checklist text-sm mb-8 space-y-2">
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> LLM & Generative AI Workflow Integration</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Document Intelligence & OCR Extraction</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Robotic Process Automation (RPA) & Bot Networks</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> End-to-End API Integration & Data Pipelines</li>
-                    </ul>
+                    <span class="service-card-item__num">Service 01</span>
                 </div>
-                <div>
-                    <a href="{% url 'ai-automation' %}" class="btn btn--outline btn--block">
-                        Explore AI & Automation Capabilities
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+                <h3 class="service-card-item__title">AI &amp; Automation Solutions</h3>
+                <p class="service-card-item__desc">
+                    Transform labor-intensive manual workflows into self-orchestrating, intelligent processes. We build custom LLM agents, intelligent document extraction pipelines, predictive models, and system integrations that operate 24/7.
+                </p>
+
+                <ul class="service-checklist">
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>LLM &amp; Generative AI Workflow Integration</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Document Intelligence &amp; Structured OCR Extraction</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Robotic Process Automation (RPA) &amp; Bot Networks</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>End-to-End API Integration &amp; Event-Driven Pipelines</span>
+                    </li>
+                </ul>
+
+                <!-- Key Tech Pills -->
+                <div class="service-tech-tags">
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">pgvector</span>
+                    <span class="tech-tag">Celery</span>
+                </div>
+
+                <div class="service-card-item__footer">
+                    <a href="{% url 'ai-automation' %}" class="service-explore-link">
+                        <span>Explore AI &amp; Automation</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
-            </div>
+            </article>
 
             <!-- Pillar 2: Software Development -->
-            <div class="card card--service p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="icon-bubble icon-bubble--cyan">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <span class="text-xs font-mono font-bold tracking-wider text-cyan uppercase">Service 02</span>
+            <article class="service-card-item" id="service-software-development">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--cyan" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     </div>
-                    <h3 class="card__title text-2xl mb-3">Custom Software Development</h3>
-                    <p class="card__text mb-6">
-                        Bespoke software engineered around your unique proprietary processes. From multi-tenant SaaS platforms to internal ERP/CRM tools, we deliver maintainable codebases with clean architectural boundaries and zero technical debt.
-                    </p>
-                    <ul class="checklist text-sm mb-8 space-y-2">
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Enterprise SaaS Product Architecture</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Custom Internal Portals & ERP Dashboards</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> High-Performance REST & GraphQL APIs</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Legacy System Modernization & Refactoring</li>
-                    </ul>
+                    <span class="service-card-item__num">Service 02</span>
                 </div>
-                <div>
-                    <a href="{% url 'software-development' %}" class="btn btn--outline btn--block">
-                        Explore Custom Software
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+                <h3 class="service-card-item__title">Custom Software Development</h3>
+                <p class="service-card-item__desc">
+                    Bespoke software engineered around your unique proprietary processes. From multi-tenant SaaS platforms to internal ERP/CRM tools, we deliver maintainable codebases with clean architectural boundaries and zero technical debt.
+                </p>
+
+                <ul class="service-checklist">
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Enterprise SaaS Product Architecture</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Custom Internal Portals &amp; ERP Dashboards</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>High-Performance REST &amp; GraphQL API Design</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Legacy System Modernization &amp; Architecture Refactoring</span>
+                    </li>
+                </ul>
+
+                <!-- Key Tech Pills -->
+                <div class="service-tech-tags">
+                    <span class="tech-tag">Python/Django</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+
+                <div class="service-card-item__footer">
+                    <a href="{% url 'software-development' %}" class="service-explore-link">
+                        <span>Explore Custom Software</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
+            </article>
+
+            <!-- Pillar 3: Web & Mobile Applications -->
+            <article class="service-card-item" id="service-web-mobile">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--indigo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                    </div>
+                    <span class="service-card-item__num">Service 03</span>
+                </div>
+
+                <h3 class="service-card-item__title">Web &amp; Mobile Applications</h3>
+                <p class="service-card-item__desc">
+                    Flawless digital touchpoints that convert visitors into loyal customers. We craft lightning-fast web applications, cross-platform mobile apps, and progressive web apps optimized for speed, accessibility, and SEO.
+                </p>
+
+                <ul class="service-checklist">
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>High-Conversion Modern Web Applications</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Cross-Platform iOS &amp; Android Apps</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Progressive Web Apps (PWA) with Offline Sync</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>WCAG 2.1 AA Accessibility &amp; Conversion Optimization</span>
+                    </li>
+                </ul>
+
+                <!-- Key Tech Pills -->
+                <div class="service-tech-tags">
+                    <span class="tech-tag">React / Next.js</span>
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Tailored Vanilla CSS</span>
+                    <span class="tech-tag">TypeScript</span>
+                </div>
+
+                <div class="service-card-item__footer">
+                    <a href="{% url 'web-mobile' %}" class="service-explore-link">
+                        <span>Explore Web &amp; Mobile</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Pillar 4: IT Consulting & Support -->
+            <article class="service-card-item" id="service-it-consulting">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--cyan" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
+                    <span class="service-card-item__num">Service 04</span>
+                </div>
+
+                <h3 class="service-card-item__title">IT Consulting &amp; Support</h3>
+                <p class="service-card-item__desc">
+                    Strategic technical leadership and ongoing operational peace of mind. We audit your existing cloud infrastructure, harden data security protocols, design CI/CD pipelines, and provide proactive 24/7 maintenance retainers.
+                </p>
+
+                <ul class="service-checklist">
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Fractional CTO &amp; Senior Technical Advisory</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Cloud Architecture &amp; AWS/GCP Cost Optimization</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Security Audits, Compliance &amp; Hardening</span>
+                    </li>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>SLA-Backed System Maintenance &amp; 24/7 Monitoring</span>
+                    </li>
+                </ul>
+
+                <!-- Key Tech Pills -->
+                <div class="service-tech-tags">
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Google Cloud</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">Terraform</span>
+                </div>
+
+                <div class="service-card-item__footer">
+                    <a href="{% url 'it-consulting' %}" class="service-explore-link">
+                        <span>Explore IT Consulting</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     3. SLIM "HOW IT WORKS" 5-STEP STRIP
+     ============================================================ -->
+<section class="section section--how-it-works">
+    <div class="container container--services">
+        <div class="services-section-head">
+            <span class="services-eyebrow">Predictable Execution</span>
+            <h2 class="services-section-title">How It Works</h2>
+            <p class="services-section-intro">
+                Five disciplined milestones designed to ensure full transparency, eliminate ambiguity, and guarantee production-ready software.
+            </p>
+        </div>
+
+        <div class="how-it-works-strip">
+            <div class="step-item">
+                <div class="step-item__marker">
+                    <span class="step-num">01</span>
+                </div>
+                <h3 class="step-title">Discover</h3>
+                <p class="step-desc">Audit requirements, workflows, and edge cases.</p>
             </div>
 
-            <!-- Pillar 3: Web & Mobile -->
-            <div class="card card--service p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="icon-bubble icon-bubble--primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                        </div>
-                        <span class="text-xs font-mono font-bold tracking-wider text-primary uppercase">Service 03</span>
-                    </div>
-                    <h3 class="card__title text-2xl mb-3">Web & Mobile Applications</h3>
-                    <p class="card__text mb-6">
-                        Flawless digital touchpoints that convert visitors into loyal customers. We craft lightning-fast web applications, cross-platform mobile apps (iOS & Android), and progressive web apps optimized for speed, accessibility, and SEO.
-                    </p>
-                    <ul class="checklist text-sm mb-8 space-y-2">
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> High-Conversion Modern Web Applications</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Cross-Platform Mobile Apps (React Native / Flutter)</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Progressive Web Apps (PWA) with Offline Sync</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> User Experience & Conversion Rate Optimization</li>
-                    </ul>
+            <div class="step-item">
+                <div class="step-item__marker">
+                    <span class="step-num">02</span>
                 </div>
-                <div>
-                    <a href="{% url 'web-mobile' %}" class="btn btn--outline btn--block">
-                        Explore Web & Mobile
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </a>
-                </div>
+                <h3 class="step-title">Plan</h3>
+                <p class="step-desc">Lock architecture, milestones, and deliverables.</p>
             </div>
 
-            <!-- Pillar 4: IT Consulting -->
-            <div class="card card--service p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="icon-bubble icon-bubble--cyan">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-                        </div>
-                        <span class="text-xs font-mono font-bold tracking-wider text-cyan uppercase">Service 04</span>
-                    </div>
-                    <h3 class="card__title text-2xl mb-3">IT Consulting & Support</h3>
-                    <p class="card__text mb-6">
-                        Strategic technical leadership and ongoing operational peace of mind. We audit your existing cloud infrastructure, harden data security protocols, design CI/CD pipelines, and provide proactive 24/7 maintenance retainers.
-                    </p>
-                    <ul class="checklist text-sm mb-8 space-y-2">
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Fractional CTO & Technical Advisory</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Cloud Architecture, AWS/GCP Cost Optimization</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> Security Audits, Compliance & Penetration Testing</li>
-                        <li class="checklist-item"><span class="checklist-icon">✓</span> SLA-Backed System Maintenance & Monitoring</li>
-                    </ul>
+            <div class="step-item">
+                <div class="step-item__marker">
+                    <span class="step-num">03</span>
                 </div>
-                <div>
-                    <a href="{% url 'it-consulting' %}" class="btn btn--outline btn--block">
-                        Explore IT Consulting
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </a>
+                <h3 class="step-title">Design &amp; Build</h3>
+                <p class="step-desc">Engineering sprints with continuous weekly demos.</p>
+            </div>
+
+            <div class="step-item">
+                <div class="step-item__marker">
+                    <span class="step-num">04</span>
                 </div>
+                <h3 class="step-title">Test &amp; Refine</h3>
+                <p class="step-desc">Automated testing, security checks, and client QA.</p>
+            </div>
+
+            <div class="step-item">
+                <div class="step-item__marker">
+                    <span class="step-num">05</span>
+                </div>
+                <h3 class="step-title">Deliver</h3>
+                <p class="step-desc">Zero-downtime deployment, handoff &amp; 100% code ownership.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Engagement Models -->
-<section class="section section--muted">
-    <div class="container">
-        <div class="section-header text-center mb-16">
-            <div class="section-label">Flexible Collaboration</div>
-            <h2 class="section-title">How We Partner with You</h2>
-            <p class="section-subtitle max-w-2xl mx-auto">
+<!-- ============================================================
+     4. ENGAGEMENT MODELS ("HOW WE PARTNER WITH YOU")
+     ============================================================ -->
+<section class="section section--partner-models">
+    <div class="container container--services">
+        <div class="services-section-head">
+            <span class="services-eyebrow">Flexible Collaboration</span>
+            <h2 class="services-section-title">How We Partner with You</h2>
+            <p class="services-section-intro">
                 Choose the engagement structure that aligns best with your organizational pace and budgetary goals.
             </p>
         </div>
 
-        <div class="grid grid--3 gap-8">
-            <div class="card p-8">
-                <div class="badge badge--primary mb-4">Most Popular</div>
-                <h3 class="card__title text-xl mb-3">Fixed-Scope Milestone Delivery</h3>
-                <p class="card__text text-sm mb-6">
+        <div class="engagement-grid-3">
+            <!-- Model 1: Fixed-Scope (Most Popular) -->
+            <div class="engagement-card engagement-card--featured">
+                <div class="engagement-card__badge-wrap">
+                    <span class="badge badge--primary">Most Popular</span>
+                </div>
+                <h3 class="engagement-card__title">Fixed-Scope Milestone Delivery</h3>
+                <p class="engagement-card__desc">
                     Ideal for well-defined projects, MVPs, and specific system builds. We agree upon strict deliverables, timelines, and fixed costs upfront.
                 </p>
-                <div class="border-t pt-4 text-sm text-secondary">
-                    <strong>Best for:</strong> New product launches, defined automation pipelines, redesigns.
+                <div class="engagement-card__divider"></div>
+                <div class="engagement-card__best-for">
+                    <span class="best-for-label">Best for:</span>
+                    <span class="best-for-text">New product launches, defined automation pipelines, dynamic website builds.</span>
+                </div>
+                <div class="engagement-card__action">
+                    <a href="{% url 'contact' %}?model=fixed-scope" class="engagement-card__link">
+                        <span>Discuss this model</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="card p-8">
-                <div class="badge badge--cyan mb-4">Agile Flexibility</div>
-                <h3 class="card__title text-xl mb-3">Dedicated Engineering Pod</h3>
-                <p class="card__text text-sm mb-6">
-                    A dedicated squad of senior engineers and architects integrated into your team for evolving products requiring continuous sprints.
+            <!-- Model 2: Dedicated Engineering Pod -->
+            <div class="engagement-card">
+                <div class="engagement-card__badge-wrap">
+                    <span class="badge badge--cyan">Agile Flexibility</span>
+                </div>
+                <h3 class="engagement-card__title">Dedicated Engineering Pod</h3>
+                <p class="engagement-card__desc">
+                    A dedicated squad of senior engineers and architects integrated into your team for evolving products requiring continuous development sprints.
                 </p>
-                <div class="border-t pt-4 text-sm text-secondary">
-                    <strong>Best for:</strong> Fast-growing SaaS companies, continuous feature iteration, backlog burn-down.
+                <div class="engagement-card__divider"></div>
+                <div class="engagement-card__best-for">
+                    <span class="best-for-label">Best for:</span>
+                    <span class="best-for-text">Fast-growing SaaS companies, continuous feature iteration, backlog burn-down.</span>
+                </div>
+                <div class="engagement-card__action">
+                    <a href="{% url 'contact' %}?model=dedicated-pod" class="engagement-card__link">
+                        <span>Discuss this model</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="card p-8">
-                <div class="badge badge--neutral mb-4">Strategic & Advisory</div>
-                <h3 class="card__title text-xl mb-3">Fractional CTO & Advisory</h3>
-                <p class="card__text text-sm mb-6">
-                    Senior technology guidance, vendor evaluations, architectural governance, and team mentoring on a part-time monthly retainer.
+            <!-- Model 3: Fractional CTO & Advisory -->
+            <div class="engagement-card">
+                <div class="engagement-card__badge-wrap">
+                    <span class="badge badge--neutral">Strategic &amp; Advisory</span>
+                </div>
+                <h3 class="engagement-card__title">Fractional CTO &amp; Advisory</h3>
+                <p class="engagement-card__desc">
+                    Senior technology guidance, vendor evaluations, architectural governance, and team mentoring on a flexible monthly retainer.
                 </p>
-                <div class="border-t pt-4 text-sm text-secondary">
-                    <strong>Best for:</strong> Non-technical founders, scale-ups preparing for seed/series-A diligence.
+                <div class="engagement-card__divider"></div>
+                <div class="engagement-card__best-for">
+                    <span class="best-for-label">Best for:</span>
+                    <span class="best-for-text">Non-technical founders, scale-ups preparing for technical due diligence.</span>
+                </div>
+                <div class="engagement-card__action">
+                    <a href="{% url 'contact' %}?model=fractional-cto" class="engagement-card__link">
+                        <span>Discuss this model</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA -->
+<!-- Closing CTA Banner (Enhanced with Mobile Call Button & Readable Fine Print) -->
 {% include 'partials/cta.html' %}
 {% endblock %}

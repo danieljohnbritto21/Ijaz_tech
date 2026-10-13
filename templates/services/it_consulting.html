@@ -1,82 +1,115 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}IT Consulting & Support — Ijaz_Solutions{% endblock %}
+{% block title %}IT Consulting &amp; Support — High Deckz{% endblock %}
 {% block meta_description %}Strategic technical advisory, cloud infrastructure optimization, cybersecurity hardening, and SLA-backed 24/7 operational maintenance.{% endblock %}
 
 {% block content %}
-<!-- Service Hero -->
-<section class="section section--dark page-hero">
-    <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Strategic Advisory & Ops</div>
-            <h1 class="page-hero__title">Resilient Infrastructure.<br><span class="text-gradient">Zero Downtime Anxiety.</span></h1>
-            <p class="page-hero__subtitle">
+<!-- ============================================================
+     1. SERVICE HERO
+     ============================================================ -->
+<section class="section section--services-hero">
+    <div class="container container--services">
+        <div class="services-hero__content">
+            <div class="services-hero__badge-row">
+                <span class="badge badge--primary">Strategic Advisory &amp; Ops</span>
+                <span class="badge badge--cyan">Discipline 04</span>
+            </div>
+            <h1 class="services-hero__title">
+                Resilient Infrastructure.<br>
+                <span class="text-cyan">Zero Downtime Anxiety.</span>
+            </h1>
+            <p class="services-hero__lead">
                 Technology should propel your business forward, not create operational stress. We provide senior strategic guidance, streamline cloud expenses, harden cybersecurity, and ensure your critical systems run smoothly 24/7.
             </p>
-            <div class="btn-group mt-6">
-                <a href="{% url 'contact' %}?service=it-consulting" class="btn btn--primary btn--lg">Request an Infrastructure Audit</a>
-                <a href="{% url 'process' %}" class="btn btn--outline-white btn--lg">Our Advisory Approach</a>
+            <div class="btn-group services-hero__actions">
+                <a href="{% url 'contact' %}?service=it-consulting" class="btn btn--primary btn--lg">
+                    <span>Request an Infrastructure Audit</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="{% url 'process' %}" class="btn btn--outline btn--lg">Our Advisory Approach</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- The Challenge: Infrastructure Risk -->
-<section class="section">
-    <div class="container">
-        <div class="grid grid--2 gap-12 align-center">
-            <div>
-                <div class="section-label">Infrastructure Vulnerabilities</div>
-                <h2 class="section-title">Is Your Cloud Stack Leaking Capital and Creating Risk?</h2>
-                <p class="text-secondary mb-6 leading-relaxed">
+<!-- ============================================================
+     2. THE CHALLENGE: INFRASTRUCTURE RISK
+     ============================================================ -->
+<section class="section section--subpage-contrast">
+    <div class="container container--services">
+        <div class="services-subpage-grid-2">
+            <!-- Left Infrastructure Vulnerabilities Column -->
+            <div class="subpage-contrast-col">
+                <span class="services-eyebrow">Infrastructure Vulnerabilities</span>
+                <h2 class="services-section-title">Is Your Cloud Stack Leaking Capital and Creating Risk?</h2>
+                <p class="services-section-intro">
                     As software teams scale quickly, infrastructure often grows chaotic: unmonitored cloud instances, sprawling AWS charges, neglected database backups, and unpatched security vulnerabilities waiting for an exploit.
                 </p>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="text-error font-bold text-xl">✕</div>
-                        <div>
-                            <strong class="text-slate font-semibold">Runaway Cloud Billing</strong>
-                            <p class="text-sm text-secondary">Over-provisioned servers and forgotten development nodes quietly drain thousands of dollars every month.</p>
+
+                <div class="pain-points-list">
+                    <div class="pain-point-item">
+                        <div class="pain-point-icon" aria-hidden="true">
+                            <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </div>
+                        <div class="pain-point-text">
+                            <strong class="pain-point-title">Runaway Cloud Billing</strong>
+                            <p class="pain-point-desc">Over-provisioned servers and forgotten development nodes quietly drain thousands of dollars every month.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="text-error font-bold text-xl">✕</div>
-                        <div>
-                            <strong class="text-slate font-semibold">Fragile Deployments</strong>
-                            <p class="text-sm text-secondary">Manual release scripts that fail at 2 AM, requiring emergency rollbacks and lost customer trust.</p>
+
+                    <div class="pain-point-item">
+                        <div class="pain-point-icon" aria-hidden="true">
+                            <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </div>
+                        <div class="pain-point-text">
+                            <strong class="pain-point-title">Fragile Deployments</strong>
+                            <p class="pain-point-desc">Manual release scripts that fail at 2 AM, requiring emergency rollbacks and lost customer trust.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="text-error font-bold text-xl">✕</div>
-                        <div>
-                            <strong class="text-slate font-semibold">Compliance Gaps</strong>
-                            <p class="text-sm text-secondary">Lacking audit trails, encrypted data volumes, and role-based policies required by modern enterprise buyers.</p>
+
+                    <div class="pain-point-item">
+                        <div class="pain-point-icon" aria-hidden="true">
+                            <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </div>
+                        <div class="pain-point-text">
+                            <strong class="pain-point-title">Compliance Gaps</strong>
+                            <p class="pain-point-desc">Lacking audit trails, unencrypted data volumes, and role-based policies required by modern enterprise buyers.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card p-8 bg-soft border-primary">
-                <div class="badge badge--cyan mb-4">Our Operational Standard</div>
-                <h3 class="card__title text-2xl mb-4">The Resilient Cloud Blueprint</h3>
-                <ul class="checklist text-sm space-y-4">
-                    <li class="checklist-item">
-                        <span class="checklist-icon">✓</span>
+            <!-- Right Blueprint Card -->
+            <div class="subpage-solution-card">
+                <div class="solution-card-header">
+                    <span class="badge badge--cyan">Our Operational Standard</span>
+                    <h3 class="solution-card-title">The Resilient Cloud Blueprint</h3>
+                    <p class="solution-card-desc">
+                        Engineering discipline that protects your systems against downtime, security breaches, and ballooning hosting invoices.
+                    </p>
+                </div>
+
+                <ul class="service-checklist service-checklist--solution">
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                         <div>
-                            <strong>Continuous Automated Backups:</strong> Point-in-time recovery with daily off-site encrypted snapshots.
+                            <strong>Continuous Automated Backups:</strong>
+                            <span>Point-in-time recovery with daily off-site encrypted snapshots.</span>
                         </div>
                     </li>
-                    <li class="checklist-item">
-                        <span class="checklist-icon">✓</span>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                         <div>
-                            <strong>Proactive Telemetry:</strong> Real-time APM monitoring alerting our team before your users experience lag.
+                            <strong>Proactive Telemetry:</strong>
+                            <span>Real-time APM monitoring alerting our team before your users experience lag.</span>
                         </div>
                     </li>
-                    <li class="checklist-item">
-                        <span class="checklist-icon">✓</span>
+                    <li class="service-checklist__item">
+                        <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                         <div>
-                            <strong>Cost Right-Sizing:</strong> Average 30-45% reduction in monthly cloud invoices through resource pruning and caching layers.
+                            <strong>Cost Right-Sizing:</strong>
+                            <span>Average 30-45% reduction in monthly cloud invoices through resource pruning and caching layers.</span>
                         </div>
                     </li>
                 </ul>
@@ -85,51 +118,74 @@
     </div>
 </section>
 
-<!-- Consulting Pillars -->
-<section class="section section--muted">
-    <div class="container">
-        <div class="section-header text-center mb-16">
-            <div class="section-label">Advisory & Support Services</div>
-            <h2 class="section-title">How We Protect & Accelerate Your Stack</h2>
+<!-- ============================================================
+     3. CONSULTING PILLARS (3 CARDS)
+     ============================================================ -->
+<section class="section section--subpage-cards">
+    <div class="container container--services">
+        <div class="services-section-head">
+            <span class="services-eyebrow">Advisory &amp; Support Services</span>
+            <h2 class="services-section-title">How We Protect &amp; Accelerate Your Stack</h2>
+            <p class="services-section-intro">
+                High-leverage technical consulting and dedicated hands-on infrastructure engineering.
+            </p>
         </div>
 
-        <div class="grid grid--3 gap-8">
-            <div class="card card--hover p-8">
-                <div class="icon-bubble icon-bubble--primary mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="subpage-cards-grid-3">
+            <div class="service-card-item">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--indigo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                 </div>
-                <h3 class="card__title text-xl mb-3">Fractional CTO & Strategic Advisory</h3>
-                <p class="card__text text-sm mb-4">
+                <h3 class="service-card-item__title">Fractional CTO &amp; Strategic Advisory</h3>
+                <p class="service-card-item__desc">
                     Senior technology guidance for leadership teams. We assist with vendor selection, team hiring, code audits, and technical investor diligence.
                 </p>
-                <div class="text-xs text-primary font-semibold">Technical Due Diligence • Vendor RFP Reviews • Hiring</div>
+                <div class="service-tech-tags mt-auto">
+                    <span class="tech-tag">Due Diligence</span>
+                    <span class="tech-tag">Vendor RFP Reviews</span>
+                    <span class="tech-tag">Hiring Guidance</span>
+                </div>
             </div>
 
-            <div class="card card--hover p-8">
-                <div class="icon-bubble icon-bubble--cyan mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <div class="service-card-item">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--cyan" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
                 </div>
-                <h3 class="card__title text-xl mb-3">Cloud Migration & Cost Optimization</h3>
-                <p class="card__text text-sm mb-4">
+                <h3 class="service-card-item__title">Cloud Migration &amp; Cost Optimization</h3>
+                <p class="service-card-item__desc">
                     Modernize legacy servers to elastic containers. We audit usage metrics, implement auto-scaling, and slash monthly cloud spend.
                 </p>
-                <div class="text-xs text-cyan font-semibold">AWS • GCP • DigitalOcean • Terraform</div>
+                <div class="service-tech-tags mt-auto">
+                    <span class="tech-tag">AWS &amp; GCP</span>
+                    <span class="tech-tag">Terraform</span>
+                    <span class="tech-tag">Docker Containers</span>
+                </div>
             </div>
 
-            <div class="card card--hover p-8">
-                <div class="icon-bubble icon-bubble--primary mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="service-card-item">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--indigo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
                 </div>
-                <h3 class="card__title text-xl mb-3">Security Audits & Pen-Testing</h3>
-                <p class="card__text text-sm mb-4">
+                <h3 class="service-card-item__title">Security Audits &amp; Pen-Testing</h3>
+                <p class="service-card-item__desc">
                     Identify vulnerabilities before attackers do. Comprehensive static analysis, dependency scanning, OWASP Top 10 checks, and remediation roadmaps.
                 </p>
-                <div class="text-xs text-primary font-semibold">OWASP Audits • SSL/TLS Configuration • Secrets Management</div>
+                <div class="service-tech-tags mt-auto">
+                    <span class="tech-tag">OWASP Audits</span>
+                    <span class="tech-tag">SSL/TLS Hardening</span>
+                    <span class="tech-tag">Secrets Management</span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Call to Action -->
+<!-- Closing CTA Banner -->
 {% include 'partials/cta.html' %}
 {% endblock %}

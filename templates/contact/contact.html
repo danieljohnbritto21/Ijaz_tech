@@ -1,230 +1,202 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Start a Project & Contact — Ijaz_Solutions{% endblock %}
-{% block meta_description %}Contact Ijaz_Solutions to discuss your software, AI automation, or digital product requirements. Receive a prompt, senior-level technical assessment within 24 hours.{% endblock %}
+{% block title %}Start a Project & Contact — High Deckz{% endblock %}
+{% block meta_description %}Contact High Deckz to discuss your software, AI automation, or web application requirements. Receive a prompt, senior-level technical assessment within 24 hours.{% endblock %}
 
 {% block content %}
-<!-- Contact Hero -->
-<section class="section section--dark page-hero">
-    <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Start a Project</div>
-            <h1 class="page-hero__title">Let's Build Something<br><span class="text-gradient">That Moves the Needle.</span></h1>
-            <p class="page-hero__subtitle">
-                Share your operational bottlenecks, product vision, or technical requirements. A senior architect will review your submission and reply with a frank feasibility evaluation within 24 business hours.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Form & Info Section -->
-<section class="section">
+<section class="section section--contact-page">
     <div class="container">
         <!-- Django Success/Error Messages -->
         {% if messages %}
-        <div class="mb-8">
+        <div class="contact-messages mb-6">
             {% for message in messages %}
-            <div class="alert alert--{{ message.tags|default:'info' }} mb-4">
-                <div class="alert__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                </div>
-                <div class="alert__content">
-                    {{ message }}
-                </div>
+            <div class="alert alert--{{ message.tags|default:'info' }}" role="alert">
+                <span class="alert__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <div class="alert__content">{{ message }}</div>
             </div>
             {% endfor %}
         </div>
         {% endif %}
 
-        <div class="grid grid--3 gap-12">
-            <!-- Form Column (2/3 width) -->
-            <div class="col-span-2">
-                <div class="card p-8 md:p-10">
-                    <h2 class="card__title text-2xl mb-2">Project Inquiry Form</h2>
-                    <p class="text-secondary text-sm mb-8">
-                        Complete this brief questionnaire to help us understand your technical landscape and desired outcomes.
+        <!-- Page Header: Eyebrow, H1, Intro Paragraph -->
+        <header class="contact-header">
+            <span class="section__eyebrow">Start a Project</span>
+            <h1 class="contact-heading">Let's Build Something That Moves the Needle.</h1>
+            <p class="contact-desc">
+                Share your operational bottlenecks, product vision, or technical requirements. A senior architect will review your submission and reply with a frank feasibility evaluation within 24 business hours.
+            </p>
+        </header>
+
+        <!-- Main 2-Column Grid (5fr : 7fr) -->
+        <div class="contact-grid">
+            <!-- Left Info & Offer Column (Sticky Desktop) -->
+            <aside class="contact-sidebar">
+                <!-- Offer Card (Solid White, 1px border, 20px radius, 3px accent) -->
+                <div class="contact-offer-card">
+                    <div class="contact-offer-card__header">
+                        <span class="badge badge--cyan">First-time offer</span>
+                        <span class="contact-offer-price">₹399</span>
+                    </div>
+                    <h2 class="contact-offer-title">Your first website, just ₹399</h2>
+                    <p class="contact-offer-desc">
+                        A 3-4 page dynamic website, built for your business by {% include "partials/brand.html" %} with a team you can talk to directly.
                     </p>
+                    <div class="contact-offer-divider"></div>
+                    <div class="contact-offer-fineprint">
+                        <p>Application hosting charges are applicable and billed separately. Domain, additional pages, and custom features are quoted separately.</p>
+                        {% include "partials/offer_validity.html" %}
+                    </div>
+                </div>
+
+                <!-- Three Benefit Rows -->
+                <div class="contact-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <strong class="benefit-title">No sales fluff</strong>
+                            <span class="benefit-detail">Direct review from experienced software engineers.</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <strong class="benefit-title">24-hour turnaround</strong>
+                            <span class="benefit-detail">Prompt feasibility assessment of your project.</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <strong class="benefit-title">Email directly</strong>
+                            <span class="benefit-detail">Direct communication without ticket gatekeepers.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info Partial (Phone numbers, WhatsApp, Email, Location) -->
+                <div class="contact-direct-wrapper">
+                    <h3 class="contact-direct-title">Direct Inquiries &amp; Phone</h3>
+                    {% include "partials/contact_info.html" %}
+                </div>
+            </aside>
+
+            <!-- Right Form Card Column -->
+            <div class="contact-card-wrapper">
+                <div class="contact-card">
+                    <h2 class="contact-card__title">Project Inquiry Form</h2>
+                    <p class="contact-card__subtitle">Complete this brief questionnaire to help us understand your technical landscape.</p>
 
                     <form method="POST" action="{% url 'contact' %}" id="inquiry-form" novalidate>
                         {% csrf_token %}
 
                         <div id="form-feedback"></div>
 
-                        <div class="grid grid--2 gap-6 mb-6">
-                            <!-- Full Name -->
-                            <div class="form-group">
-                                <label for="inquiry-name" class="form-label font-semibold text-sm">
-                                    Full Name <span class="text-error">*</span>
-                                </label>
+                        <div class="contact-form-grid">
+                            <!-- Row 1: Full Name | Business Email -->
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-name" class="form-label">Full Name <span class="text-error">*</span></label>
                                 {{ form.full_name }}
                                 {% if form.full_name.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.full_name.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.full_name.errors.0 }}</div>
                                 {% endif %}
                             </div>
 
-                            <!-- Email -->
-                            <div class="form-group">
-                                <label for="inquiry-email" class="form-label font-semibold text-sm">
-                                    Business Email <span class="text-error">*</span>
-                                </label>
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-email" class="form-label">Business Email <span class="text-error">*</span></label>
                                 {{ form.email }}
                                 {% if form.email.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.email.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.email.errors.0 }}</div>
                                 {% endif %}
                             </div>
-                        </div>
 
-                        <div class="grid grid--2 gap-6 mb-6">
-                            <!-- Company -->
-                            <div class="form-group">
-                                <label for="inquiry-company" class="form-label font-semibold text-sm">
-                                    Company / Organization
-                                </label>
+                            <!-- Row 2: Company | Service -->
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-company" class="form-label">Company / Organization</label>
                                 {{ form.company }}
                                 {% if form.company.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.company.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.company.errors.0 }}</div>
                                 {% endif %}
                             </div>
 
-                            <!-- Service -->
-                            <div class="form-group">
-                                <label for="inquiry-service" class="form-label font-semibold text-sm">
-                                    Primary Service of Interest <span class="text-error">*</span>
-                                </label>
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-service" class="form-label">Primary Service of Interest <span class="text-error">*</span></label>
                                 {{ form.service }}
                                 {% if form.service.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.service.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.service.errors.0 }}</div>
                                 {% endif %}
                             </div>
-                        </div>
 
-                        <!-- Requirements -->
-                        <div class="form-group mb-6">
-                            <label for="inquiry-requirements" class="form-label font-semibold text-sm">
-                                Project Overview & Key Requirements <span class="text-error">*</span>
-                            </label>
-                            {{ form.requirements }}
-                            <p class="text-xs text-tertiary mt-1">Please provide at least 20 characters describing what you wish to build or automate.</p>
-                            {% if form.requirements.errors %}
-                            <div class="form-field-error text-xs text-error mt-1">{{ form.requirements.errors.0 }}</div>
-                            {% endif %}
-                        </div>
+                            <!-- Row 3: Requirements -->
+                            <div class="form-group col-span-12">
+                                <label for="inquiry-requirements" class="form-label">Project Overview &amp; Key Requirements <span class="text-error">*</span></label>
+                                {{ form.requirements }}
+                                {% if form.requirements.errors %}
+                                <div class="form-field-error">{{ form.requirements.errors.0 }}</div>
+                                {% endif %}
+                            </div>
 
-                        <div class="grid grid--3 gap-6 mb-6">
-                            <!-- Budget -->
-                            <div class="form-group">
-                                <label for="inquiry-budget" class="form-label font-semibold text-sm">
-                                    Estimated Budget
-                                </label>
+                            <!-- Row 4: Budget | Timeline | Contact Method -->
+                            <div class="form-group col-span-4 col-sm-12">
+                                <label for="inquiry-budget" class="form-label">Select budget</label>
                                 {{ form.budget }}
+                                <span class="form-helper-text">Most projects fit within ₹1,00,000. Need more? Tell us in your requirements.</span>
                                 {% if form.budget.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.budget.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.budget.errors.0 }}</div>
                                 {% endif %}
                             </div>
 
-                            <!-- Timeline -->
-                            <div class="form-group">
-                                <label for="inquiry-timeline" class="form-label font-semibold text-sm">
-                                    Target Timeline
-                                </label>
+                            <div class="form-group col-span-4 col-sm-12">
+                                <label for="inquiry-timeline" class="form-label">Select timeline</label>
                                 {{ form.timeline }}
                                 {% if form.timeline.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.timeline.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.timeline.errors.0 }}</div>
                                 {% endif %}
                             </div>
 
-                            <!-- Preferred Contact Method -->
-                            <div class="form-group">
-                                <label for="inquiry-contact-method" class="form-label font-semibold text-sm">
-                                    Contact Preference
-                                </label>
+                            <div class="form-group col-span-4 col-sm-12">
+                                <label for="inquiry-contact-method" class="form-label">Contact method</label>
                                 {{ form.contact_method }}
                                 {% if form.contact_method.errors %}
-                                <div class="form-field-error text-xs text-error mt-1">{{ form.contact_method.errors.0 }}</div>
+                                <div class="form-field-error">{{ form.contact_method.errors.0 }}</div>
                                 {% endif %}
                             </div>
-                        </div>
 
-                        <!-- Privacy Consent -->
-                        <div class="form-group mb-8">
-                            <label class="flex items-start gap-3 cursor-pointer text-sm text-secondary">
-                                {{ form.privacy_consent }}
-                                <span>
-                                    I agree to the <a href="{% url 'privacy' %}" target="_blank" class="text-primary hover-underline">Privacy Policy</a> and consent to Ijaz_Solutions processing this information to assess and respond to my project inquiry. <span class="text-error">*</span>
-                                </span>
-                            </label>
-                            {% if form.privacy_consent.errors %}
-                            <div class="form-field-error text-xs text-error mt-1">{{ form.privacy_consent.errors.0 }}</div>
-                            {% endif %}
-                        </div>
+                            <!-- Row 5: Privacy Checkbox -->
+                            <div class="form-group col-span-12">
+                                <label class="checkbox-field" for="inquiry-privacy">
+                                    {{ form.privacy_consent }}
+                                    <span>
+                                        I agree to the <a href="{% url 'privacy' %}" target="_blank">Privacy Policy</a> and consent to {% include "partials/brand.html" %} processing my information to respond to this inquiry. <span class="text-error">*</span>
+                                    </span>
+                                </label>
+                                {% if form.privacy_consent.errors %}
+                                <div class="form-field-error">{{ form.privacy_consent.errors.0 }}</div>
+                                {% endif %}
+                            </div>
 
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn--primary btn--lg btn--block">
-                            Submit Project Inquiry
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </button>
+                            <!-- Row 6: Submit Button & Offer Footnote -->
+                            <div class="form-group col-span-12">
+                                <button type="submit" class="btn btn--primary btn--lg btn--block">
+                                    <span>Submit Project Inquiry</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </button>
+                                <p class="form-offer-footnote text-center mt-3">
+                                    First-time offer ₹399. Hosting charges applicable.
+                                </p>
+                            </div>
+                        </div>
                     </form>
-                </div>
-            </div>
-
-            <!-- Sidebar Info Column (1/3 width) -->
-            <div class="space-y-6">
-                <!-- Direct Contact Card -->
-                <div class="card p-6">
-                    <h3 class="card__title text-lg mb-4">Direct Contact Information</h3>
-                    <div class="space-y-4 text-sm">
-                        <div class="flex items-start gap-3">
-                            <div class="icon-bubble icon-bubble--primary" style="width: 36px; height: 36px; min-width: 36px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            </div>
-                            <div>
-                                <span class="text-xs text-tertiary block">Email Inquiries</span>
-                                <a href="mailto:contact@ijazsolutions.com" class="text-slate font-semibold hover:text-primary">contact@ijazsolutions.com</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3">
-                            <div class="icon-bubble icon-bubble--cyan" style="width: 36px; height: 36px; min-width: 36px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            </div>
-                            <div>
-                                <span class="text-xs text-tertiary block">Direct Phone</span>
-                                <span class="text-slate font-semibold">+1 (555) 019-2834</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3">
-                            <div class="icon-bubble icon-bubble--primary" style="width: 36px; height: 36px; min-width: 36px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            </div>
-                            <div>
-                                <span class="text-xs text-tertiary block">Response Commitment</span>
-                                <span class="text-slate font-semibold">Under 24 Hours (Mon–Fri)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- NDA Security Guarantee -->
-                <div class="card p-6 bg-soft border-primary">
-                    <div class="flex items-center gap-3 mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <h4 class="font-bold text-sm">Mutual NDA Guaranteed</h4>
-                    </div>
-                    <p class="text-xs text-secondary leading-relaxed">
-                        Your intellectual property is sacred. We treat all shared concepts and technical documentation under complete confidentiality. We happily sign your standard mutual NDA prior to discovery calls.
-                    </p>
-                </div>
-
-                <!-- What Happens Next -->
-                <div class="card p-6">
-                    <h4 class="font-bold text-sm mb-3">What Happens Next?</h4>
-                    <ol class="space-y-3 text-xs text-secondary list-decimal pl-4">
-                        <li><strong>Review:</strong> Our lead engineer reviews your technical requirements.</li>
-                        <li><strong>Discovery Call:</strong> A focused 30-minute scoping discussion.</li>
-                        <li><strong>Blueprint & Estimate:</strong> A clear technical roadmap with milestone pricing.</li>
-                    </ol>
                 </div>
             </div>
         </div>

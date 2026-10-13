@@ -1,181 +1,204 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Ijaz_Solutions — Smart Technology. Practical Solutions. Real Business Impact.{% endblock %}
-{% block meta_description %}Ijaz_Solutions helps businesses and individuals through AI automation, custom software development, web & mobile applications, and IT consulting. Smart technology for real business impact.{% endblock %}
+{% block title %}High Deckz — Smart Technology. Practical Solutions. Real impact.{% endblock %}
+{% block meta_description %}High Deckz delivers AI automation, custom software development, web & mobile applications, and IT consulting. High-utility software built with transparent collaboration.{% endblock %}
 
 {% block content %}
 
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="hero">
-    <!-- Atmospheric Layered Background Canvas -->
-    <div class="hero__bg-canvas" aria-hidden="true">
-        <div class="hero__bg-grid"></div>
-        <div class="hero__bg-glow hero__bg-glow--primary"></div>
-        <div class="hero__bg-glow hero__bg-glow--secondary"></div>
-        <div class="hero__bg-glow hero__bg-glow--accent"></div>
-        <!-- Subtle Technology Network Constellation (concentrated on right side) -->
-        <svg class="hero__bg-network" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-                <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#08BDE5" stop-opacity="0.38" />
-                    <stop offset="60%" stop-color="#168BEA" stop-opacity="0.22" />
-                    <stop offset="100%" stop-color="#08BDE5" stop-opacity="0.08" />
-                </linearGradient>
-            </defs>
-            <path d="M 460 70 L 590 130 L 730 80 M 590 130 L 540 260 L 690 220 L 770 320 M 540 260 L 630 380 L 760 430 M 630 380 L 550 490 L 700 520" stroke="url(#netGrad)" stroke-width="1.2" stroke-dasharray="3 3"/>
-            <path d="M 690 220 L 630 380 M 590 130 L 690 220" stroke="url(#netGrad)" stroke-width="1"/>
-            <circle cx="460" cy="70" r="3" fill="#08BDE5" opacity="0.5"/>
-            <circle cx="590" cy="130" r="4.5" fill="#08BDE5" opacity="0.6"/>
-            <circle cx="730" cy="80" r="3" fill="#168BEA" opacity="0.4"/>
-            <circle cx="540" cy="260" r="4" fill="#08BDE5" opacity="0.6"/>
-            <circle cx="690" cy="220" r="5" fill="#08BDE5" opacity="0.7"/>
-            <circle cx="770" cy="320" r="3.5" fill="#168BEA" opacity="0.4"/>
-            <circle cx="630" cy="380" r="4.5" fill="#08BDE5" opacity="0.6"/>
-            <circle cx="760" cy="430" r="3" fill="#168BEA" opacity="0.4"/>
-            <circle cx="550" cy="490" r="4" fill="#08BDE5" opacity="0.5"/>
-            <circle cx="700" cy="520" r="3" fill="#168BEA" opacity="0.4"/>
-            <circle cx="690" cy="220" r="10" stroke="#08BDE5" stroke-width="1" opacity="0.25"/>
-            <circle cx="590" cy="130" r="8" stroke="#08BDE5" stroke-width="1" opacity="0.2"/>
-        </svg>
-    </div>
-    
+<!-- ============================================================
+     1. HERO SECTION (Transparent, Mouse-Reactive Particle Canvas)
+     ============================================================ -->
+<section class="hero hero--clean" id="hero">
     <div class="container">
         <div class="hero__inner">
-            <!-- Left Column: Content -->
+            <!-- Left Column: Content & Calls to Action -->
             <div class="hero__content">
-                <div class="hero__eyebrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    Your Technology Partner for What's Next
+                <div class="badge badge--cyan hero__badge mb-4">
+                    <span class="badge__dot" aria-hidden="true"></span>
+                    <span>First-time offer: website from ₹399</span>
                 </div>
+
                 <h1 class="hero__title">
                     Smart Technology.<br>
-                    <span class="hero__title-highlight">Practical Solutions.</span><br>
-                    Real Business Impact.
+                    Practical Solutions.<br>
+                    <span class="text-cyan">Real impact.</span>
                 </h1>
+
                 <p class="hero__description">
-                    We help businesses and individuals turn challenges into opportunities through AI automation, custom software development, web and mobile applications, and IT consulting. From simplifying everyday operations to building digital products, we focus on practical solutions designed around your needs.
+                    We help businesses and individuals turn challenges into opportunities through AI automation, custom software development, web and mobile applications, and IT consulting.
                 </p>
-                <div class="btn-group">
-                    <a href="{% url 'contact' %}" class="btn btn--primary btn--lg btn--magnetic">
-                        Start a Project
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+                <div class="btn-group hero__actions">
+                    <a href="{% url 'contact' %}?offer=399" class="btn btn--primary btn--lg">
+                        <span>Claim the ₹399 offer</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
-                    <a href="{% url 'services' %}" class="btn btn--secondary btn--lg btn--magnetic">Explore Our Services</a>
+                    <a href="{% url 'services' %}" class="btn btn--outline btn--lg">Explore services</a>
                 </div>
+
+                <div class="hero__offer-line mb-4">
+                    <span class="text-accent font-semibold">₹399 special offer:</span> 3–4 page dynamic website. Application hosting charges applicable.
+                </div>
+
                 <div class="hero__trust">
-                    <div class="hero__trust-badge">
-                        <svg class="hero__trust-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    <div class="hero__trust-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
-                    <span class="hero__trust-text">Tailored solutions. Clear communication. Technology built around your goals.</span>
+                    <span class="hero__trust-text">Tailored solutions. Clear communication. You own the code.</span>
+                </div>
+
+                <div class="hero__pills">
+                    <span class="tech-pill">AI</span>
+                    <span class="tech-pill">React</span>
+                    <span class="tech-pill">Flutter</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Cloud</span>
                 </div>
             </div>
-            
-            <!-- Right Column: Visual 3D & Product Dashboard Composition -->
-            <div class="hero__visual" id="hero-visual-area">
-                <div class="hero-3d-scene" id="hero-3d-rig">
-                    <!-- Dimensional Floating Glass Prism (Positioned safely in upper-right orbit) -->
-                    <div class="dimensional-object" aria-hidden="true">
-                        <div class="poly-prism">
-                            <div class="poly-facet poly-facet--front"></div>
-                            <div class="poly-facet poly-facet--back"></div>
-                            <div class="poly-facet poly-facet--right"></div>
-                            <div class="poly-facet poly-facet--left"></div>
-                            <div class="poly-core"></div>
-                            <div class="poly-ring"></div>
+
+            <!-- Right Column: 3D Tilting Dashboard Mockup with Sheen & Layered Chips -->
+            <!-- Right Column: Dashboard Stage (Card + 3 Floating Chips Wrapped as One Unit) -->
+            <div class="hero__visual">
+                <div class="dash-stage" id="dash-stage" aria-hidden="true">
+                    <!-- Dashboard Card Mockup -->
+                    <div class="hero-mockup" id="hero-mockup">
+                        <!-- Dynamic Moving Highlight Sheen -->
+                        <div class="hero-mockup__sheen"></div>
+
+                        <!-- Window Chrome Topbar -->
+                        <div class="hero-mockup__topbar">
+                            <div class="hero-mockup__dots">
+                                <span class="hero-mockup__dot hero-mockup__dot--red"></span>
+                                <span class="hero-mockup__dot hero-mockup__dot--yellow"></span>
+                                <span class="hero-mockup__dot hero-mockup__dot--green"></span>
+                            </div>
+                            <div class="hero-mockup__url">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <span>app.highdeckz.com</span>
+                            </div>
+                            <div class="hero-mockup__live">
+                                <span class="live-dot"></span>
+                                <span>Live</span>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Mockup Interior -->
+                        <div class="hero-mockup__body">
+                            <!-- Metrics Row -->
+                            <div class="mockup-stats">
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat__label">Automations</div>
+                                    <div class="mockup-stat__val" id="stat-automations">14 Active</div>
+                                    <div class="mockup-stat__pill text-cyan">99.8% Sync</div>
+                                </div>
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat__label">Manual Hours Saved</div>
+                                    <div class="mockup-stat__val" id="stat-hours">128 hrs</div>
+                                    <div class="mockup-stat__pill text-cyan">+18% MoM</div>
+                                </div>
+                            </div>
+
+                            <!-- Visual Chart Mockup -->
+                            <div class="mockup-chart">
+                                <div class="mockup-chart__header">
+                                    <span class="mockup-chart__title">Activity &amp; Workflows</span>
+                                    <span class="mockup-chart__badge" id="chart-status-badge">Last 7 Days</span>
+                                </div>
+                                <div class="mockup-chart__bars">
+                                    <div class="mockup-bar-col" data-day="Mon" data-val="45%" data-height="45">
+                                        <span class="mockup-bar-tooltip">Mon: 45%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar" style="height: 45%;"></div></div>
+                                        <span class="mockup-bar-day">M</span>
+                                    </div>
+                                    <div class="mockup-bar-col" data-day="Tue" data-val="60%" data-height="60">
+                                        <span class="mockup-bar-tooltip">Tue: 60%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar" style="height: 60%;"></div></div>
+                                        <span class="mockup-bar-day">T</span>
+                                    </div>
+                                    <div class="mockup-bar-col" data-day="Wed" data-val="52%" data-height="52">
+                                        <span class="mockup-bar-tooltip">Wed: 52%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar" style="height: 52%;"></div></div>
+                                        <span class="mockup-bar-day">W</span>
+                                    </div>
+                                    <div class="mockup-bar-col" data-day="Thu" data-val="78%" data-height="78">
+                                        <span class="mockup-bar-tooltip">Thu: 78%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar" style="height: 78%;"></div></div>
+                                        <span class="mockup-bar-day">T</span>
+                                    </div>
+                                    <div class="mockup-bar-col" data-day="Fri" data-val="88%" data-height="88">
+                                        <span class="mockup-bar-tooltip">Fri: 88%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar" style="height: 88%;"></div></div>
+                                        <span class="mockup-bar-day">F</span>
+                                    </div>
+                                    <div class="mockup-bar-col is-active" data-day="Sat" data-val="96%" data-height="96">
+                                        <span class="mockup-bar-tooltip">Sat: 96%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar mockup-bar--peak" style="height: 96%;"></div></div>
+                                        <span class="mockup-bar-day">S</span>
+                                    </div>
+                                    <div class="mockup-bar-col" data-day="Sun" data-val="82%" data-height="82">
+                                        <span class="mockup-bar-tooltip">Sun: 82%</span>
+                                        <div class="mockup-bar-track"><div class="mockup-bar" style="height: 82%;"></div></div>
+                                        <span class="mockup-bar-day">S</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Activity Feed Mockup (Unobscured & Fully Visible) -->
+                            <div class="mockup-feed" id="mockup-feed">
+                                <div class="mockup-feed__item">
+                                    <span class="mockup-feed__dot mockup-feed__dot--indigo"></span>
+                                    <span class="mockup-feed__text">Data pipeline run completed</span>
+                                    <span class="mockup-feed__time">just now</span>
+                                </div>
+                                <div class="mockup-feed__item">
+                                    <span class="mockup-feed__dot mockup-feed__dot--cyan"></span>
+                                    <span class="mockup-feed__text">Client portal webhook dispatched</span>
+                                    <span class="mockup-feed__time">2m ago</span>
+                                </div>
+                            </div>
+
+                            <!-- Sample dashboard caption -->
+                            <div class="mockup-caption">Sample dashboard for illustration</div>
                         </div>
                     </div>
 
-                    <!-- Main Dashboard Frame -->
-                    <div class="hero__visual-container">
-                        <div class="hero-dashboard">
-                            <!-- Window Chrome Topbar -->
-                            <div class="hero-dashboard__topbar">
-                                <div class="hero-dashboard__window-controls">
-                                    <span class="hero-dashboard__dot hero-dashboard__dot--red" title="Close"></span>
-                                    <span class="hero-dashboard__dot hero-dashboard__dot--yellow" title="Minimize"></span>
-                                    <span class="hero-dashboard__dot hero-dashboard__dot--green" title="Expand"></span>
-                                </div>
-                                <div class="hero-dashboard__url-badge">
-                                    <svg class="hero-dashboard__lock-icon" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                    <span class="hero-dashboard__url">app.ijaz-solutions.com/dashboard</span>
-                                </div>
-                                <div class="hero-dashboard__status-pill">
-                                    <span class="hero-dashboard__status-dot"></span>
-                                    <span>Live Sync</span>
-                                </div>
+                    <!-- 3 Floating Chips (Children of .dash-stage, positioned relative to card edges) -->
+                    <!-- Chip 1: AI Assistant Replied (Overhangs Top-Right, ABOVE header row, Live label fully visible) -->
+                    <div class="floating-chip floating-chip--1" id="chip-1">
+                        <div class="floating-chip__inner">
+                            <div class="floating-chip__icon floating-chip__icon--cyan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                             </div>
-                            
-                            <!-- Dashboard Interior -->
-                            <div class="hero-dashboard__body">
-                                <!-- Navigation Sidebar -->
-                                <div class="hero-dashboard__sidebar">
-                                    <div class="hero-dashboard__sidebar-item hero-dashboard__sidebar-item--active">
-                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-                                        Dashboard
-                                    </div>
-                                    <div class="hero-dashboard__sidebar-item">
-                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                        Projects
-                                    </div>
-                                    <div class="hero-dashboard__sidebar-item">
-                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                        Automation
-                                    </div>
-                                    <div class="hero-dashboard__sidebar-item">
-                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-                                        Analytics
-                                    </div>
-                                    <div class="hero-dashboard__sidebar-item">
-                                        <svg class="hero-dashboard__sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                                        Settings
-                                    </div>
-                                </div>
-                                
-                                <!-- Main Dashboard Content -->
-                                <div class="hero-dashboard__main">
-                                    <!-- Key Metrics Row -->
-                                    <div class="hero-dashboard__stats">
-                                        <div class="hero-dashboard__stat">
-                                            <div class="hero-dashboard__stat-label">Active Tasks</div>
-                                            <div class="hero-dashboard__stat-value">24</div>
-                                            <div class="hero-dashboard__stat-sub"><span class="hero-dashboard__stat-pill hero-dashboard__stat-pill--neutral">+12%</span> active</div>
-                                        </div>
-                                        <div class="hero-dashboard__stat">
-                                            <div class="hero-dashboard__stat-label">Automated</div>
-                                            <div class="hero-dashboard__stat-value hero-dashboard__stat-value--cyan">89%</div>
-                                            <div class="hero-dashboard__stat-sub"><span class="hero-dashboard__stat-pill hero-dashboard__stat-pill--cyan">AI Flow</span> 11k/mo</div>
-                                        </div>
-                                        <div class="hero-dashboard__stat">
-                                            <div class="hero-dashboard__stat-label">Uptime</div>
-                                            <div class="hero-dashboard__stat-value hero-dashboard__stat-value--green">99.9%</div>
-                                            <div class="hero-dashboard__stat-sub"><span class="hero-dashboard__stat-pill hero-dashboard__stat-pill--green">Stable</span> 24/7</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Interactive Performance Chart -->
-                                    <div class="hero-dashboard__chart">
-                                        <div class="hero-dashboard__chart-header">
-                                            <div class="hero-dashboard__chart-title">Performance Overview</div>
-                                            <span class="hero-dashboard__chart-period">Last 30 Days</span>
-                                        </div>
-                                        <div class="hero-dashboard__chart-body">
-                                            <div class="hero-dashboard__chart-gridlines" aria-hidden="true">
-                                                <span></span><span></span><span></span>
-                                            </div>
-                                            <div class="hero-dashboard__chart-bars">
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 38%;"><span class="chart-tooltip">38%</span></div><span class="hero-dashboard__chart-day">Mon</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 56%;"><span class="chart-tooltip">56%</span></div><span class="hero-dashboard__chart-day">Tue</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 44%;"><span class="chart-tooltip">44%</span></div><span class="hero-dashboard__chart-day">Wed</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 70%;"><span class="chart-tooltip">70%</span></div><span class="hero-dashboard__chart-day">Thu</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 82%;"><span class="chart-tooltip">82%</span></div><span class="hero-dashboard__chart-day">Fri</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 64%;"><span class="chart-tooltip">64%</span></div><span class="hero-dashboard__chart-day">Sat</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar hero-dashboard__chart-bar--peak" style="height: 94%;"><span class="chart-tooltip">94%</span></div><span class="hero-dashboard__chart-day">Sun</span></div>
-                                                <div class="hero-dashboard__chart-col"><div class="hero-dashboard__chart-bar" style="height: 78%;"><span class="chart-tooltip">78%</span></div><span class="hero-dashboard__chart-day">Today</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="floating-chip__content">
+                                <span class="floating-chip__title">AI assistant replied</span>
+                                <span class="floating-chip__sub">Instant response</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chip 2: New Booking Confirmed (Overhangs LEFT edge near bottom, below stat tiles, clear of chart & Automations tile) -->
+                    <div class="floating-chip floating-chip--2" id="chip-2">
+                        <div class="floating-chip__inner">
+                            <div class="floating-chip__icon floating-chip__icon--green">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="floating-chip__content">
+                                <span class="floating-chip__title">New booking confirmed</span>
+                                <span class="floating-chip__sub">Calendar updated</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chip 3: You Own The Code (Overhangs Bottom-Right, below the last activity row & caption) -->
+                    <div class="floating-chip floating-chip--3" id="chip-3">
+                        <div class="floating-chip__inner">
+                            <div class="floating-chip__icon floating-chip__icon--indigo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </div>
+                            <div class="floating-chip__content">
+                                <span class="floating-chip__title">You own the code</span>
+                                <span class="floating-chip__sub">Zero vendor lock-in</span>
                             </div>
                         </div>
                     </div>
@@ -186,209 +209,151 @@
 </section>
 
 
-<!-- ===================== CHALLENGES ===================== -->
-<section class="section section--soft" id="challenges">
+<!-- ============================================================
+     2. COMMITMENTS STRIP (Hairline Borders, Top Gradient)
+     ============================================================ -->
+<section class="commitments-section" aria-label="Our core commitments">
+    <div class="container">
+        <div class="commitments-strip">
+            <div class="commitment-item">
+                <div class="commitment-item__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="commitment-item__text">
+                    <span class="commitment-item__title">Direct communication</span>
+                    <span class="commitment-item__desc">Talk directly with technical builders</span>
+                </div>
+            </div>
+
+            <div class="commitment-item">
+                <div class="commitment-item__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                </div>
+                <div class="commitment-item__text">
+                    <span class="commitment-item__title">Transparent pricing</span>
+                    <span class="commitment-item__desc">Clear scope, milestones, and no surprises</span>
+                </div>
+            </div>
+
+            <div class="commitment-item">
+                <div class="commitment-item__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                </div>
+                <div class="commitment-item__text">
+                    <span class="commitment-item__title">Modern technology</span>
+                    <span class="commitment-item__desc">Clean, maintainable, scalable stacks</span>
+                </div>
+            </div>
+
+            <div class="commitment-item">
+                <div class="commitment-item__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div class="commitment-item__text">
+                    <span class="commitment-item__title">Client ownership</span>
+                    <span class="commitment-item__desc">You own 100% of the code and assets</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     3. DEDICATED FIRST-TIME OFFER SECTION (Card with Edge Accent)
+     ============================================================ -->
+{% include 'partials/offer.html' %}
+
+
+<!-- ============================================================
+     4. SERVICES OVERVIEW (Transparent, Corner Glow, Equal Height)
+     ============================================================ -->
+<section class="section section--services" id="services">
     <div class="container">
         <div class="section__header section__header--center">
-            <div class="section__eyebrow">Common Challenges</div>
-            <h2 class="section__title">Your Business Has Challenges.<br>Technology Should Help Solve Them.</h2>
-            <p class="section__subtitle">Growing a business comes with complex processes, changing customer expectations, and technical challenges. The right technology can make those challenges easier to manage.</p>
+            <span class="section__eyebrow">Our Services</span>
+            <h2 class="section__title">Practical Solutions for Modern Business Challenges</h2>
+            <p class="section__subtitle">We build reliable digital tools, streamline operations with automated workflows, and provide straightforward technical guidance.</p>
         </div>
-        
-        <div class="challenges">
-            <div class="challenge-card">
-                <div class="challenge-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.8 15-3.5 2"/><path d="m20.7 7-3.5 2"/><path d="M6.8 9 3.3 7"/><path d="m20.7 17-3.5-2"/><circle cx="12" cy="12" r="4"/></svg>
-                </div>
-                <h3 class="challenge-card__title">Too Much Manual Work?</h3>
-                <p class="challenge-card__text">Repetitive tasks consume valuable time. Appropriate automation can reduce manual work, minimize errors, and free your team to focus on higher-value activities.</p>
-            </div>
-            
-            <div class="challenge-card">
-                <div class="challenge-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg>
-                </div>
-                <h3 class="challenge-card__title">Disconnected Systems?</h3>
-                <p class="challenge-card__text">When your tools don't communicate, data silos form and workflows break. Software integration can connect existing systems, creating smoother operations and better visibility.</p>
-            </div>
-            
-            <div class="challenge-card">
-                <div class="challenge-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                </div>
-                <h3 class="challenge-card__title">Need a Digital Product?</h3>
-                <p class="challenge-card__text">Websites, web applications, and mobile apps can bring your ideas to life, reach new customers, and give users a polished way to interact with your business.</p>
-            </div>
-            
-            <div class="challenge-card">
-                <div class="challenge-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                </div>
-                <h3 class="challenge-card__title">Facing Technical Challenges?</h3>
-                <p class="challenge-card__text">Not every organization has in-house technical expertise. Technical guidance and support can help you navigate IT challenges, evaluate options, and make informed decisions.</p>
-            </div>
-        </div>
-        
-        <div class="services__closing" style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: none;">
-            <a href="{% url 'contact' %}" class="btn btn--primary btn--lg">
-                Tell Us What You Need
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-        </div>
-    </div>
-</section>
 
-
-<!-- ===================== SERVICES ===================== -->
-<section class="section" id="services">
-    <div class="container">
-        <div class="section__header">
-            <div class="section__eyebrow">Our Services</div>
-            <h2 class="section__title">Technology Solutions Designed Around Your Needs</h2>
-            <p class="section__subtitle">Every project has a different objective. We help you identify the right approach and build a solution aligned with your requirements.</p>
-        </div>
-        
         <div class="services-grid">
-            <!-- AI & Automation -->
+            <!-- Service 1: AI & Automation -->
             <div class="service-card">
-                <div class="service-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                <div class="service-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><circle cx="12" cy="12" r="3"/></svg>
                 </div>
-                <h3 class="service-card__title">AI & Automation</h3>
-                <p class="service-card__headline">Make Everyday Work Smarter.</p>
-                <p class="service-card__text">Explore AI-powered applications and workflow automation that can help reduce repetitive work, organize information, and streamline business operations.</p>
-                <div class="service-card__tags">
-                    <span class="service-card__tag">AI Assistants</span>
-                    <span class="service-card__tag">Workflow Automation</span>
-                    <span class="service-card__tag">Document Processing</span>
-                    <span class="service-card__tag">AI Integrations</span>
+                <h3 class="service-card__title">AI &amp; Automation</h3>
+                <p class="service-card__desc">Streamline operations and reduce manual workloads by connecting tools, processing unstructured documents, and implementing smart workflows.</p>
+                <ul class="service-card__deliverables">
+                    <li>Document parsing and data extraction</li>
+                    <li>Internal AI chatbots and knowledge assistants</li>
+                    <li>Cross-tool automated pipelines and sync</li>
+                </ul>
+                <div class="service-card__footer">
+                    <a href="{% url 'ai-automation' %}" class="service-card__link">
+                        <span>Learn more</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
-                <a href="{% url 'ai-automation' %}" class="service-card__link">
-                    Explore AI & Automation
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
             </div>
-            
-            <!-- Software Development -->
+
+            <!-- Service 2: Custom Software Development -->
             <div class="service-card">
-                <div class="service-card__icon">
+                <div class="service-card__icon" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
-                <h3 class="service-card__title">Software Development</h3>
-                <p class="service-card__headline">Software Built Around Your Business.</p>
-                <p class="service-card__text">Get custom software designed to address specific operational needs, simplify workflows, and support your business processes.</p>
-                <div class="service-card__tags">
-                    <span class="service-card__tag">Business Applications</span>
-                    <span class="service-card__tag">Backend Systems</span>
-                    <span class="service-card__tag">SaaS Products</span>
-                    <span class="service-card__tag">APIs</span>
-                </div>
-                <a href="{% url 'software-development' %}" class="service-card__link">
-                    Explore Software Development
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
-            
-            <!-- Web & Mobile -->
-            <div class="service-card">
-                <div class="service-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                </div>
-                <h3 class="service-card__title">Web & Mobile Apps</h3>
-                <p class="service-card__headline">Bring Your Digital Ideas to Life.</p>
-                <p class="service-card__text">Create professional websites, web applications, customer portals, and mobile experiences that make it easier for people to interact with your business.</p>
-                <div class="service-card__tags">
-                    <span class="service-card__tag">Business Websites</span>
-                    <span class="service-card__tag">Web Applications</span>
-                    <span class="service-card__tag">Mobile Apps</span>
-                    <span class="service-card__tag">Portals</span>
-                </div>
-                <a href="{% url 'web-mobile' %}" class="service-card__link">
-                    Explore Web & Mobile
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
-            
-            <!-- IT Consulting -->
-            <div class="service-card">
-                <div class="service-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                </div>
-                <h3 class="service-card__title">IT Consulting & Support</h3>
-                <p class="service-card__headline">Make Technology Work for Your Business.</p>
-                <p class="service-card__text">Get technical guidance and support to navigate IT challenges, evaluate solutions, connect systems, and maintain your technology environment.</p>
-                <div class="service-card__tags">
-                    <span class="service-card__tag">Technical Consulting</span>
-                    <span class="service-card__tag">System Integration</span>
-                    <span class="service-card__tag">Architecture</span>
-                    <span class="service-card__tag">Support</span>
-                </div>
-                <a href="{% url 'it-consulting' %}" class="service-card__link">
-                    Explore IT Consulting
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
-        </div>
-        
-        <div class="services__closing">
-            <p>Not sure which service you need? Let's discuss your project.</p>
-            <a href="{% url 'contact' %}" class="btn btn--secondary btn--lg">Discuss Your Requirements</a>
-        </div>
-    </div>
-</section>
-
-
-<!-- ===================== WHY CHOOSE US ===================== -->
-<section class="section section--soft" id="why-us">
-    <div class="container">
-        <div class="why-us__grid">
-            <div class="why-us__content">
-                <div class="section__eyebrow">Why Ijaz_Solutions</div>
-                <h2 class="section__title">More Than Technology. A Partner Focused on Your Goals.</h2>
-                <p class="section__subtitle">Choosing a technology partner means choosing how your project will be understood, developed, delivered, and supported.</p>
-                <div style="margin-top: var(--space-8);">
-                    <a href="{% url 'process' %}" class="btn btn--primary">
-                        Discover Our Approach
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <h3 class="service-card__title">Custom Software Development</h3>
+                <p class="service-card__desc">Purpose-built software systems tailored to your specific workflow, without the bloat, complexity, or ongoing fees of generic SaaS.</p>
+                <ul class="service-card__deliverables">
+                    <li>Internal operational tools and dashboards</li>
+                    <li>API development and third-party integrations</li>
+                    <li>Database design and legacy data migrations</li>
+                </ul>
+                <div class="service-card__footer">
+                    <a href="{% url 'software-development' %}" class="service-card__link">
+                        <span>Learn more</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
             </div>
-            
-            <div class="why-us__list">
-                <div class="why-us__item">
-                    <div class="why-us__item-number">01</div>
-                    <div>
-                        <h3 class="why-us__item-title">Solutions Tailored to Your Requirements</h3>
-                        <p class="why-us__item-text">We don't apply one-size-fits-all templates. Every project starts with understanding your specific context, constraints, and objectives.</p>
-                    </div>
+
+            <!-- Service 3: Web & Mobile Applications -->
+            <div class="service-card">
+                <div class="service-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-number">02</div>
-                    <div>
-                        <h3 class="why-us__item-title">Practical Technology Choices</h3>
-                        <p class="why-us__item-text">We recommend technologies that suit your project and budget, not the newest or most complex option available.</p>
-                    </div>
+                <h3 class="service-card__title">Web &amp; Mobile Applications</h3>
+                <p class="service-card__desc">Fast, responsive websites and cross-platform applications that deliver clean user experiences across devices and convert visitors effectively.</p>
+                <ul class="service-card__deliverables">
+                    <li>Cross-platform mobile apps (Flutter, React Native)</li>
+                    <li>Web apps with Django, React, or modern stacks</li>
+                    <li>Performance-focused, responsive marketing sites</li>
+                </ul>
+                <div class="service-card__footer">
+                    <a href="{% url 'web-mobile' %}" class="service-card__link">
+                        <span>Learn more</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-number">03</div>
-                    <div>
-                        <h3 class="why-us__item-title">Clear Communication</h3>
-                        <p class="why-us__item-text">You'll know what's happening at every stage. We explain decisions, share progress regularly, and stay responsive throughout the project.</p>
-                    </div>
+            </div>
+
+            <!-- Service 4: IT Consulting & Technical Support -->
+            <div class="service-card">
+                <div class="service-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-number">04</div>
-                    <div>
-                        <h3 class="why-us__item-title">Quality-Focused Delivery</h3>
-                        <p class="why-us__item-text">We test thoroughly, pay attention to details, and deliver solutions that work reliably from day one.</p>
-                    </div>
-                </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-number">05</div>
-                    <div>
-                        <h3 class="why-us__item-title">Support Beyond Delivery</h3>
-                        <p class="why-us__item-text">Where included in the engagement, we provide documentation, training, and ongoing support to ensure your solution continues to deliver value.</p>
-                    </div>
+                <h3 class="service-card__title">IT Consulting &amp; Support</h3>
+                <p class="service-card__desc">Objective technical advisory, infrastructure planning, and ongoing support to ensure your technology systems stay reliable and secure.</p>
+                <ul class="service-card__deliverables">
+                    <li>Technology stack selection and review</li>
+                    <li>System architecture and scalability planning</li>
+                    <li>Ongoing technical maintenance and support SLAs</li>
+                </ul>
+                <div class="service-card__footer">
+                    <a href="{% url 'it-consulting' %}" class="service-card__link">
+                        <span>Learn more</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -396,50 +361,100 @@
 </section>
 
 
-<!-- ===================== APPROACH ===================== -->
-<section class="section" id="approach">
+<!-- ============================================================
+     5. WHY OUR APPROACH WORKS
+     ============================================================ -->
+<section class="section section--approach" id="approach">
     <div class="container">
-        <div class="approach">
-            <div>
-                <div class="section__eyebrow">Our Approach</div>
+        <div class="approach-grid">
+            <!-- Left Side: Approach Principles -->
+            <div class="approach-content">
+                <span class="section__eyebrow">Our Approach</span>
                 <h2 class="section__title">Why Our Approach Works</h2>
-                <p class="section__subtitle" style="margin-bottom: var(--space-8);">We believe technology should serve a clear business purpose. Every project begins with understanding what you want to achieve, not with choosing tools.</p>
-                <div class="approach__list">
-                    <div class="approach__list-item">
-                        <svg class="approach__list-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                        <p class="approach__list-text"><strong>Start with your objectives</strong>Every project begins with understanding your business goals, constraints, and requirements before discussing technology.</p>
+                <p class="section__subtitle mb-8">
+                    We believe technology should serve a clear business purpose. Every project begins with understanding what you want to achieve, not with picking arbitrary tools.
+                </p>
+
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <div class="approach-item__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <div class="approach-item__text">
+                            <h3 class="approach-item__title">Start with your objectives</h3>
+                            <p class="approach-item__desc">Every project begins with understanding your business goals, constraints, and requirements before discussing technology.</p>
+                        </div>
                     </div>
-                    <div class="approach__list-item">
-                        <svg class="approach__list-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                        <p class="approach__list-text"><strong>Select the right approach</strong>We recommend technology that fits your needs, not the newest or most complex option available.</p>
+
+                    <div class="approach-item">
+                        <div class="approach-item__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <div class="approach-item__text">
+                            <h3 class="approach-item__title">Select the right approach</h3>
+                            <p class="approach-item__desc">We recommend technology that fits your needs and maintenance capability, not the newest or most complex option available.</p>
+                        </div>
                     </div>
-                    <div class="approach__list-item">
-                        <svg class="approach__list-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                        <p class="approach__list-text"><strong>Agree on scope and expectations</strong>We define clear deliverables, milestones, and commercial terms before development begins.</p>
+
+                    <div class="approach-item">
+                        <div class="approach-item__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <div class="approach-item__text">
+                            <h3 class="approach-item__title">Deliver iteratively</h3>
+                            <p class="approach-item__desc">Working software delivered in regular increments ensures you see progress and can provide feedback at every stage.</p>
+                        </div>
                     </div>
-                    <div class="approach__list-item">
-                        <svg class="approach__list-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                        <p class="approach__list-text"><strong>Deliver against defined requirements</strong>We build, test, and refine the solution with regular communication and transparent progress updates.</p>
+
+                    <div class="approach-item">
+                        <div class="approach-item__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <div class="approach-item__text">
+                            <h3 class="approach-item__title">Maintain long-term quality</h3>
+                            <p class="approach-item__desc">Clean architecture, comprehensive testing, and clear documentation mean your software is maintainable long after launch.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="approach__visual">
-                <div style="text-align: center; padding: var(--space-8) 0;">
-                    <div style="font-size: var(--text-6xl); font-weight: var(--weight-extrabold); background: linear-gradient(135deg, var(--color-primary), var(--color-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-4);">IS</div>
-                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary); max-width: 280px; margin: 0 auto;">Understand → Plan → Build → Test → Deliver</p>
-                    <div style="margin-top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-3); text-align: left;">
-                        <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--color-surface-secondary); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
-                            <div style="width: 8px; height: 8px; background: var(--color-success); border-radius: var(--radius-full);"></div>
-                            <span style="font-size: var(--text-sm); color: var(--color-text);">Business-first thinking</span>
+
+            <!-- Right Side: Delivery Model Visual Card -->
+            <div class="approach-visual">
+                <div class="approach-card">
+                    <div class="approach-card__badge">Transparent Delivery Model</div>
+                    <h3 class="approach-card__title">How We Collaborate</h3>
+                    <p class="approach-card__desc">
+                        Engineering projects fail when communication breaks down. We operate with radical transparency, giving you complete visibility into code and project status.
+                    </p>
+
+                    <div class="delivery-steps">
+                        <div class="delivery-step">
+                            <div class="delivery-step__num">01</div>
+                            <div class="delivery-step__body">
+                                <div class="delivery-step__title">Shared Code Repository</div>
+                                <div class="delivery-step__text">Direct access to GitHub/GitLab repositories with readable Git commits and automated CI/CD pipelines.</div>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--color-surface-secondary); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
-                            <div style="width: 8px; height: 8px; background: var(--color-primary); border-radius: var(--radius-full);"></div>
-                            <span style="font-size: var(--text-sm); color: var(--color-text);">Transparent collaboration</span>
+
+                        <div class="delivery-step">
+                            <div class="delivery-step__num">02</div>
+                            <div class="delivery-step__body">
+                                <div class="delivery-step__title">Live Staging Environment</div>
+                                <div class="delivery-step__text">Interactive staging link deployed at every sprint milestone so you test actual software, not static mockups.</div>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--color-surface-secondary); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
-                            <div style="width: 8px; height: 8px; background: var(--color-cyan); border-radius: var(--radius-full);"></div>
-                            <span style="font-size: var(--text-sm); color: var(--color-text);">Quality-focused delivery</span>
+
+                        <div class="delivery-step">
+                            <div class="delivery-step__num">03</div>
+                            <div class="delivery-step__body">
+                                <div class="delivery-step__title">Direct Slack / WhatsApp Channel</div>
+                                <div class="delivery-step__text">Direct access to your dedicated lead developer for rapid questions, blockers, and weekly status reviews.</div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="approach-card__footer">
+                        <a href="{% url 'process' %}" class="btn btn--outline btn--block">Read Our Full Development Methodology</a>
                     </div>
                 </div>
             </div>
@@ -448,159 +463,414 @@
 </section>
 
 
-<!-- ===================== PROCESS ===================== -->
-<section class="section section--soft" id="process">
+<!-- ============================================================
+     6. PROCESS STEPPER (Band, Connecting Dotted Line)
+     ============================================================ -->
+<section class="section section--process" id="process">
     <div class="container">
-        <div class="section__header section__header--center">
-            <div class="section__eyebrow">How We Work</div>
-            <h2 class="section__title">A Clear Path From Idea to Implementation.</h2>
+        <div class="section-header text-center">
+            <span class="section__eyebrow">Structured Delivery</span>
+            <h2 class="section__title">From First Conversation to Production Launch</h2>
+            <p class="section__subtitle">
+                A predictable five-step engineering framework designed to minimize risk, eliminate unexpected costs, and deliver clean, verified software.
+            </p>
         </div>
-        
-        <div class="process-timeline">
+
+        <div class="process-stepper">
             <div class="process-step">
-                <div class="process-step__number">1</div>
-                <div>
-                    <h3 class="process-step__title">Discover</h3>
-                    <p class="process-step__text">Understand the goals, requirements, and challenges driving the project.</p>
+                <div class="process-step__node">
+                    <span class="process-step__num">01</span>
                 </div>
+                <h3 class="process-step__title">Discovery</h3>
+                <p class="process-step__desc">Technical requirement mapping, architecture feasibility, and milestone-based scoping.</p>
             </div>
+
             <div class="process-step">
-                <div class="process-step__number">2</div>
-                <div>
-                    <h3 class="process-step__title">Plan</h3>
-                    <p class="process-step__text">Define the proposed scope, deliverables, timeline, and commercial terms.</p>
+                <div class="process-step__node">
+                    <span class="process-step__num">02</span>
                 </div>
+                <h3 class="process-step__title">Architecture</h3>
+                <p class="process-step__desc">Data models, API contracts, interactive UI wireframes, and technology stack selection.</p>
             </div>
+
             <div class="process-step">
-                <div class="process-step__number">3</div>
-                <div>
-                    <h3 class="process-step__title">Design & Build</h3>
-                    <p class="process-step__text">Develop the agreed solution and share progress through regular updates.</p>
+                <div class="process-step__node">
+                    <span class="process-step__num">03</span>
                 </div>
+                <h3 class="process-step__title">Iterative Build</h3>
+                <p class="process-step__desc">Sprint-based feature releases deployed to live staging environments every two weeks.</p>
             </div>
+
             <div class="process-step">
-                <div class="process-step__number">4</div>
-                <div>
-                    <h3 class="process-step__title">Test & Refine</h3>
-                    <p class="process-step__text">Review functionality, gather feedback, and address identified issues.</p>
+                <div class="process-step__node">
+                    <span class="process-step__num">04</span>
                 </div>
+                <h3 class="process-step__title">Testing &amp; QA</h3>
+                <p class="process-step__desc">Rigorous unit testing, security evaluations, cross-device responsiveness, and performance audits.</p>
             </div>
+
             <div class="process-step">
-                <div class="process-step__number">5</div>
-                <div>
-                    <h3 class="process-step__title">Deliver & Support</h3>
-                    <p class="process-step__text">Hand over the solution with agreed documentation and support.</p>
+                <div class="process-step__node">
+                    <span class="process-step__num">05</span>
                 </div>
+                <h3 class="process-step__title">Launch &amp; Handover</h3>
+                <p class="process-step__desc">Production cloud deployment, DNS configuration, source code transfer, and complete documentation handover.</p>
             </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: var(--space-12);">
-            <a href="{% url 'contact' %}" class="btn btn--white btn--lg">
-                Start With a Project Discussion
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
         </div>
     </div>
 </section>
 
 
-<!-- ===================== FAQ ===================== -->
-<section class="section" id="faq">
+<!-- ============================================================
+     7. PACKAGES GRID (No Prices, Scope-Focused, Radial Glow)
+     ============================================================ -->
+<section class="section section--packages" id="packages">
     <div class="container">
-        <div class="section__header section__header--center">
-            <div class="section__eyebrow">FAQ</div>
+        <div class="section-header text-center">
+            <span class="section__eyebrow">Engagement Options</span>
+            <h2 class="section__title">Flexible Engagement Models</h2>
+            <p class="section__subtitle">
+                Clear scopes adapted to where you are right now — whether launching an initial prototype or engineering an enterprise platform.
+            </p>
+        </div>
+
+        <div class="packages-grid">
+            <!-- Package 1: Starter -->
+            <div class="package-card">
+                <div class="package-card__header">
+                    <span class="package-badge package-badge--neutral">Fast Turnaround</span>
+                    <h3 class="package-name">Starter / MVP</h3>
+                    <p class="package-desc">Best for validating new software concepts, launching focused tools, or automating an individual business workflow.</p>
+                </div>
+                <div class="package-card__scope">
+                    <span class="scope-label">What's Included:</span>
+                    <ul class="package-features">
+                        <li>Core functional MVP or single workflow automation</li>
+                        <li>Responsive, mobile-optimized user interface</li>
+                        <li>Essential third-party API integrations (Stripe, Twilio, etc.)</li>
+                        <li>Production cloud deployment on AWS / DigitalOcean</li>
+                        <li>14 days post-launch bug warranty &amp; handover docs</li>
+                    </ul>
+                </div>
+                <div class="package-card__footer">
+                    <a href="{% url 'contact' %}?package=starter" class="btn btn--outline btn--block">Inquire About Starter</a>
+                </div>
+            </div>
+
+            <!-- Package 2: Business (Highlighted) -->
+            <div class="package-card package-card--highlighted">
+                <div class="package-card__ribbon">Most Requested</div>
+                <div class="package-card__header">
+                    <span class="package-badge package-badge--primary">Production Ready</span>
+                    <h3 class="package-name">Business Platform</h3>
+                    <p class="package-desc">Comprehensive custom software development, complete internal tooling, or multi-channel automation systems.</p>
+                </div>
+                <div class="package-card__scope">
+                    <span class="scope-label">What's Included:</span>
+                    <ul class="package-features">
+                        <li>Full-featured web or cross-platform mobile application</li>
+                        <li>Complex database architecture &amp; role-based access control</li>
+                        <li>Custom AI pipeline integration (OpenAI/Anthropic RAG)</li>
+                        <li>Automated CI/CD deployment pipelines &amp; staging server</li>
+                        <li>30 days dedicated post-launch support &amp; SLA guarantee</li>
+                    </ul>
+                </div>
+                <div class="package-card__footer">
+                    <a href="{% url 'contact' %}?package=business" class="btn btn--primary btn--block">Inquire About Business</a>
+                </div>
+            </div>
+
+            <!-- Package 3: Custom Retainer -->
+            <div class="package-card">
+                <div class="package-card__header">
+                    <span class="package-badge package-badge--neutral">Ongoing Partnership</span>
+                    <h3 class="package-name">Dedicated Retainer</h3>
+                    <p class="package-desc">Dedicated senior engineering capacity, continuous feature development, and priority technical support.</p>
+                </div>
+                <div class="package-card__scope">
+                    <span class="scope-label">What's Included:</span>
+                    <ul class="package-features">
+                        <li>Guaranteed engineering hours per month</li>
+                        <li>Direct priority Slack/WhatsApp channel access</li>
+                        <li>Continuous code refactoring &amp; performance tuning</li>
+                        <li>Infrastructure monitoring &amp; emergency response</li>
+                        <li>Quarterly technical architecture roadmap reviews</li>
+                    </ul>
+                </div>
+                <div class="package-card__footer">
+                    <a href="{% url 'contact' %}?package=retainer" class="btn btn--outline btn--block">Inquire About Retainers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     8. FAQ SECTION (Pure CSS Indicators)
+     ============================================================ -->
+<section class="section section--faq" id="faq">
+    <div class="container container--narrow">
+        <div class="section-header text-center">
+            <span class="section__eyebrow">Clear Answers</span>
             <h2 class="section__title">Frequently Asked Questions</h2>
+            <p class="section__subtitle">
+                Everything you need to know about how we work, code ownership, project pricing, and our engineering standards.
+            </p>
         </div>
-        
-        <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>What services does Ijaz_Solutions provide?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
+
+        <div class="faq-accordion">
+            <!-- FAQ 1 -->
+            <details class="faq-item" open>
+                <summary class="faq-item__summary">
+                    <span class="faq-item__question">What services does High Deckz offer?</span>
+                    <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="faq-item__content">
-                    <p class="faq-item__answer">We provide AI and workflow automation, custom software development, web and mobile application development, and IT consulting and technical support. Each service can be tailored to your specific business requirements.</p>
+                    <p>We provide four core practices: AI and automation (workflow pipelines, chatbots, document parsing), custom software development (internal tools, APIs, web apps), web and mobile applications (responsive sites, Flutter and React Native apps), and IT consulting (infrastructure, system integration, technical advice). We also offer our ₹399 dynamic website for first-time clients.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>Can you develop a customized solution?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
+            </details>
+
+            <!-- FAQ 2 -->
+            <details class="faq-item">
+                <summary class="faq-item__summary">
+                    <span class="faq-item__question">What is included in the ₹399 first-time website offer?</span>
+                    <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="faq-item__content">
-                    <p class="faq-item__answer">Yes. Custom solutions are central to what we do. We work with you to understand your requirements and build software, applications, and automation tailored to your specific needs.</p>
+                    <p>The ₹399 offer provides a dynamic 3 to 4 page website engineered for your business with mobile responsiveness and transparent collaboration. Application hosting charges are applicable and billed separately. Domain, extra pages, and custom feature requests are quoted separately.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>How much does a project cost?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
+            </details>
+
+            <!-- FAQ 3 -->
+            <details class="faq-item">
+                <summary class="faq-item__summary">
+                    <span class="faq-item__question">Do you work on custom projects or only standard packages?</span>
+                    <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="faq-item__content">
-                    <p class="faq-item__answer">Project costs depend on scope, complexity, timeline, and specific requirements. After an initial discussion, we provide a clear proposal with defined deliverables and transparent pricing. Contact us to discuss your project.</p>
+                    <p>Yes. Custom solutions are central to what we do. We work with you to understand your requirements and build software, applications, and automation tailored specifically to your operational needs.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>How long does a project take?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
+            </details>
+
+            <!-- FAQ 4 -->
+            <details class="faq-item">
+                <summary class="faq-item__summary">
+                    <span class="faq-item__question">How much does a custom project cost?</span>
+                    <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="faq-item__content">
-                    <p class="faq-item__answer">Timelines vary by project. A focused automation solution might take a few weeks, while a comprehensive software platform could take several months. We provide realistic timeline estimates during the planning phase.</p>
+                    <p>Most projects fit within ₹1,00,000. Project costs depend on scope, complexity, timeline, and specific technical requirements. After an initial requirements discussion, we provide a clear proposal with defined deliverables and transparent milestone-based pricing.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>Do you work with startups and established businesses?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
+            </details>
+
+            <!-- FAQ 5 -->
+            <details class="faq-item">
+                <summary class="faq-item__summary">
+                    <span class="faq-item__question">Who owns the source code and deliverables?</span>
+                    <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="faq-item__content">
-                    <p class="faq-item__answer">Yes. We work with startups, entrepreneurs, small and medium businesses, and growing companies. We adapt our approach and recommendations to suit the stage and budget of each client.</p>
+                    <p>You do. You receive 100% full ownership of the custom code, architecture assets, and deliverables developed for your project. There is zero proprietary platform lock-in.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>Can you integrate with our existing systems?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
+            </details>
+
+            <!-- FAQ 6 -->
+            <details class="faq-item">
+                <summary class="faq-item__summary">
+                    <span class="faq-item__question">Can you integrate with our existing systems?</span>
+                    <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="faq-item__content">
-                    <p class="faq-item__answer">In most cases, yes. We evaluate your existing tools and systems to determine integration feasibility. We work with APIs, databases, and third-party services to connect systems where it makes technical sense.</p>
+                    <p>In most cases, yes. We evaluate your existing tools, databases, and third-party software to determine integration feasibility through REST APIs, webhooks, and secure database connections.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>Do you provide maintenance and technical support?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
-                <div class="faq-item__content">
-                    <p class="faq-item__answer">Support and maintenance arrangements depend on the engagement. We discuss post-delivery support options during the planning phase and include agreed support terms in the project proposal.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     9. EMBEDDED CONTACT SECTION (Aligned Two-Column Grid)
+     ============================================================ -->
+<section class="section section--contact" id="contact">
+    <div class="container">
+        <!-- Page Header: Eyebrow, H2, Intro Paragraph -->
+        <header class="contact-header">
+            <span class="section__eyebrow">Start a Project</span>
+            <h2 class="contact-heading">Let's Build Something That Moves the Needle.</h2>
+            <p class="contact-desc">
+                Share your operational bottlenecks, product vision, or technical requirements. A senior architect will review your submission and reply with a frank feasibility evaluation within 24 business hours.
+            </p>
+        </header>
+
+        <!-- Main 2-Column Grid (5fr : 7fr) -->
+        <div class="contact-grid">
+            <!-- Left Info & Offer Column (Sticky Desktop) -->
+            <aside class="contact-sidebar">
+                <!-- Offer Card (Solid White, 1px border, 20px radius, 3px accent) -->
+                <div class="contact-offer-card">
+                    <div class="contact-offer-card__header">
+                        <span class="badge badge--cyan">First-time offer</span>
+                        <span class="contact-offer-price">₹399</span>
+                    </div>
+                    <h3 class="contact-offer-title">Your first website, just ₹399</h3>
+                    <p class="contact-offer-desc">
+                        A 3-4 page dynamic website, built for your business by {% include "partials/brand.html" %} with a team you can talk to directly.
+                    </p>
+                    <div class="contact-offer-divider"></div>
+                    <div class="contact-offer-fineprint">
+                        <p>Application hosting charges are applicable and billed separately. Domain, additional pages, and custom features are quoted separately.</p>
+                        {% include "partials/offer_validity.html" %}
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>How do you protect client information?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
-                <div class="faq-item__content">
-                    <p class="faq-item__answer">We treat all client information as confidential. We follow responsible data handling practices and are happy to discuss specific confidentiality arrangements and sign NDAs where required.</p>
+
+                <!-- Three Benefit Rows -->
+                <div class="contact-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <strong class="benefit-title">No sales fluff</strong>
+                            <span class="benefit-detail">Direct review from experienced software engineers.</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <strong class="benefit-title">24-hour turnaround</strong>
+                            <span class="benefit-detail">Prompt feasibility assessment of your project.</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <strong class="benefit-title">Email directly</strong>
+                            <span class="benefit-detail">Direct communication without ticket gatekeepers.</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>Who owns the source code and deliverables?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
-                <div class="faq-item__content">
-                    <p class="faq-item__answer">Ownership terms are defined in the project agreement. In most engagements, you receive full ownership of the custom code and deliverables developed specifically for your project. We clarify this before work begins.</p>
+
+                <!-- Contact Info Partial (Phone numbers, WhatsApp, Email, Location) -->
+                <div class="contact-direct-wrapper">
+                    <h4 class="contact-direct-title">Direct Inquiries &amp; Phone</h4>
+                    {% include "partials/contact_info.html" %}
                 </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-item__trigger" aria-expanded="false">
-                    <span>How can I start a project?</span>
-                    <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                </button>
-                <div class="faq-item__content">
-                    <p class="faq-item__answer">Contact us through the project inquiry form or email. Describe what you're looking to achieve, and we'll schedule a conversation to understand your requirements and discuss how we can help.</p>
+            </aside>
+
+            <!-- Right Form Card Column -->
+            <div class="contact-card-wrapper">
+                <div class="contact-card">
+                    <h3 class="contact-card__title">Project Inquiry Form</h3>
+                    <p class="contact-card__subtitle">Complete this brief questionnaire to help us understand your technical landscape.</p>
+
+                    <form method="POST" action="{% url 'contact' %}" id="inquiry-form" novalidate>
+                        {% csrf_token %}
+
+                        <!-- Response Feedback Container for AJAX and Server Messages -->
+                        <div id="form-feedback"></div>
+
+                        <div class="contact-form-grid">
+                            <!-- Row 1: Full Name | Business Email -->
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-name" class="form-label">Full Name <span class="text-error">*</span></label>
+                                <input type="text" name="full_name" id="inquiry-name" placeholder="Your full name" autocomplete="name" required class="form-control">
+                            </div>
+
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-email" class="form-label">Business Email <span class="text-error">*</span></label>
+                                <input type="email" name="email" id="inquiry-email" placeholder="your@email.com" autocomplete="email" required class="form-control">
+                            </div>
+
+                            <!-- Row 2: Company | Service -->
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-company" class="form-label">Company / Organization</label>
+                                <input type="text" name="company" id="inquiry-company" placeholder="Company name (optional)" autocomplete="organization" class="form-control">
+                            </div>
+
+                            <div class="form-group col-span-6">
+                                <label for="inquiry-service" class="form-label">Primary Service of Interest <span class="text-error">*</span></label>
+                                <select name="service" id="inquiry-service" required class="form-control">
+                                    <option value="">Select a service...</option>
+                                    <option value="ai-automation">AI &amp; Automation</option>
+                                    <option value="software-development">Custom Software Development</option>
+                                    <option value="web-mobile">Web &amp; Mobile Applications</option>
+                                    <option value="it-consulting">IT Consulting &amp; Technical Support</option>
+                                    <option value="not-sure">Other / General Consultation</option>
+                                </select>
+                            </div>
+
+                            <!-- Row 3: Requirements -->
+                            <div class="form-group col-span-12">
+                                <label for="inquiry-requirements" class="form-label">Project Overview &amp; Key Requirements <span class="text-error">*</span></label>
+                                <textarea name="requirements" id="inquiry-requirements" rows="4" placeholder="Tell us about your project, goals, and any specific requirements (minimum 20 characters)..." required class="form-control"></textarea>
+                            </div>
+
+                            <!-- Row 4: Budget | Timeline | Contact Method -->
+                            <div class="form-group col-span-4 col-sm-12">
+                                <label for="inquiry-budget" class="form-label">Select budget</label>
+                                <select name="budget" id="inquiry-budget" class="form-control">
+                                    <option value="">Select budget</option>
+                                    <option value="offer-399">First-time offer ₹399</option>
+                                    <option value="under-10k">Under ₹10,000</option>
+                                    <option value="10k-25k">₹10,000 – ₹25,000</option>
+                                    <option value="25k-50k">₹25,000 – ₹50,000</option>
+                                    <option value="50k-1-lakh">₹50,000 – ₹1,00,000</option>
+                                    <option value="not-sure">Not sure yet</option>
+                                </select>
+                                <span class="form-helper-text">Most projects fit within ₹1,00,000. Need more? Tell us in your requirements.</span>
+                            </div>
+
+                            <div class="form-group col-span-4 col-sm-12">
+                                <label for="inquiry-timeline" class="form-label">Select timeline</label>
+                                <select name="timeline" id="inquiry-timeline" class="form-control">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">As soon as possible</option>
+                                    <option value="1-3-months">1–3 months</option>
+                                    <option value="3-6-months">3–6 months</option>
+                                    <option value="6-plus-months">6+ months</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-span-4 col-sm-12">
+                                <label for="inquiry-contact-method" class="form-label">Contact method</label>
+                                <select name="contact_method" id="inquiry-contact-method" class="form-control">
+                                    <option value="">Select method</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="video-call">Video Call</option>
+                                    <option value="any">Any method</option>
+                                </select>
+                            </div>
+
+                            <!-- Row 5: Privacy Checkbox -->
+                            <div class="form-group col-span-12">
+                                <label class="checkbox-field" for="inquiry-privacy">
+                                    <input type="checkbox" name="privacy_consent" id="inquiry-privacy" required>
+                                    <span>I agree to the <a href="{% url 'privacy' %}" target="_blank">Privacy Policy</a> and consent to {% include "partials/brand.html" %} processing my information to respond to this inquiry. <span class="text-error">*</span></span>
+                                </label>
+                            </div>
+
+                            <!-- Row 6: Submit Button & Offer Footnote -->
+                            <div class="form-group col-span-12">
+                                <button type="submit" class="btn btn--primary btn--lg btn--block">
+                                    <span>Submit Project Inquiry</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </button>
+                                <p class="form-offer-footnote text-center mt-3">
+                                    First-time offer ₹399. Hosting charges applicable.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -608,7 +878,13 @@
 </section>
 
 
-<!-- ===================== CTA ===================== -->
+<!-- ============================================================
+     10. CLOSING CTA BANNER
+     ============================================================ -->
 {% include 'partials/cta.html' %}
 
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard-live.js' %}" defer></script>
 {% endblock %}

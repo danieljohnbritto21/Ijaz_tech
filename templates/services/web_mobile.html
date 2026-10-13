@@ -1,91 +1,123 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Web & Mobile Applications — Ijaz_Solutions{% endblock %}
+{% block title %}Web &amp; Mobile Applications — High Deckz{% endblock %}
 {% block meta_description %}High-performance web apps, cross-platform mobile solutions, and progressive web apps built with modern typography, smooth micro-interactions, and conversion-focused UX.{% endblock %}
 
 {% block content %}
-<!-- Service Hero -->
-<section class="section section--dark page-hero">
-    <div class="container">
-        <div class="page-hero__content">
-            <div class="badge badge--primary mb-4">Digital Products & Apps</div>
-            <h1 class="page-hero__title">Digital Experiences That<br><span class="text-gradient">Captivate & Convert.</span></h1>
-            <p class="page-hero__subtitle">
+<!-- ============================================================
+     1. SERVICE HERO
+     ============================================================ -->
+<section class="section section--services-hero">
+    <div class="container container--services">
+        <div class="services-hero__content">
+            <div class="services-hero__badge-row">
+                <span class="badge badge--primary">Digital Products &amp; Apps</span>
+                <span class="badge badge--cyan">Discipline 03</span>
+            </div>
+            <h1 class="services-hero__title">
+                Digital Experiences That<br>
+                <span class="text-cyan">Captivate &amp; Convert.</span>
+            </h1>
+            <p class="services-hero__lead">
                 Your digital products are the direct face of your business. We craft lightning-fast, visually stunning web applications and cross-platform mobile apps engineered to impress users and drive measurable commercial growth.
             </p>
-            <div class="btn-group mt-6">
-                <a href="{% url 'contact' %}?service=web-mobile" class="btn btn--primary btn--lg">Start Your App Project</a>
-                <a href="{% url 'process' %}" class="btn btn--outline-white btn--lg">Explore Our Process</a>
+            <div class="btn-group services-hero__actions">
+                <a href="{% url 'contact' %}?service=web-mobile" class="btn btn--primary btn--lg">
+                    <span>Start Your App Project</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="{% url 'process' %}" class="btn btn--outline btn--lg">Explore Our Process</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- The Importance of Speed and UX -->
-<section class="section">
-    <div class="container">
-        <div class="grid grid--2 gap-12 align-center">
-            <div>
-                <div class="section-label">Performance That Converts</div>
-                <h2 class="section-title">Speed is Not Just a Metric. It is Direct Revenue.</h2>
-                <p class="text-secondary mb-6 leading-relaxed">
+<!-- ============================================================
+     2. PERFORMANCE THAT CONVERTS
+     ============================================================ -->
+<section class="section section--subpage-contrast">
+    <div class="container container--services">
+        <div class="services-subpage-grid-2">
+            <!-- Left Strategic UX Column -->
+            <div class="subpage-contrast-col">
+                <span class="services-eyebrow">Performance That Converts</span>
+                <h2 class="services-section-title">Speed is Not Just a Metric. It is Direct Revenue.</h2>
+                <p class="services-section-intro">
                     A delay of just one second in page load reduces customer satisfaction by 16% and drops conversions by 7%. Clunky layouts and unresponsive interfaces send prospective clients straight to your competitors.
                 </p>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="text-primary font-bold text-xl">✓</div>
-                        <div>
-                            <strong class="text-slate font-semibold">Sub-Second Page Loads</strong>
-                            <p class="text-sm text-secondary">Asset bundling, lazy loading, and modern image formats keep your initial paint fast and snappy.</p>
+
+                <div class="pain-points-list">
+                    <div class="pain-point-item">
+                        <div class="pain-point-icon" aria-hidden="true">
+                            <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="pain-point-text">
+                            <strong class="pain-point-title">Sub-Second Page Loads</strong>
+                            <p class="pain-point-desc">Asset bundling, optimized fonts, lazy loading, and modern image formats keep your initial paint fast and snappy.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="text-primary font-bold text-xl">✓</div>
-                        <div>
-                            <strong class="text-slate font-semibold">Touch-First Ergonomics</strong>
-                            <p class="text-sm text-secondary">Every button, drawer, and input is meticulously designed for thumb zones on modern iOS and Android viewports.</p>
+
+                    <div class="pain-point-item">
+                        <div class="pain-point-icon" aria-hidden="true">
+                            <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="pain-point-text">
+                            <strong class="pain-point-title">Touch-First Ergonomics</strong>
+                            <p class="pain-point-desc">Every button, drawer, and input is meticulously designed for thumb zones on modern iOS and Android viewports.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="text-primary font-bold text-xl">✓</div>
-                        <div>
-                            <strong class="text-slate font-semibold">WCAG 2.1 AA Accessibility</strong>
-                            <p class="text-sm text-secondary">High contrast ratios, semantic HTML, and full keyboard navigation ensure your application welcomes all users.</p>
+
+                    <div class="pain-point-item">
+                        <div class="pain-point-icon" aria-hidden="true">
+                            <svg class="checklist-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="pain-point-text">
+                            <strong class="pain-point-title">WCAG 2.1 AA Accessibility</strong>
+                            <p class="pain-point-desc">High contrast ratios, semantic HTML, and full keyboard navigation ensure your application welcomes all users.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card p-8 bg-soft border-primary">
-                <div class="badge badge--cyan mb-4">Core Web Vitals Standard</div>
-                <h3 class="card__title text-2xl mb-4">Our Rigorous Quality Bar</h3>
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>Lighthouse Performance Score</span>
-                            <span class="text-primary">95+</span>
+            <!-- Right Web Vitals Card -->
+            <div class="subpage-solution-card">
+                <div class="solution-card-header">
+                    <span class="badge badge--cyan">Core Web Vitals Standard</span>
+                    <h3 class="solution-card-title">Our Rigorous Quality Bar</h3>
+                    <p class="solution-card-desc">
+                        Every release is audited against Google Lighthouse benchmarks and device rendering tests.
+                    </p>
+                </div>
+
+                <div class="vitals-progress-list">
+                    <div class="vitals-item">
+                        <div class="vitals-label-row">
+                            <span class="vitals-name">Lighthouse Performance Score</span>
+                            <span class="vitals-val text-primary font-bold">95+</span>
                         </div>
-                        <div class="w-full bg-border rounded-full h-2">
-                            <div class="bg-primary h-2 rounded-full" style="width: 98%;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>Accessibility & Semantics</span>
-                            <span class="text-cyan">100</span>
-                        </div>
-                        <div class="w-full bg-border rounded-full h-2">
-                            <div class="bg-cyan h-2 rounded-full" style="width: 100%;"></div>
+                        <div class="vitals-bar-track">
+                            <div class="vitals-bar-fill vitals-bar-fill--primary" style="width: 98%;"></div>
                         </div>
                     </div>
-                    <div>
-                        <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>SEO & Best Practices</span>
-                            <span class="text-primary">100</span>
+
+                    <div class="vitals-item">
+                        <div class="vitals-label-row">
+                            <span class="vitals-name">Accessibility &amp; Semantics</span>
+                            <span class="vitals-val text-cyan font-bold">100</span>
                         </div>
-                        <div class="w-full bg-border rounded-full h-2">
-                            <div class="bg-primary h-2 rounded-full" style="width: 100%;"></div>
+                        <div class="vitals-bar-track">
+                            <div class="vitals-bar-fill vitals-bar-fill--cyan" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="vitals-item">
+                        <div class="vitals-label-row">
+                            <span class="vitals-name">SEO &amp; Best Practices</span>
+                            <span class="vitals-val text-primary font-bold">100</span>
+                        </div>
+                        <div class="vitals-bar-track">
+                            <div class="vitals-bar-fill vitals-bar-fill--primary" style="width: 100%;"></div>
                         </div>
                     </div>
                 </div>
@@ -94,54 +126,74 @@
     </div>
 </section>
 
-<!-- Solutions We Build -->
-<section class="section section--muted">
-    <div class="container">
-        <div class="section-header text-center mb-16">
-            <div class="section-label">Application Formats</div>
-            <h2 class="section-title">What We Design & Deploy</h2>
-            <p class="section-subtitle max-w-2xl mx-auto">
+<!-- ============================================================
+     3. APPLICATIONS WE BUILD
+     ============================================================ -->
+<section class="section section--subpage-cards">
+    <div class="container container--services">
+        <div class="services-section-head">
+            <span class="services-eyebrow">Application Formats</span>
+            <h2 class="services-section-title">What We Design &amp; Deploy</h2>
+            <p class="services-section-intro">
                 Modern platforms engineered to delight users across any device or operating system.
             </p>
         </div>
 
-        <div class="grid grid--3 gap-8">
-            <div class="card card--hover p-8">
-                <div class="icon-bubble icon-bubble--primary mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="subpage-cards-grid-3">
+            <div class="service-card-item">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--indigo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
                 </div>
-                <h3 class="card__title text-xl mb-3">Modern Web Applications</h3>
-                <p class="card__text text-sm mb-4">
+                <h3 class="service-card-item__title">Modern Web Applications</h3>
+                <p class="service-card-item__desc">
                     Fast, responsive, single-page and server-rendered web applications with interactive dashboards, dynamic data tables, and smooth state updates.
                 </p>
-                <div class="text-xs text-primary font-semibold">HTML5 / Modern JS • SSR • Responsive Design</div>
+                <div class="service-tech-tags mt-auto">
+                    <span class="tech-tag">HTML5 / Vanilla JS</span>
+                    <span class="tech-tag">SSR &amp; Hydration</span>
+                    <span class="tech-tag">Responsive Grid</span>
+                </div>
             </div>
 
-            <div class="card card--hover p-8">
-                <div class="icon-bubble icon-bubble--cyan mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            <div class="service-card-item">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--cyan" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                    </div>
                 </div>
-                <h3 class="card__title text-xl mb-3">Cross-Platform Mobile Apps</h3>
-                <p class="card__text text-sm mb-4">
+                <h3 class="service-card-item__title">Cross-Platform Mobile Apps</h3>
+                <p class="service-card-item__desc">
                     Unified mobile codebases that compile directly to high-performing native apps for both the Apple App Store and Google Play Store.
                 </p>
-                <div class="text-xs text-cyan font-semibold">React Native / Flutter • Push Notifications • Biometrics</div>
+                <div class="service-tech-tags mt-auto">
+                    <span class="tech-tag">Flutter / React Native</span>
+                    <span class="tech-tag">Push Notifications</span>
+                    <span class="tech-tag">Biometrics</span>
+                </div>
             </div>
 
-            <div class="card card--hover p-8">
-                <div class="icon-bubble icon-bubble--primary mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+            <div class="service-card-item">
+                <div class="service-card-item__top">
+                    <div class="service-icon-box service-icon-box--indigo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+                    </div>
                 </div>
-                <h3 class="card__title text-xl mb-3">Progressive Web Apps (PWAs)</h3>
-                <p class="card__text text-sm mb-4">
-                    App-like web experiences installable directly to users' home screens without app store submission fees, complete with background sync and offline support.
+                <h3 class="service-card-item__title">Progressive Web Apps (PWAs)</h3>
+                <p class="service-card-item__desc">
+                    App-like web experiences installable directly to users' home screens without app store submission delays, complete with background sync and offline support.
                 </p>
-                <div class="text-xs text-primary font-semibold">Service Workers • Offline Caching • Web App Manifest</div>
+                <div class="service-tech-tags mt-auto">
+                    <span class="tech-tag">Service Workers</span>
+                    <span class="tech-tag">Offline Caching</span>
+                    <span class="tech-tag">Web Manifest</span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Call to Action -->
+<!-- Closing CTA Banner -->
 {% include 'partials/cta.html' %}
 {% endblock %}

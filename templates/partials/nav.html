@@ -1,44 +1,75 @@
 {% load static %}
-<!-- Navigation -->
-<nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav__inner">
-        <!-- Brand -->
-        <a href="{% url 'home' %}" class="nav__brand" aria-label="Ijaz_Solutions Home">
-            <img src="{% static 'images/logo-mark.svg' %}" alt="IS" width="38" height="38" class="nav__brand-img">
-            <span class="nav__brand-text">IJAZ<span class="brand-underscore">_</span>SOLUTIONS</span>
-        </a>
-        
-        <!-- Desktop Menu -->
-        <div class="nav__menu" id="nav-menu">
-            <a href="{% url 'home' %}" class="nav__link {% if request.resolver_match.url_name == 'home' %}nav__link--active{% endif %}">Home</a>
-            <a href="{% url 'services' %}" class="nav__link {% if 'services' in request.path %}nav__link--active{% endif %}">Our Services</a>
-            <a href="{% url 'about' %}" class="nav__link {% if request.resolver_match.url_name == 'about' %}nav__link--active{% endif %}">About Us</a>
-            <a href="{% url 'process' %}" class="nav__link {% if request.resolver_match.url_name == 'process' %}nav__link--active{% endif %}">Our Process</a>
-            <a href="{% url 'insights' %}" class="nav__link {% if request.resolver_match.url_name == 'insights' %}nav__link--active{% endif %}">Insights</a>
-            <a href="{% url 'contact' %}" class="nav__link {% if request.resolver_match.url_name == 'contact' %}nav__link--active{% endif %}">Contact</a>
+<!-- Announcement Bar (Dismissible, Session-Persisted) -->
+<div class="announcement-bar" id="announcement-bar" role="region" aria-label="Special Offer Announcement">
+    <div class="container announcement-bar__inner">
+        <div class="announcement-bar__text">
+            <span class="announcement-bar__tag">First-time offer</span>
+            <span class="announcement-bar__msg announcement-bar__msg--desktop">3–4 page dynamic website for <strong>₹399</strong> <span class="announcement-bar__condition">(Application hosting charges applicable)</span></span>
+            <span class="announcement-bar__msg announcement-bar__msg--mobile">website for <strong>₹399</strong></span>
         </div>
-        
-        <!-- CTA -->
-        <a href="{% url 'contact' %}" class="btn btn--primary btn--sm btn--magnetic nav__cta">Start a Project</a>
-        
-        <!-- Mobile Toggle -->
-        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-mobile-menu">
-            <span class="nav__toggle-bar"></span>
-            <span class="nav__toggle-bar"></span>
-            <span class="nav__toggle-bar"></span>
-        </button>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div class="nav__mobile-menu" id="nav-mobile-menu" role="menu">
-        <a href="{% url 'home' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'home' %}nav__mobile-link--active{% endif %}" role="menuitem">Home</a>
-        <a href="{% url 'services' %}" class="nav__mobile-link {% if 'services' in request.path %}nav__mobile-link--active{% endif %}" role="menuitem">Our Services</a>
-        <a href="{% url 'about' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'about' %}nav__mobile-link--active{% endif %}" role="menuitem">About Us</a>
-        <a href="{% url 'process' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'process' %}nav__mobile-link--active{% endif %}" role="menuitem">Our Process</a>
-        <a href="{% url 'insights' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'insights' %}nav__mobile-link--active{% endif %}" role="menuitem">Insights</a>
-        <a href="{% url 'contact' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'contact' %}nav__mobile-link--active{% endif %}" role="menuitem">Contact</a>
-        <div class="nav__mobile-cta">
-            <a href="{% url 'contact' %}" class="btn btn--primary btn--lg" style="width:100%;" role="menuitem">Start a Project</a>
+        <div class="announcement-bar__actions">
+            <a href="{% url 'contact' %}?offer=399" class="announcement-bar__link">
+                <span>Claim offer</span>
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+            <button type="button" class="announcement-bar__close" id="announcement-close" aria-label="Dismiss announcement">&times;</button>
         </div>
     </div>
-</nav>
+</div>
+
+<!-- Sticky Header & Navigation -->
+<header class="site-header" id="site-header">
+    <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <!-- Brand -->
+            <a href="{% url 'home' %}" class="nav__brand" aria-label="High Deckz Home">
+                <img src="{% static 'images/logo-mark.svg' %}" alt="High Deckz Logo" width="36" height="36" class="nav__brand-img">
+                <span class="nav__brand-text">{% include "partials/brand.html" %}</span>
+            </a>
+            
+            <!-- Desktop Navigation Menu -->
+            <div class="nav__menu" id="nav-menu">
+                <a href="{% url 'home' %}" class="nav__link {% if request.resolver_match.url_name == 'home' %}nav__link--active{% endif %}">Home</a>
+                <a href="{% url 'services' %}" class="nav__link {% if 'services' in request.path %}nav__link--active{% endif %}">Our Services</a>
+                <a href="{% url 'about' %}" class="nav__link {% if request.resolver_match.url_name == 'about' %}nav__link--active{% endif %}">About Us</a>
+                <a href="{% url 'process' %}" class="nav__link {% if request.resolver_match.url_name == 'process' %}nav__link--active{% endif %}">Our Process</a>
+                <a href="{% url 'insights' %}" class="nav__link {% if request.resolver_match.url_name == 'insights' %}nav__link--active{% endif %}">Insights</a>
+                <a href="{% url 'contact' %}" class="nav__link {% if request.resolver_match.url_name == 'contact' %}nav__link--active{% endif %}">Contact</a>
+            </div>
+            
+            <!-- Desktop Action CTA -->
+            <div class="nav__actions">
+                <a href="{% url 'contact' %}?offer=399" class="btn btn--primary btn--sm nav__cta">Claim ₹399 offer</a>
+                
+                <!-- Mobile Hamburger Toggle -->
+                <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+                    <span class="nav__toggle-bar" aria-hidden="true"></span>
+                    <span class="nav__toggle-bar" aria-hidden="true"></span>
+                    <span class="nav__toggle-bar" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Navigation -->
+        <div class="nav__mobile-menu" id="nav-mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+            <div class="nav__mobile-links">
+                <a href="{% url 'home' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'home' %}nav__mobile-link--active{% endif %}">Home</a>
+                <a href="{% url 'services' %}" class="nav__mobile-link {% if 'services' in request.path %}nav__mobile-link--active{% endif %}">Our Services</a>
+                <a href="{% url 'about' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'about' %}nav__mobile-link--active{% endif %}">About Us</a>
+                <a href="{% url 'process' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'process' %}nav__mobile-link--active{% endif %}">Our Process</a>
+                <a href="{% url 'insights' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'insights' %}nav__mobile-link--active{% endif %}">Insights</a>
+                <a href="{% url 'contact' %}" class="nav__mobile-link {% if request.resolver_match.url_name == 'contact' %}nav__mobile-link--active{% endif %}">Contact</a>
+            </div>
+            <div class="nav__mobile-contact">
+                <span class="nav__mobile-contact-label">Direct inquiries:</span>
+                <div class="nav__mobile-phones">
+                    <a href="tel:+919345655206" class="nav__mobile-phone-link phone-nowrap">+91 93456 55206</a>
+                    <a href="tel:+919626842700" class="nav__mobile-phone-link phone-nowrap">+91 96268 42700</a>
+                </div>
+            </div>
+            <div class="nav__mobile-cta">
+                <a href="{% url 'contact' %}?offer=399" class="btn btn--primary btn--lg btn--block">Claim ₹399 offer</a>
+            </div>
+        </div>
+    </nav>
+</header>

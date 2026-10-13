@@ -1,297 +1,91 @@
 /**
- * IJAZ_SOLUTIONS — Premium Interactive Engine
- * High-performance, accessibility-first vanilla JavaScript:
- * - 3D Dimensional Hero Object Perspective Rig
- * - Subtle Pointer Spotlights & Card Highlights
- * - Magnetic CTA Buttons with Spring Return
- * - Subtle Project Card 3D Tilt
- * - Single-Pass Scroll Reveal Engine
- * - Dynamic Mobile Navigation & Sticky Header
- * - AJAX Inquiry Form with Real-time Field Validation
- * - FAQ Accordions & Client-side Portfolio Filter
+ * HIGH DECKZ — Clean Light Client Interactive Script
+ * - Bulletproof reveal animations with 1.5s guaranteed visibility fallback
+ * - Sticky header state transitions & announcement bar session dismissal
+ * - Accessible mobile navigation with keyboard escape handling
+ * - AJAX inquiry form submission with field validation feedback
+ * - Offer prefill handler for ?offer=399 query parameter
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Flag to enable JS-enhanced transitions safely without breaking no-JS layout
-    document.documentElement.classList.add('js-ready');
-
+    initAnnouncementBar();
     initNavigation();
     initStickyHeader();
-    initFaqAccordion();
-    initPortfolioFilter();
+    initScrollReveals();
+    initOfferPrefill();
     initAjaxContactForm();
-    initStatCounters();
-
-    // Check motion and hover capabilities before initializing pointer enhancements
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (!prefersReducedMotion && canHover) {
-        initHero3DPerspective();
-        initPointerSpotlight();
-        initMagneticButtons();
-        initProjectCardTilt();
-    }
-
-    initScrollReveals(prefersReducedMotion);
 });
 
 /**
- * 1. 3D Dimensional Hero Object Perspective Rig
- * Responds smoothly to pointer movement with damped lerping.
- * Pauses automatically when off-screen or when browser tab is hidden.
+ * 1. Announcement Bar Dismissal (sessionStorage inside try/catch)
  */
-function initHero3DPerspective() {
-    const hero = document.getElementById('hero');
-    const rig = document.getElementById('hero-3d-rig');
-    const dimensionalObj = hero ? hero.querySelector('.dimensional-object') : null;
-    if (!hero || !rig) return;
+function initAnnouncementBar() {
+    const bar = document.getElementById('announcement-bar');
+    const closeBtn = document.getElementById('announcement-close');
+    if (!bar) return;
 
-    let targetRotX = 0;
-    let targetRotY = 0;
-    let currentRotX = 0;
-    let currentRotY = 0;
-
-    let targetObjX = 0;
-    let targetObjY = 0;
-    let currentObjX = 0;
-    let currentObjY = 0;
-
-    let isHovering = false;
-    let isVisible = true;
-    let animFrameId = null;
-
-    // Observe hero visibility to conserve CPU/battery when scrolled away
-    const heroObserver = new IntersectionObserver(([entry]) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && isHovering && !animFrameId) {
-            startLoop();
-        } else if (!isVisible && animFrameId) {
-            cancelAnimationFrame(animFrameId);
-            animFrameId = null;
+    try {
+        if (sessionStorage.getItem('offer_banner_dismissed') === 'true') {
+            bar.style.display = 'none';
+            return;
         }
-    }, { threshold: 0.1 });
-    heroObserver.observe(hero);
-
-    // Pause on tab visibility change
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden && animFrameId) {
-            cancelAnimationFrame(animFrameId);
-            animFrameId = null;
-        } else if (!document.hidden && isVisible && isHovering) {
-            startLoop();
-        }
-    });
-
-    const updateLoop = () => {
-        // Damped linear interpolation for buttery smoothness
-        currentRotX += (targetRotX - currentRotX) * 0.08;
-        currentRotY += (targetRotY - currentRotY) * 0.08;
-
-        currentObjX += (targetObjX - currentObjX) * 0.08;
-        currentObjY += (targetObjY - currentObjY) * 0.08;
-
-        // Controlled rotation strictly capped to ~3 degrees on each axis
-        rig.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
-
-        // Independent slight parallax translation for floating geometric object
-        if (dimensionalObj) {
-            dimensionalObj.style.transform = `translate3d(${currentObjX.toFixed(1)}px, ${currentObjY.toFixed(1)}px, 0)`;
-        }
-
-        // Continue loop if active or until settled back to 0
-        const isSettled = Math.abs(targetRotX - currentRotX) < 0.02 && 
-                          Math.abs(targetRotY - currentRotY) < 0.02 &&
-                          Math.abs(targetObjX - currentObjX) < 0.04 &&
-                          Math.abs(targetObjY - currentObjY) < 0.04;
-
-        if (!isSettled || isHovering) {
-            animFrameId = requestAnimationFrame(updateLoop);
-        } else {
-            rig.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-            if (dimensionalObj) {
-                dimensionalObj.style.transform = 'translate3d(0, 0, 0)';
-            }
-            animFrameId = null;
-        }
-    };
-
-    function startLoop() {
-        if (!animFrameId) {
-            animFrameId = requestAnimationFrame(updateLoop);
-        }
+    } catch (e) {
+        // Ignore storage exceptions
     }
 
-    hero.addEventListener('pointermove', (e) => {
-        if (!isVisible) return;
-        isHovering = true;
-        const rect = hero.getBoundingClientRect();
-        const normX = ((e.clientX - rect.left) / rect.width) - 0.5; // -0.5 to 0.5
-        const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
-
-        // Controlled rotation angles strictly limited to ~3 degrees max
-        targetRotY = normX * 6;  // max +/- 3deg
-        targetRotX = -normY * 6; // max +/- 3deg
-
-        // Subtle independent parallax on floating geometric object
-        targetObjX = normX * 12; // max +/- 6px
-        targetObjY = normY * 10; // max +/- 5px
-
-        // Ambient spotlight coordinates
-        hero.style.setProperty('--spotlight-x', `${(e.clientX - rect.left).toFixed(0)}px`);
-        hero.style.setProperty('--spotlight-y', `${(e.clientY - rect.top).toFixed(0)}px`);
-        hero.style.setProperty('--spotlight-opacity', '1');
-
-        startLoop();
-    }, { passive: true });
-
-    hero.addEventListener('pointerleave', () => {
-        isHovering = false;
-        targetRotX = 0;
-        targetRotY = 0;
-        targetObjX = 0;
-        targetObjY = 0;
-        hero.style.setProperty('--spotlight-opacity', '0');
-        startLoop();
-    });
-}
-
-/**
- * 2. Subtle Pointer Spotlight
- * Tracks pointer coordinates on cards to produce soft localized cyan reflections.
- */
-function initPointerSpotlight() {
-    const spotlightCards = document.querySelectorAll('.card, .challenge-card, .service-card, .project-card');
-    if (!spotlightCards.length) return;
-
-    spotlightCards.forEach(card => {
-        card.addEventListener('pointermove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        }, { passive: true });
-    });
-}
-
-/**
- * 3. Magnetic CTA Buttons
- * Subtle translation toward pointer on hover with smooth spring return.
- */
-function initMagneticButtons() {
-    const magneticBtns = document.querySelectorAll('.btn--magnetic');
-    if (!magneticBtns.length) return;
-
-    magneticBtns.forEach(btn => {
-        let isHovered = false;
-
-        btn.addEventListener('pointermove', (e) => {
-            isHovered = true;
-            const rect = btn.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-
-            const deltaX = (e.clientX - centerX) * 0.22;
-            const deltaY = (e.clientY - centerY) * 0.22;
-
-            // Clamped translation range (max 6px) to avoid displacing click target
-            const clampedX = Math.max(-6, Math.min(6, deltaX));
-            const clampedY = Math.max(-6, Math.min(6, deltaY));
-
-            btn.style.transform = `translate(${clampedX.toFixed(1)}px, ${clampedY.toFixed(1)}px)`;
-        }, { passive: true });
-
-        btn.addEventListener('pointerleave', () => {
-            isHovered = false;
-            btn.style.transform = 'translate(0px, 0px)';
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            bar.style.display = 'none';
+            try {
+                sessionStorage.setItem('offer_banner_dismissed', 'true');
+            } catch (e) {}
         });
-    });
-}
-
-/**
- * 4. Subtle Project Card 3D Tilt
- * High-end tactile feedback on desktop project showcases.
- */
-function initProjectCardTilt() {
-    const projectCards = document.querySelectorAll('.project-card, .card--project');
-    if (!projectCards.length) return;
-
-    projectCards.forEach(card => {
-        card.addEventListener('pointermove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const normX = (x / rect.width) - 0.5;
-            const normY = (y / rect.height) - 0.5;
-
-            // Subtle 3.5 deg tilt max
-            const rotY = (normX * 5).toFixed(2);
-            const rotX = (-normY * 5).toFixed(2);
-
-            card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
-        }, { passive: true });
-
-        card.addEventListener('pointerleave', () => {
-            card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-        });
-    });
-}
-
-/**
- * 5. Single-Pass Scroll Reveal Engine
- * Accessible, performance-conscious entrance animation.
- */
-function initScrollReveals(prefersReducedMotion) {
-    const targets = document.querySelectorAll('.reveal-on-scroll, .section__header, .challenges, .services-grid, .projects-grid, .why-us__grid, .process-timeline, .faq-list');
-    if (!targets.length) return;
-
-    if (prefersReducedMotion) {
-        targets.forEach(el => el.classList.add('is-revealed'));
-        return;
     }
-
-    targets.forEach(el => el.classList.add('reveal-on-scroll'));
-
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                obs.unobserve(entry.target); // Reveal exactly once
-            }
-        });
-    }, {
-        threshold: 0.02,
-        rootMargin: '120px 0px 40px 0px'
-    });
-
-    targets.forEach(el => {
-        // If element is already in or near viewport on initial page load, reveal immediately
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 150) {
-            el.classList.add('is-revealed');
-        } else {
-            observer.observe(el);
-        }
-    });
 }
 
 /**
- * 6. Mobile Navigation & Backdrop
+ * 2. Mobile Navigation & Keyboard Accessibility (Focus Trap & Scroll Lock)
  */
 function initNavigation() {
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-mobile-menu');
     if (!navToggle || !mobileMenu) return;
 
+    let previousActiveElement = null;
+
+    const getFocusableElements = () => {
+        return Array.from(
+            mobileMenu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+        ).filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
+    };
+
     const toggleMenu = (open) => {
-        const isOpen = open !== undefined ? open : !mobileMenu.classList.contains('nav__mobile-menu--open');
-        mobileMenu.classList.toggle('nav__mobile-menu--open', isOpen);
-        navToggle.classList.toggle('nav__toggle--active', isOpen);
-        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        document.body.classList.toggle('menu-open', isOpen);
+        const isOpen = open !== undefined ? open : !mobileMenu.classList.contains('is-active');
+        
+        if (isOpen) {
+            previousActiveElement = document.activeElement;
+            mobileMenu.classList.add('is-active');
+            navToggle.classList.add('is-active');
+            navToggle.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('menu-open');
+            
+            // Set focus to the first link inside the drawer
+            const focusables = getFocusableElements();
+            if (focusables.length > 0) {
+                setTimeout(() => focusables[0].focus(), 50);
+            }
+        } else {
+            mobileMenu.classList.remove('is-active');
+            navToggle.classList.remove('is-active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
+            
+            if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+                previousActiveElement.focus();
+            } else {
+                navToggle.focus();
+            }
+        }
     };
 
     navToggle.addEventListener('click', (e) => {
@@ -299,157 +93,163 @@ function initNavigation() {
         toggleMenu();
     });
 
+    // Close on outside click
     document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !navToggle.contains(e.target)) {
-            toggleMenu(false);
+        if (mobileMenu.classList.contains('is-active')) {
+            if (!mobileMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                toggleMenu(false);
+            }
         }
     });
 
+    // Focus Trap & Escape key handling
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') toggleMenu(false);
+        if (!mobileMenu.classList.contains('is-active')) return;
+
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            toggleMenu(false);
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusables = getFocusableElements();
+            if (!focusables.length) return;
+
+            const firstEl = focusables[0];
+            const lastEl = focusables[focusables.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstEl || document.activeElement === navToggle) {
+                    e.preventDefault();
+                    lastEl.focus();
+                }
+            } else {
+                if (document.activeElement === lastEl) {
+                    e.preventDefault();
+                    firstEl.focus();
+                }
+            }
+        }
     });
 
+    // Close on link click
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => toggleMenu(false));
     });
 }
 
 /**
- * 7. Sticky Navigation with Elevation on Scroll
+ * 3. Sticky Header Elevation on Scroll
  */
 function initStickyHeader() {
-    const nav = document.getElementById('main-nav');
-    if (!nav) return;
+    const header = document.getElementById('site-header');
+    if (!header) return;
 
     let ticking = false;
-    const handleScroll = () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                if (window.scrollY > 25) {
-                    nav.classList.add('nav--scrolled');
-                } else {
-                    nav.classList.remove('nav--scrolled');
-                }
-                ticking = false;
-            });
-            ticking = true;
+    const updateHeader = () => {
+        if (window.scrollY > 20) {
+            header.classList.add('is-scrolled');
+        } else {
+            header.classList.remove('is-scrolled');
         }
+        ticking = false;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    updateHeader();
 }
 
 /**
- * 8. FAQ Accordion Toggle
+ * 4. Guaranteed Reveal Animations
  */
-function initFaqAccordion() {
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (!faqItems.length) return;
+function initScrollReveals() {
+    const reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
 
-    faqItems.forEach(item => {
-        const trigger = item.querySelector('.faq-question') || item.querySelector('.faq-item__trigger');
-        if (!trigger) return;
+    const showAll = () => {
+        reveals.forEach(el => el.classList.add('is-visible'));
+    };
 
-        trigger.addEventListener('click', () => {
-            const isActive = item.classList.contains('faq-item--active') || item.classList.contains('faq-item--open');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        showAll();
+        return;
+    }
 
-            // Close other items in the same list
-            const parent = item.closest('.faq-list');
-            if (parent) {
-                parent.querySelectorAll('.faq-item--active, .faq-item--open').forEach(openItem => {
-                    if (openItem !== item) {
-                        openItem.classList.remove('faq-item--active', 'faq-item--open');
-                        const btn = openItem.querySelector('.faq-question') || openItem.querySelector('.faq-item__trigger');
-                        if (btn) btn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
+    // Fallback timer: ensure all content is visible after 1.5s
+    setTimeout(showAll, 1500);
 
-            if (isActive) {
-                item.classList.remove('faq-item--active', 'faq-item--open');
-                trigger.setAttribute('aria-expanded', 'false');
-            } else {
-                item.classList.add('faq-item--active', 'faq-item--open');
-                trigger.setAttribute('aria-expanded', 'true');
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
             }
         });
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
     });
+
+    reveals.forEach(el => observer.observe(el));
 }
 
 /**
- * 9. Client-Side Portfolio Category Filtering
+ * 5. Offer Prefill for ?offer=399
+ * Prefills the Requirements textarea ONLY if empty on load
  */
-function initPortfolioFilter() {
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    const portfolioCards = document.querySelectorAll('[data-category]');
-    if (!filterButtons.length || !portfolioCards.length) return;
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // If button is a link with server-side query, allow normal navigation if needed;
-            // Otherwise enhance client-side
-            const filterValue = btn.getAttribute('data-filter');
-
-            filterButtons.forEach(b => {
-                b.classList.remove('btn--primary', 'portfolio-filter--active');
-                if (b !== btn) b.classList.add('btn--outline');
-            });
-            btn.classList.add('btn--primary', 'portfolio-filter--active');
-            btn.classList.remove('btn--outline');
-
-            portfolioCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
-                    card.style.display = '';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 20);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(8px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 200);
-                }
-            });
-        });
-    });
+function initOfferPrefill() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('offer') === '399') {
+            const textarea = document.getElementById('inquiry-requirements') || document.getElementById('id_requirements');
+            if (textarea && !textarea.value.trim()) {
+                textarea.value = 'I am interested in the ₹399 first-time offer (3-4 page dynamic website).';
+            }
+            const budgetSelect = document.getElementById('inquiry-budget') || document.getElementById('id_budget');
+            if (budgetSelect) {
+                budgetSelect.value = 'offer-399';
+            }
+        }
+    } catch (e) {}
 }
 
 /**
- * 10. Asynchronous Contact & Inquiry Form Submission
+ * 6. Asynchronous Contact & Inquiry Form Submission
  */
 function initAjaxContactForm() {
-    const form = document.getElementById('contact-form') || document.getElementById('inquiry-form');
+    const form = document.getElementById('inquiry-form') || document.getElementById('contact-form');
     if (!form) return;
 
     const responseContainer = document.getElementById('form-feedback') || document.createElement('div');
     if (!form.contains(responseContainer) && !responseContainer.parentNode) {
         responseContainer.id = 'form-feedback';
-        responseContainer.className = 'form-feedback';
-        form.appendChild(responseContainer);
+        form.prepend(responseContainer);
     }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn ? submitBtn.innerHTML : 'Submit';
+        const originalBtnContent = submitBtn ? submitBtn.innerHTML : 'Submit';
 
-        // Clear previous feedback
+        // Clear previous errors & status
         form.querySelectorAll('.form-field-error').forEach(el => el.remove());
-        form.querySelectorAll('.input--error, .form-input--error').forEach(el => {
-            el.classList.remove('input--error', 'form-input--error');
-        });
+        form.querySelectorAll('.form-control-error').forEach(el => el.classList.remove('form-control-error'));
         responseContainer.innerHTML = '';
 
         if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.innerHTML = `
-                <span class="spinner" style="display:inline-block;width:1rem;height:1rem;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin 0.75s linear infinite;margin-right:8px;vertical-align:middle;"></span>
-                Transmitting Inquiry...
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <span>Submitting inquiry...</span>
             `;
         }
 
@@ -468,12 +268,12 @@ function initAjaxContactForm() {
 
             if (response.ok && data.success) {
                 responseContainer.innerHTML = `
-                    <div class="alert alert--success mb-6">
-                        <div class="alert__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                        </div>
+                    <div class="alert alert--success mb-6" role="alert">
+                        <span class="alert__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </span>
                         <div class="alert__content">
-                            <strong>Inquiry Received:</strong> ${data.message}
+                            <strong>Success:</strong> ${data.message} We will review your project and confirm offer details within 24 hours.
                         </div>
                     </div>
                 `;
@@ -483,17 +283,19 @@ function initAjaxContactForm() {
                 throw data;
             }
         } catch (err) {
-            let message = 'Please review the marked fields below.';
+            let message = 'Please review the highlighted fields below.';
 
             if (err && err.errors) {
-                Object.keys(err.errors).forEach(field => {
-                    const input = form.querySelector(`[name="${field}"]`);
-                    if (input) {
-                        input.classList.add('input--error', 'form-input--error');
+                Object.keys(err.errors).forEach(fieldName => {
+                    const fieldInput = form.querySelector(`[name="${fieldName}"]`);
+                    if (fieldInput) {
+                        fieldInput.classList.add('form-control-error');
                         const errorMsg = document.createElement('div');
                         errorMsg.className = 'form-field-error';
-                        errorMsg.textContent = Array.isArray(err.errors[field]) ? err.errors[field][0] : err.errors[field];
-                        input.parentNode.appendChild(errorMsg);
+                        errorMsg.textContent = Array.isArray(err.errors[fieldName]) ? err.errors[fieldName][0] : err.errors[fieldName];
+                        
+                        const parentGroup = fieldInput.closest('.form-group') || fieldInput.parentNode;
+                        parentGroup.appendChild(errorMsg);
                     }
                 });
             } else if (err && err.message) {
@@ -501,12 +303,12 @@ function initAjaxContactForm() {
             }
 
             responseContainer.innerHTML = `
-                <div class="alert alert--error mb-6">
-                    <div class="alert__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    </div>
+                <div class="alert alert--error mb-6" role="alert">
+                    <span class="alert__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </span>
                     <div class="alert__content">
-                        <strong>Submission Issue:</strong> ${message}
+                        <strong>Please check your submission:</strong> ${message}
                     </div>
                 </div>
             `;
@@ -514,49 +316,8 @@ function initAjaxContactForm() {
         } finally {
             if (submitBtn) {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
+                submitBtn.innerHTML = originalBtnContent;
             }
         }
     });
-}
-
-/**
- * 11. Animated Stats Counters
- */
-function initStatCounters() {
-    const stats = document.querySelectorAll('[data-counter]');
-    if (!stats.length) return;
-
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const endVal = parseFloat(target.getAttribute('data-counter'));
-                const suffix = target.getAttribute('data-suffix') || '';
-                const prefix = target.getAttribute('data-prefix') || '';
-                const duration = 1500;
-                const startTime = performance.now();
-
-                const updateCounter = (currentTime) => {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                    const currentVal = Math.floor(ease * endVal);
-
-                    target.textContent = `${prefix}${currentVal}${suffix}`;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        target.textContent = `${prefix}${endVal}${suffix}`;
-                    }
-                };
-
-                requestAnimationFrame(updateCounter);
-                obs.unobserve(target);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    stats.forEach(s => observer.observe(s));
 }

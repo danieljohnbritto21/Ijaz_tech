@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Page Not Found (404) — Ijaz_Solutions{% endblock %}
+{% block title %}Page Not Found (404) — High Deckz{% endblock %}
 {% block meta_description %}The page you are looking for does not exist or has been moved. Explore our technology solutions and case studies.{% endblock %}
 
 {% block content %}
 <section class="section section--dark" style="min-height: 70vh; display: flex; align-items: center;">
     <div class="container container--narrow text-center">
+        <div class="mb-4">
+            {% include "partials/brand.html" with brand_class="brand--on-dark" %}
+        </div>
         <div class="inline-block p-4 mb-6 rounded-full bg-primary-subtle text-cyan font-mono text-sm uppercase tracking-widest">
             HTTP Error 404
         </div>
         <h1 class="text-6xl font-extrabold mb-4 tracking-tight">System Node Not Found</h1>
         <p class="text-secondary text-lg mb-8 max-w-lg mx-auto">
-            The page or resource you requested could not be located in our routing table. It may have been relocated or updated.
+            The page or resource you requested could not be located in our routing table. It may have been relocated or updated. Return to the main {% include "partials/brand.html" with brand_class="brand--on-dark" %} portal below.
         </p>
         <div class="btn-group justify-center gap-4">
             <a href="{% url 'home' %}" class="btn btn--primary btn--lg">
